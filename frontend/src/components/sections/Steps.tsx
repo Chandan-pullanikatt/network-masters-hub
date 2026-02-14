@@ -3,7 +3,7 @@ import { UserCircle, BookOpen, GraduationCap } from 'lucide-react';
 const Steps = () => {
     return (
         <section className="py-20 bg-[#EBF5FA]">
-            <div className="container px-4 md:px-6">
+            <div className="max-w-[1280px] mx-auto w-full px-6">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Start Learning with Network Masters <br className="hidden md:block" /> Hub in Just 3 Simple Steps</h2>
                     <p className="text-slate-600 max-w-3xl mx-auto text-lg">
@@ -11,8 +11,8 @@ const Steps = () => {
                     </p>
                 </div>
 
-                <div className="bg-white rounded-2xl shadow-sm p-8 md:p-12">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+                <div className="bg-white rounded-2xl shadow-sm p-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 divide-y md:divide-y-0 md:divide-x divide-slate-100">
                         {/* Step 1 */}
                         <div className="flex flex-col items-start text-left space-y-4 md:pr-4 pt-8 md:pt-0 first:pt-0">
                             <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-2">

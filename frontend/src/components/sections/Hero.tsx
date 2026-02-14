@@ -34,20 +34,20 @@ const Hero = () => {
                     variants={staggerContainer}
                     initial="hidden"
                     animate="visible"
-                    className="max-w-3xl space-y-6"
+                    className="max-w-3xl"
                 >
-                    <motion.div variants={scaleIn}>
-                        <span className="inline-block px-4 py-1.5 text-sm font-medium tracking-wide text-blue-100 bg-blue-600/30 border border-blue-400/30 rounded-full backdrop-blur-sm mb-6">
+                    <motion.div variants={scaleIn} className="mb-2">
+                        <span className="inline-block px-4 py-1.5 text-sm font-medium tracking-wide text-blue-100 bg-blue-600/30 border border-blue-400/30 rounded-full backdrop-blur-sm">
                             New: Updated CCNA blueprint included
                         </span>
                     </motion.div>
 
-                    <motion.h1 variants={fadeInUp} className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight text-white drop-shadow-sm">
+                    <motion.h1 variants={fadeInUp} className="text-[52px] font-bold tracking-tight leading-tight text-white drop-shadow-sm mb-2">
                         Master IT & Networking with <br />
                         industry-led training
                     </motion.h1>
 
-                    <motion.p variants={fadeInUp} className="text-lg md:text-xl text-slate-200 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-sm">
+                    <motion.p variants={fadeInUp} className="text-[16px] text-slate-200 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-sm">
                         Elevate Your IT Career to the Global Stage.
                     </motion.p>
 

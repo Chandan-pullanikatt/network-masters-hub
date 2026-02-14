@@ -53,6 +53,14 @@ const Navbar = () => {
                             {link.name}
                         </Link>
                     ))}
+                    <div className="flex items-center gap-4 ml-4">
+                        <Button variant="ghost" className={`text-sm font-medium ${isHome && !isScrolled ? 'text-white hover:text-white/80 hover:bg-white/10' : ''}`} asChild>
+                            <Link href="/login">Login</Link>
+                        </Button>
+                        <Button className="bg-[#003366] hover:bg-[#002244] text-white" asChild>
+                            <Link href="/register">Register</Link>
+                        </Button>
+                    </div>
                 </div>
 
                 {/* Mobile Menu Button */}

@@ -11,7 +11,7 @@ const testimonials = Array(6).fill({
 const Testimonials = () => {
     return (
         <section className="py-20 bg-[#F8F9FA]">
-            <div className="container px-4 md:px-6">
+            <div className="max-w-[1280px] mx-auto w-full px-6">
                 <MotionDiv
                     variants={staggerContainer}
                     initial="hidden"
@@ -29,9 +29,9 @@ const Testimonials = () => {
                     </MotionDiv>
                 </MotionDiv>
 
-                <MotionSection className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <MotionSection className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {testimonials.map((testimonial, index) => (
-                        <MotionDiv key={index} variants={fadeInUp} className="bg-white p-8 rounded-2xl shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] hover:shadow-lg transition-shadow duration-300 flex flex-col h-full border border-slate-50">
+                        <MotionDiv key={index} variants={fadeInUp} className="bg-white p-6 rounded-2xl shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] hover:shadow-lg transition-shadow duration-300 flex flex-col h-full border border-slate-50">
                             <div className="flex justify-between items-start mb-6">
                                 <div className="flex items-center gap-4">
                                     <div className="w-12 h-12 bg-gray-200 rounded-full flex-shrink-0"></div>

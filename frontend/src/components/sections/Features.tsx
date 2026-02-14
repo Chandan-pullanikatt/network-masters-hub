@@ -23,7 +23,7 @@ const features = [
 const Features = () => {
     return (
         <section className="py-20 bg-white">
-            <div className="container px-4 md:px-6">
+            <div className="max-w-[1280px] mx-auto w-full px-6">
                 <MotionDiv
                     variants={staggerContainer}
                     initial="hidden"
@@ -39,9 +39,9 @@ const Features = () => {
                     </MotionDiv>
                 </MotionDiv>
 
-                <MotionSection className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <MotionSection className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {features.map((feature, index) => (
-                        <MotionDiv key={index} variants={fadeInUp} className="p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow bg-white text-center h-full">
+                        <MotionDiv key={index} variants={fadeInUp} className="p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow bg-white text-center h-full">
                             <div className="w-16 h-16 mx-auto bg-blue-50 rounded-full flex items-center justify-center mb-6">
                                 <feature.icon className="h-8 w-8 text-blue-600" />
                             </div>
