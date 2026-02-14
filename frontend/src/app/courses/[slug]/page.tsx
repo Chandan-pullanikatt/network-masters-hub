@@ -109,25 +109,27 @@ export default function CourseDetailPage({ params }: { params: Promise<{ slug: s
                 </div>
             </div>
 
-            <div className="container px-4 md:px-6 py-[150px] space-y-[150px]">
+            <div className="max-w-[1200px] mx-auto rounded-[12px] px-4 md:px-6 py-[100px] space-y-[100px]">
 
                 {/* Program Overview - Core Skills */}
                 <section id="overview" className="scroll-mt-32">
-                    <div className="text-center mb-16">
+                    <div className="text-center mb-[48px]">
                         <h2 className="text-3xl font-bold text-slate-900 mb-4">{overview?.title || "Course Overview"}</h2>
                         <p className="text-slate-600 max-w-2xl mx-auto">
                             {overview?.description || "Master the skills needed for this course."}
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="flex flex-nowrap gap-6 overflow-x-auto pb-4 -mx-4 px-4 md:mx-0 md:px-0 no-scrollbar justify-center md:justify-start lg:justify-center">
                         {overview?.skills.map((skill: any, idx: number) => (
-                            <div key={idx} className="bg-[#EBF3FA] p-6 rounded-xl border border-slate-100/50 hover:shadow-md transition-shadow">
-                                <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center border border-slate-200 mb-4 text-[#003366]">
-                                    <skill.icon className="w-6 h-6" />
+                            <div key={idx} className="bg-[#EBF3FA] p-4 rounded-xl border border-slate-100/50 hover:shadow-md transition-shadow w-[262px] h-[175px] flex-shrink-0 flex flex-col justify-between">
+                                <div>
+                                    <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center border border-slate-200 mb-3 text-[#003366]">
+                                        <skill.icon className="w-5 h-5" />
+                                    </div>
+                                    <h3 className="text-lg font-bold text-slate-900 mb-1 leading-tight">{skill.title}</h3>
                                 </div>
-                                <h3 className="text-lg font-bold text-slate-900 mb-2">{skill.title}</h3>
-                                <p className="text-slate-600 text-sm leading-relaxed">{skill.desc}</p>
+                                <p className="text-slate-600 text-sm leading-snug line-clamp-3">{skill.desc}</p>
                             </div>
                         ))}
                     </div>
