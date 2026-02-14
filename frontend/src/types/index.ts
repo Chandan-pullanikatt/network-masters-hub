@@ -21,6 +21,39 @@ export interface Course {
         videoHours: number;
         price: number;
         image: StrapiImage;
+        // Extended fields for Course Detail Page
+        hero?: {
+            title: string;
+            subtitle: string;
+            price: number;
+            originalPrice?: number;
+            startDate?: string;
+            batches?: {
+                name: string;
+                time: string;
+                days: string;
+                status: string;
+            }[];
+        };
+        overview?: {
+            title: string;
+            description: string;
+            skills: {
+                title: string;
+                icon: any; // LucideIcon type if possible, or any
+                desc: string;
+            }[];
+        };
+        roadmap?: {
+            id: string;
+            title: string;
+            desc: string;
+            topics: string;
+        }[];
+        faqs?: {
+            question: string;
+            answer: string;
+        }[];
     };
 }
 
