@@ -109,10 +109,10 @@ export default function CourseDetailPage({ params }: { params: Promise<{ slug: s
                 </div>
             </div>
 
-            <div className="max-w-[1200px] mx-auto rounded-[12px] px-4 md:px-6 py-[100px] space-y-[100px]">
+            <div className="max-w-[1200px] mx-auto rounded-[12px] relative z-10 -mt-[100px] bg-white shadow-xl px-0 py-[60px] space-y-[48px]">
 
                 {/* Program Overview - Core Skills */}
-                <section id="overview" className="scroll-mt-32">
+                <section id="overview" className="scroll-mt-32 w-[1120px] mx-auto">
                     <div className="text-center mb-[48px]">
                         <h2 className="text-3xl font-bold text-slate-900 mb-4">{overview?.title || "Course Overview"}</h2>
                         <p className="text-slate-600 max-w-2xl mx-auto">
@@ -120,9 +120,9 @@ export default function CourseDetailPage({ params }: { params: Promise<{ slug: s
                         </p>
                     </div>
 
-                    <div className="flex flex-nowrap gap-6 overflow-x-auto pb-4 -mx-4 px-4 md:mx-0 md:px-0 no-scrollbar justify-center md:justify-start lg:justify-center">
+                    <div className="flex flex-wrap lg:flex-nowrap gap-[24px] justify-center lg:justify-start">
                         {overview?.skills.map((skill: any, idx: number) => (
-                            <div key={idx} className="bg-[#EBF3FA] p-4 rounded-xl border border-slate-100/50 hover:shadow-md transition-shadow w-[262px] h-[175px] flex-shrink-0 flex flex-col justify-between">
+                            <div key={idx} className="bg-[#EBF3FA] p-[16px] rounded-[12px] border border-slate-100/50 hover:shadow-md transition-shadow w-[262px] h-[175px] flex-shrink-0 flex flex-col justify-between">
                                 <div>
                                     <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center border border-slate-200 mb-3 text-[#003366]">
                                         <skill.icon className="w-5 h-5" />
@@ -137,29 +137,27 @@ export default function CourseDetailPage({ params }: { params: Promise<{ slug: s
 
                 {/* Learning Roadmap */}
                 {roadmap && roadmap.length > 0 && (
-                    <section id="roadmap" className="scroll-mt-32">
-                        <div className="text-center mb-16">
+                    <section id="roadmap" className="scroll-mt-32 w-[1108px] mx-auto">
+                        <div className="text-center mb-[48px]">
                             <h2 className="text-3xl font-bold text-slate-900 mb-4">Curriculum Roadmap</h2>
                             <p className="text-slate-600 max-w-2xl mx-auto">
                                 A structured journey to mastery.
                             </p>
                         </div>
-                        {/* ... (rest of roadmap logic remains same, just container updated) */}
-                        <div className="relative max-w-4xl mx-auto">
+
+                        <div className="relative">
                             {/* Vertical Line */}
-                            <div className="absolute left-[15px] md:left-1/2 top-0 bottom-0 w-0.5 bg-blue-100 -translate-x-1/2"></div>
+                            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-blue-100 -translate-x-1/2 hidden md:block"></div>
 
                             {roadmap.map((item: any, idx: number) => (
-                                <div key={idx} className={`relative flex flex-col md:flex-row gap-8 mb-12 ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+                                <div key={idx} className={`relative flex flex-col md:flex-row gap-[96px] mb-[40px] items-center ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
                                     {/* Timeline Dot */}
-                                    <div className="absolute left-[15px] md:left-1/2 top-0 w-8 h-8 rounded-full bg-[#003366] border-4 border-white shadow-sm -translate-x-1/2 z-10 flex items-center justify-center">
-                                        <div className="w-2 h-2 bg-white rounded-full"></div>
-                                    </div>
+                                    <div className="absolute left-1/2 top-1/2 w-4 h-4 rounded-full bg-[#003366] ring-4 ring-white shadow-sm -translate-x-1/2 -translate-y-1/2 z-10 hidden md:block"></div>
 
                                     {/* Content Card */}
-                                    <div className={`flex-1 pl-12 md:pl-0 ${idx % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}>
-                                        <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
-                                            <div className={`flex items-center gap-4 mb-4 ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+                                    <div className="w-[506px] h-[254px]">
+                                        <div className="bg-white p-[16px] rounded-[12px] shadow-sm border border-slate-100 hover:shadow-md transition-shadow h-full flex flex-col justify-center">
+                                            <div className={`flex items-center gap-4 mb-3 ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
                                                 <span className="text-4xl font-light text-slate-300">{item.id}</span>
                                                 <div className="ml-auto md:ml-0">
                                                     <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600">
@@ -167,16 +165,16 @@ export default function CourseDetailPage({ params }: { params: Promise<{ slug: s
                                                     </div>
                                                 </div>
                                             </div>
-                                            <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
-                                            <p className="text-slate-600 mb-6 leading-relaxed text-sm">{item.desc}</p>
+                                            <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
+                                            <p className="text-slate-600 mb-4 leading-relaxed text-sm line-clamp-3">{item.desc}</p>
                                             {item.topics && (
-                                                <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-blue-200 bg-blue-50 text-blue-700 text-xs font-medium ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+                                                <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-blue-200 bg-blue-50 text-blue-700 text-xs font-medium w-fit ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
                                                     Topics Covered: {item.topics}
                                                 </div>
                                             )}
                                         </div>
                                     </div>
-                                    <div className="hidden md:block flex-1"></div>
+                                    <div className="w-[506px] hidden md:block"></div>
                                 </div>
                             ))}
                         </div>
