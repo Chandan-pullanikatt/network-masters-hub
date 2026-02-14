@@ -3,6 +3,11 @@
   command = "npm run build"
   publish = ".next"
 
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+
+
 [context.production.environment]
   NEXT_PUBLIC_STRAPI_URL = "https://your-strapi-backend-url.com" 
   # Update this in Netlify UI after deploying backend
