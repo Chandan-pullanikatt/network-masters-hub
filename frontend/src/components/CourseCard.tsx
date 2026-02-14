@@ -16,42 +16,48 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
     const moduleCount = Array.isArray(modules) ? modules.length : 10; // Default/Fallback
 
     return (
-        <div className="group relative flex flex-col overflow-hidden rounded-xl border bg-card text-card-foreground shadow-sm transition-all hover:shadow-md h-full">
+        <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full">
             <div className="aspect-video w-full overflow-hidden relative">
                 <Image
                     src={imageUrl}
                     alt={title}
                     fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute top-2 right-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded">
+                <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-blue-700 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm border border-slate-100">
                     ${price}
                 </div>
             </div>
 
-            <div className="flex flex-col flex-1 p-5 space-y-4">
-                <h3 className="text-xl font-bold tracking-tight line-clamp-2 min-h-[3.5rem]">{title}</h3>
+            <div className="flex flex-col flex-1 p-3 space-y-2">
+                <div className="flex-1">
+                    <h3 className="text-base font-bold tracking-tight text-slate-900 line-clamp-2 leading-snug group-hover:text-blue-700 transition-colors min-h-[2.5rem]">
+                        {title}
+                    </h3>
+                </div>
 
-                <div className="flex items-center justify-between text-sm text-muted-foreground">
+                <div className="flex items-center justify-between text-[11px] font-medium text-slate-500 py-1.5 border-t border-slate-100 mt-1">
                     <div className="flex items-center gap-1">
-                        <Clock className="w-4 h-4" />
+                        <Clock className="w-3 h-3" />
                         <span>{duration}</span>
                     </div>
                     <div className="flex items-center gap-1">
-                        <Video className="w-4 h-4" />
+                        <Video className="w-3 h-3" />
                         <span>{videoHours} Hrs</span>
                     </div>
                     <div className="flex items-center gap-1">
-                        <BookOpen className="w-4 h-4" />
+                        <BookOpen className="w-3 h-3" />
                         <span>{moduleCount} Mods</span>
                     </div>
                 </div>
 
-                <div className="mt-auto grid grid-cols-2 gap-3">
-                    <Button variant="outline" size="sm" asChild>
+                <div className="mt-auto grid grid-cols-2 gap-2 pt-1">
+                    <Button variant="outline" size="sm" className="h-8 text-xs w-full text-slate-600 hover:text-blue-700 hover:bg-blue-50 border-slate-200" asChild>
                         <Link href={`/courses/${slug}`}>View Details</Link>
                     </Button>
-                    <Button size="sm">Add to Cart</Button>
+                    <Button size="sm" className="h-8 text-xs w-full bg-blue-600 hover:bg-blue-700 text-white shadow-md shadow-blue-600/20">
+                        Add to Cart
+                    </Button>
                 </div>
             </div>
         </div>

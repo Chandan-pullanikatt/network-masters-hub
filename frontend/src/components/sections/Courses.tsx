@@ -92,9 +92,9 @@ const Courses = () => {
                     </MotionDiv>
                 </MotionDiv>
 
-                <MotionSection className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <MotionSection className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {popularCourses.map((course) => (
-                        <MotionDiv key={course.id} variants={fadeInUp} className="h-full">
+                        <MotionDiv key={course.id} variants={fadeInUp} className="h-full w-full max-w-[340px] mx-auto">
                             <PopularCourseCard course={course} />
                         </MotionDiv>
                     ))}

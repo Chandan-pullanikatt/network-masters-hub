@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   description: "Master IT, Networking, and Automation with industry-led training.",
 };
 
+import { Toaster } from 'sonner';
+
 import { CartProvider } from "@/context/CartContext";
 
 export default function RootLayout({
@@ -27,6 +29,7 @@ export default function RootLayout({
             <div className="flex-1">{children}</div>
             <Footer />
           </div>
+          <Toaster richColors position="top-right" />
         </CartProvider>
       </body>
     </html>
