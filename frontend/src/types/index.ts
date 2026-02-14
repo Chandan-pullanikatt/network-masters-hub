@@ -17,7 +17,7 @@ export interface Course {
         slug: string;
         description: string;
         duration: string;
-        modules: string[] | object; // Rich text or specific JSON structure
+        modules: string[] | object | number; // Rich text, JSON, or simple count
         videoHours: number;
         price: number;
         image: StrapiImage;
