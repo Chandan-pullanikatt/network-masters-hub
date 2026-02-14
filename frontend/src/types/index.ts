@@ -23,6 +23,7 @@ export interface Course {
         image: StrapiImage;
         // Extended fields for Course Detail Page
         hero?: {
+            badge?: string;
             title: string;
             subtitle: string;
             price: number;

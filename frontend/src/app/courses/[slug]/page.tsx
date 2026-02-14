@@ -85,7 +85,7 @@ export default function CourseDetailPage() {
                 </div>
             </div>
 
-            <div className="max-w-[1200px] mx-auto rounded-[12px] relative z-10 -mt-[100px] bg-white shadow-xl px-0 pb-[60px]">
+            <div className="max-w-[1200px] mx-auto rounded-[12px] relative z-10 -mt-[100px] bg-white shadow-xl px-0 pb-[60px] mb-[120px]">
 
                 {/* Tabs Navigation */}
                 <div className="px-[24px] pt-[24px] pb-[24px] border-b border-slate-200 mb-[48px]">
