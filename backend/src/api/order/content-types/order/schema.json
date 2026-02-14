@@ -1,0 +1,51 @@
+{
+    "kind": "collectionType",
+    "collectionName": "orders",
+    "info": {
+        "singularName": "order",
+        "pluralName": "orders",
+        "displayName": "Order",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "customerName": {
+            "type": "string"
+        },
+        "email": {
+            "type": "email"
+        },
+        "phone": {
+            "type": "string"
+        },
+        "courses": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::course.course"
+        },
+        "totalAmount": {
+            "type": "decimal"
+        },
+        "paymentStatus": {
+            "type": "enumeration",
+            "enum": [
+                "pending",
+                "success",
+                "failed"
+            ]
+        },
+        "paymentMethod": {
+            "type": "enumeration",
+            "enum": [
+                "razorpay",
+                "manual"
+            ]
+        },
+        "razorpayPaymentId": {
+            "type": "string"
+        }
+    }
+}
