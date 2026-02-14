@@ -5,12 +5,14 @@ import Steps from '@/components/sections/Steps';
 import Testimonials from '@/components/sections/Testimonials';
 import FAQ from '@/components/sections/FAQ';
 import Contact from '@/components/sections/Contact';
+import QuoteSection from '@/components/sections/QuoteSection';
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background">
       <Hero />
       <Courses />
+      <QuoteSection />
       <Features />
       <Steps />
       <Testimonials />
