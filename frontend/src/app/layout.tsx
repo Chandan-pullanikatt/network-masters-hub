@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google"; // Using Inter as requested/premium font
+import { Urbanist } from "next/font/google"; // Switch to Urbanist
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const urbanist = Urbanist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Network Masters Hub | IT Training Platform",
@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={inter.className}>
+      <body className={urbanist.className}>
         <CartProvider>
           <div className="flex min-h-screen flex-col">
             <Navbar />
