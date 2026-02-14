@@ -6,6 +6,7 @@ import Testimonials from '@/components/sections/Testimonials';
 import FAQ from '@/components/sections/FAQ';
 import Contact from '@/components/sections/Contact';
 import QuoteSection from '@/components/sections/QuoteSection';
+import EnquiryCTA from '@/components/sections/EnquiryCTA';
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Features />
       <Steps />
       <Testimonials />
+      <EnquiryCTA />
       <FAQ />
       <Contact />
     </main>
