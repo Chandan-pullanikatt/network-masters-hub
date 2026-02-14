@@ -4,6 +4,8 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion";
+import { MotionSection, MotionDiv } from '@/components/ui/motion-container';
+import { staggerContainer, fadeInUp } from '@/lib/animations';
 
 const specificFaqs = [
     {
@@ -36,23 +38,37 @@ const FAQ = () => {
     return (
         <section className="py-20 bg-slate-50" id="faq">
             <div className="container px-4 md:px-6 max-w-4xl mx-auto">
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">Frequently Asked Questions</h2>
-                    <p className="text-slate-500">Answers to Your Most Common Questions</p>
-                </div>
+                <MotionDiv
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="text-center mb-12"
+                >
+                    <MotionDiv variants={fadeInUp}>
+                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">Frequently Asked Questions</h2>
+                    </MotionDiv>
+                    <MotionDiv variants={fadeInUp}>
+                        <p className="text-slate-500">Answers to Your Most Common Questions</p>
+                    </MotionDiv>
+                </MotionDiv>
 
-                <Accordion type="single" collapsible className="w-full space-y-4">
-                    {specificFaqs.map((faq, index) => (
-                        <AccordionItem key={index} value={`item-${index}`} className="bg-white border text-left px-6 py-2 rounded-xl shadow-sm data-[state=open]:border-blue-500 data-[state=open]:ring-1 data-[state=open]:ring-blue-500 transition-all">
-                            <AccordionTrigger className="text-left text-lg font-bold text-slate-900 hover:no-underline py-4">
-                                {faq.question}
-                            </AccordionTrigger>
-                            <AccordionContent className="text-slate-600 text-base leading-relaxed pb-6">
-                                {faq.answer}
-                            </AccordionContent>
-                        </AccordionItem>
-                    ))}
-                </Accordion>
+                <MotionSection className="w-full space-y-4">
+                    <Accordion type="single" collapsible className="w-full space-y-4">
+                        {specificFaqs.map((faq, index) => (
+                            <MotionDiv key={index} variants={fadeInUp} className="bg-white border text-left px-6 py-2 rounded-xl shadow-sm data-[state=open]:border-blue-500 data-[state=open]:ring-1 data-[state=open]:ring-blue-500 transition-all">
+                                <AccordionItem value={`item-${index}`} className="border-none">
+                                    <AccordionTrigger className="text-left text-lg font-bold text-slate-900 hover:no-underline py-4">
+                                        {faq.question}
+                                    </AccordionTrigger>
+                                    <AccordionContent className="text-slate-600 text-base leading-relaxed pb-6">
+                                        {faq.answer}
+                                    </AccordionContent>
+                                </AccordionItem>
+                            </MotionDiv>
+                        ))}
+                    </Accordion>
+                </MotionSection>
             </div>
         </section>
     );

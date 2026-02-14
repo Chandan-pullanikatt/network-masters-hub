@@ -1,4 +1,6 @@
 import { Quote } from 'lucide-react';
+import { MotionSection, MotionDiv } from '@/components/ui/motion-container';
+import { staggerContainer, fadeInUp } from '@/lib/animations';
 
 const testimonials = Array(6).fill({
     name: "Rahul Menon",
@@ -10,16 +12,26 @@ const Testimonials = () => {
     return (
         <section className="py-20 bg-[#F8F9FA]">
             <div className="container px-4 md:px-6">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Success Stories from Our Learners</h2>
-                    <p className="text-slate-600 max-w-3xl mx-auto text-lg">
-                        See how structured training and hands-on labs helped our students become job-ready IT professionals.
-                    </p>
-                </div>
+                <MotionDiv
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="text-center mb-16"
+                >
+                    <MotionDiv variants={fadeInUp}>
+                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Success Stories from Our Learners</h2>
+                    </MotionDiv>
+                    <MotionDiv variants={fadeInUp}>
+                        <p className="text-slate-600 max-w-3xl mx-auto text-lg">
+                            See how structured training and hands-on labs helped our students become job-ready IT professionals.
+                        </p>
+                    </MotionDiv>
+                </MotionDiv>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <MotionSection className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {testimonials.map((testimonial, index) => (
-                        <div key={index} className="bg-white p-8 rounded-2xl shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] hover:shadow-lg transition-shadow duration-300 flex flex-col h-full border border-slate-50">
+                        <MotionDiv key={index} variants={fadeInUp} className="bg-white p-8 rounded-2xl shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] hover:shadow-lg transition-shadow duration-300 flex flex-col h-full border border-slate-50">
                             <div className="flex justify-between items-start mb-6">
                                 <div className="flex items-center gap-4">
                                     <div className="w-12 h-12 bg-gray-200 rounded-full flex-shrink-0"></div>
@@ -34,9 +46,9 @@ const Testimonials = () => {
                             <p className="text-slate-600 leading-relaxed flex-grow text-[15px]">
                                 {testimonial.message}
                             </p>
-                        </div>
+                        </MotionDiv>
                     ))}
-                </div>
+                </MotionSection>
             </div>
         </section>
     );

@@ -1,5 +1,7 @@
 import { Course } from '@/types';
 import PopularCourseCard from '@/components/PopularCourseCard';
+import { MotionSection, MotionDiv } from '@/components/ui/motion-container';
+import { staggerContainer, fadeInUp } from '@/lib/animations';
 
 const popularCourses: Course[] = [
     {
@@ -73,18 +75,30 @@ const Courses = () => {
     return (
         <section className="py-20 bg-[#F8F9FA]">
             <div className="container px-4 md:px-6">
-                <div className="flex flex-col items-center text-center space-y-4 mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Our Popular Courses</h2>
-                    <p className="max-w-[700px] text-slate-600 text-lg">
-                        Industry-focused programs crafted for practical learning and career growth.
-                    </p>
-                </div>
+                <MotionDiv
+                    variants={staggerContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="flex flex-col items-center text-center space-y-4 mb-16"
+                >
+                    <MotionDiv variants={fadeInUp}>
+                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900">Our Popular Courses</h2>
+                    </MotionDiv>
+                    <MotionDiv variants={fadeInUp}>
+                        <p className="max-w-[700px] text-slate-600 text-lg">
+                            Industry-focused programs crafted for practical learning and career growth.
+                        </p>
+                    </MotionDiv>
+                </MotionDiv>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <MotionSection className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {popularCourses.map((course) => (
-                        <PopularCourseCard key={course.id} course={course} />
+                        <MotionDiv key={course.id} variants={fadeInUp} className="h-full">
+                            <PopularCourseCard course={course} />
+                        </MotionDiv>
                     ))}
-                </div>
+                </MotionSection>
             </div>
         </section>
     );
