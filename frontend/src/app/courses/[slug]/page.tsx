@@ -2,7 +2,7 @@
 "use client";
 
 import { useState, use } from 'react';
-import { notFound } from 'next/navigation';
+import { notFound, useParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { User, Shield, Server, Activity, CheckCircle2, Clock, Calendar, Database, Globe, Cpu, Cloud, Code } from 'lucide-react';
 import { courses } from '@/lib/courses-data';
@@ -12,28 +12,24 @@ import FAQ from '@/components/sections/FAQ';
 
 // Helper to get course by slug
 function getCourseBySlug(slug: string) {
+    if (!slug) return undefined;
     const decodedSlug = decodeURIComponent(slug);
-    console.log('All courses:', courses.map(c => ({ title: c.attributes.title, slug: c.attributes.slug })));
-    console.log(`Searching for slug: "${slug}" (decoded: "${decodedSlug}")`);
+    // console.log(`Searching for slug: "${slug}"`);
 
     if (!courses || courses.length === 0) {
-        console.error('Courses data is empty or undefined!');
         return undefined;
     }
 
-    const found = courses.find(course => course.attributes.slug === decodedSlug);
-    console.log('Found course:', found ? found.attributes.title : 'None');
-    return found;
+    return courses.find(course => course.attributes.slug === decodedSlug);
 }
 
-export default function CourseDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-    const { slug } = use(params);
+export default function CourseDetailPage() {
+    const params = useParams();
+    const slug = params?.slug as string;
     const course = getCourseBySlug(slug);
     const [activeSection, setActiveSection] = useState('overview');
 
     if (!course) {
-        // Return 404 but log it first
-        console.error(`Course not found for slug: ${slug}`);
         return notFound();
     }
 
@@ -59,32 +55,35 @@ export default function CourseDetailPage({ params }: { params: Promise<{ slug: s
     return (
         <div className="min-h-screen bg-slate-50">
             {/* Hero Section */}
-            <section className="bg-[#003366] text-white py-[150px] relative overflow-hidden">
-                {/* Background Pattern Overlay */}
-                <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#4d7a97_1px,transparent_1px)] [background-size:20px_20px]"></div>
+            <div className="relative bg-[#003366] text-white pt-32 pb-48">
+                {/* Background Image with Overlay */}
+                <div
+                    className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+                    style={{ backgroundImage: 'url(/assets/p6.png)' }}
+                >
+                    <div className="absolute inset-0 bg-[#003366]/80"></div>
+                </div>
 
-                <div className="container px-4 md:px-6 relative z-10 text-center">
-                    {/* Breadcrumb-ish */}
-                    <div className="mb-6 text-blue-200 text-sm font-medium uppercase tracking-wider">
-                        <Link href="/courses" className="hover:text-white transition-colors">Courses</Link> / {course.attributes.title}
+                <div className="container relative z-10 px-4 md:px-6 text-center">
+                    <div className="inline-block px-3 py-1 rounded-full bg-blue-500/20 text-blue-200 text-sm font-medium mb-6 backdrop-blur-sm border border-blue-400/30">
+                        {hero?.badge || "Best Seller"}
                     </div>
-
-                    <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-tight max-w-4xl mx-auto">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
                         {hero?.title || course.attributes.title}
                     </h1>
-                    <p className="text-blue-100 text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed">
+                    <p className="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto mb-10 leading-relaxed">
                         {hero?.subtitle || course.attributes.description}
                     </p>
-                    <div className="flex flex-col sm:flex-row justify-center gap-4">
-                        <Button size="lg" className="bg-[#0056b3] hover:bg-[#004494] text-white border-none h-12 px-8 text-lg">
-                            Get Course Plan
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                        <Button size="lg" className="bg-white text-[#003366] hover:bg-blue-50 font-semibold px-8 h-12">
+                            Enroll Now
                         </Button>
-                        <Button size="lg" variant="outline" className="bg-white text-[#003366] hover:bg-slate-100 border-none h-12 px-8 text-lg">
-                            Talk to Trainer
+                        <Button variant="outline" size="lg" className="text-white border-white hover:bg-white/10 px-8 h-12 bg-transparent">
+                            Download Syllabus
                         </Button>
                     </div>
                 </div>
-            </section>
+            </div>
 
             <div className="max-w-[1200px] mx-auto rounded-[12px] relative z-10 -mt-[100px] bg-white shadow-xl px-0 pb-[60px]">
 
