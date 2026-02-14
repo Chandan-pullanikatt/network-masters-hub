@@ -141,9 +141,9 @@ export default function CourseDetailPage({ params }: { params: Promise<{ slug: s
 
                     {/* Learning Roadmap */}
                     {roadmap && roadmap.length > 0 && (
-                        <section id="roadmap" className="scroll-mt-32 w-[1108px] mx-auto">
+                        <section id="roadmap" className="scroll-mt-32 w-[1200px] mx-auto bg-[#0079FF]/5 rounded-[12px] pt-[48px] pb-[48px] px-[40px]">
                             <div className="text-center mb-[48px]">
-                                <h2 className="text-3xl font-bold text-slate-900 mb-4">Curriculum Roadmap</h2>
+                                <h2 className="text-3xl font-bold text-slate-900 mb-[8px]">Curriculum Roadmap</h2>
                                 <p className="text-slate-600 max-w-2xl mx-auto">
                                     A structured journey to mastery.
                                 </p>
@@ -154,16 +154,16 @@ export default function CourseDetailPage({ params }: { params: Promise<{ slug: s
                                 <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-blue-100 -translate-x-1/2 hidden md:block"></div>
 
                                 {roadmap.map((item: any, idx: number) => (
-                                    <div key={idx} className={`relative flex flex-col md:flex-row gap-[96px] mb-[40px] items-center ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+                                    <div key={idx} className={`relative flex flex-col md:flex-row gap-[96px] mb-[40px] items-center text-left ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
                                         {/* Timeline Dot */}
                                         <div className="absolute left-1/2 top-1/2 w-4 h-4 rounded-full bg-[#003366] ring-4 ring-white shadow-sm -translate-x-1/2 -translate-y-1/2 z-10 hidden md:block"></div>
 
                                         {/* Content Card */}
                                         <div className="w-[506px] h-[254px]">
                                             <div className="bg-white p-[16px] rounded-[12px] shadow-sm border border-slate-100 hover:shadow-md transition-shadow h-full flex flex-col justify-center">
-                                                <div className={`flex items-center gap-4 mb-3 ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+                                                <div className="flex items-center gap-4 mb-3">
                                                     <span className="text-4xl font-light text-slate-300">{item.id}</span>
-                                                    <div className="ml-auto md:ml-0">
+                                                    <div className="ml-auto">
                                                         <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600">
                                                             <User className="w-4 h-4" />
                                                         </div>
@@ -172,7 +172,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ slug: s
                                                 <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
                                                 <p className="text-slate-600 mb-4 leading-relaxed text-sm line-clamp-3">{item.desc}</p>
                                                 {item.topics && (
-                                                    <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-blue-200 bg-blue-50 text-blue-700 text-xs font-medium w-fit ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+                                                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-blue-200 bg-blue-50 text-blue-700 text-xs font-medium w-fit">
                                                         Topics Covered: {item.topics}
                                                     </div>
                                                 )}
