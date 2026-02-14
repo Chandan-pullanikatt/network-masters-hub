@@ -17,7 +17,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
 
     return (
         <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full">
-            <div className="aspect-video w-full overflow-hidden relative">
+            <div className="h-[170px] w-full overflow-hidden relative">
                 <Image
                     src={imageUrl}
                     alt={title}
@@ -29,14 +29,14 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
                 </div>
             </div>
 
-            <div className="flex flex-col flex-1 p-3 space-y-2">
+            <div className="flex flex-col flex-1 p-2.5 space-y-2">
                 <div className="flex-1">
-                    <h3 className="text-base font-bold tracking-tight text-slate-900 line-clamp-2 leading-snug group-hover:text-blue-700 transition-colors min-h-[2.5rem]">
+                    <h3 className="text-[15px] font-bold tracking-tight text-slate-900 line-clamp-2 leading-snug group-hover:text-blue-700 transition-colors min-h-[2.25rem]">
                         {title}
                     </h3>
                 </div>
 
-                <div className="flex items-center justify-between text-[11px] font-medium text-slate-500 py-1.5 border-t border-slate-100 mt-1">
+                <div className="flex items-center justify-between text-[10px] font-medium text-slate-500 py-1.5 border-t border-slate-100 mt-1">
                     <div className="flex items-center gap-1">
                         <Clock className="w-3 h-3" />
                         <span>{duration}</span>
@@ -52,10 +52,10 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
                 </div>
 
                 <div className="mt-auto grid grid-cols-2 gap-2 pt-1">
-                    <Button variant="outline" size="sm" className="h-8 text-xs w-full text-slate-600 hover:text-blue-700 hover:bg-blue-50 border-slate-200" asChild>
+                    <Button variant="outline" size="sm" className="h-7 text-xs w-full text-slate-600 hover:text-blue-700 hover:bg-blue-50 border-slate-200" asChild>
                         <Link href={`/courses/${slug}`}>View Details</Link>
                     </Button>
-                    <Button size="sm" className="h-8 text-xs w-full bg-blue-600 hover:bg-blue-700 text-white shadow-md shadow-blue-600/20">
+                    <Button size="sm" className="h-7 text-xs w-full bg-blue-600 hover:bg-blue-700 text-white shadow-md shadow-blue-600/20">
                         Add to Cart
                     </Button>
                 </div>
