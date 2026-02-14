@@ -219,9 +219,9 @@ export default function CourseDetailPage() {
                                     ))}
                                 </ul>
 
-                                <div className="space-y-3 mt-4">
-                                    <Button className="w-full bg-blue-600 hover:bg-blue-700 h-9 text-sm">Buy Now</Button>
-                                    <Button variant="outline" className="w-full bg-white text-[#003366] hover:bg-slate-100 h-9 border-none text-sm">Add to Cart</Button>
+                                <div className="flex gap-3 mt-auto pt-4">
+                                    <Button className="flex-1 bg-blue-600 hover:bg-blue-700 h-9 text-sm">Buy Now</Button>
+                                    <Button variant="outline" className="flex-1 bg-white text-[#003366] hover:bg-slate-100 h-9 border-none text-sm">Add to Cart</Button>
                                 </div>
                             </div>
 
