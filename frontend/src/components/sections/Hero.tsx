@@ -1,69 +1,62 @@
-"use client"; // Required for framer-motion if stored in component
+"use client";
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 
 const Hero = () => {
     return (
-        <section className="relative w-full h-[600px] flex items-center justify-center overflow-hidden bg-slate-900 text-white">
-            {/* Background Image Overlay */}
-            <div
-                className="absolute inset-0 z-0 opacity-20 bg-cover bg-center"
-                style={{ backgroundImage: "url('/placeholder-hero-bg.jpg')" }} // Placeholder, user image suggested server rack
-            ></div>
-            <div className="absolute inset-0 z-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent"></div>
+        <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-slate-900 text-white">
+            {/* Background Video */}
+            <div className="absolute inset-0 z-0">
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover opacity-60"
+                >
+                    <source src="/assets/v1.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-black/50"></div>
+            </div>
 
-            <div className="container relative z-10 px-4 md:px-6 flex flex-col md:flex-row items-center gap-8">
-                <div className="space-y-6 max-w-2xl">
+            <div className="container relative z-10 px-4 md:px-6 flex flex-col items-center text-center">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="max-w-3xl space-y-6"
+                >
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.2, duration: 0.5 }}
                     >
-                        <span className="inline-block px-3 py-1 text-xs font-semibold tracking-wider text-blue-400 uppercase bg-blue-400/10 rounded-full mb-4">
-                            Launch Your IT Career
+                        <span className="inline-block px-4 py-1.5 text-sm font-medium tracking-wide text-blue-100 bg-blue-600/30 border border-blue-400/30 rounded-full backdrop-blur-sm mb-6">
+                            New: Updated CCNA blueprint included
                         </span>
-                        <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight">
-                            Master IT & Networking with <span className="text-blue-500">Industry-Led</span> Training
-                        </h1>
-                        <p className="text-lg text-slate-300 max-w-[600px]">
-                            Gain hands-on experience, earn certifications, and get job-ready with our expert-designed courses in CCNA, CCNP, and Python Automation.
-                        </p>
                     </motion.div>
 
-                    <div className="flex flex-col sm:flex-row gap-4">
-                        <Button size="lg" className="text-base" asChild>
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight text-white drop-shadow-sm">
+                        Master IT & Networking with <br />
+                        industry-led training
+                    </h1>
+
+                    <p className="text-lg md:text-xl text-slate-200 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-sm">
+                        Elevate Your IT Career to the Global Stage.
+                    </p>
+
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
+                        <Button size="lg" className="h-12 px-8 text-base bg-white text-blue-900 hover:bg-slate-100 border-none font-semibold transition-transform hover:scale-105" asChild>
+                            <Link href="/about">Learn More</Link>
+                        </Button>
+                        <Button size="lg" className="h-12 px-8 text-base bg-blue-800 hover:bg-blue-700 text-white border-none font-semibold transition-transform hover:scale-105 shadow-lg shadow-blue-900/20" asChild>
                             <Link href="/courses">Explore Courses</Link>
                         </Button>
-                        <Button size="lg" variant="outline" className="text-base border-white text-black hover:bg-white/10 hover:text-white" asChild>
-                            <Link href="/contact">Book a Free Demo</Link>
-                        </Button>
                     </div>
-
-                    <div className="flex items-center gap-4 text-sm text-slate-400 pt-4">
-                        <div className="flex -space-x-2">
-                            {[1, 2, 3, 4].map(i => (
-                                <div key={i} className="w-8 h-8 rounded-full bg-slate-700 border-2 border-slate-900"></div>
-                            ))}
-                        </div>
-                        <p>Trusted by 1000+ students</p>
-                    </div>
-                </div>
-
-                {/* Right side illustration or image could go here */}
-                <div className="hidden md:block w-full max-w-md">
-                    {/* Abstract tech graphic placeholder */}
-                    <div className="w-full h-64 bg-slate-800/50 rounded-xl border border-slate-700 backdrop-blur p-6 relative">
-                        <div className="absolute top-4 left-4 w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                            <div className="w-6 h-6 bg-blue-500 rounded-sm"></div>
-                        </div>
-                        <div className="mt-16 space-y-3">
-                            <div className="h-2 w-3/4 bg-slate-700 rounded"></div>
-                            <div className="h-2 w-1/2 bg-slate-700 rounded"></div>
-                            <div className="h-2 w-5/6 bg-slate-700 rounded"></div>
-                        </div>
-                    </div>
-                </div>
+                </motion.div>
             </div>
         </section>
     );
