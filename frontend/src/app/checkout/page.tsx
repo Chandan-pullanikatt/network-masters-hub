@@ -2,140 +2,219 @@
 
 import { useState } from 'react';
 import { useCart } from '@/context/CartContext';
-import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
-import Script from 'next/script';
+import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import { Upload, ShieldCheck, Loader2 } from 'lucide-react';
 
-const CheckoutPage = () => {
-    const { cart, total } = useCart();
+export default function CheckoutPage() {
+    const { cart, totalAmount, clearCart } = useCart();
     const router = useRouter();
-    const [loading, setLoading] = useState(false);
+
     const [formData, setFormData] = useState({
-        name: '',
+        customerName: '',
         email: '',
         phone: ''
     });
+    const [file, setFile] = useState<File | null>(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [error, setError] = useState('');
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (cart.length === 0) {
+        return (
+            <div className="container py-20 text-center">
+                <h2 className="text-2xl font-bold mb-4">Your cart is empty</h2>
+                <Button onClick={() => router.push('/courses')}>Browse Courses</Button>
+            </div>
+        );
+    }
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handlePayment = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setLoading(true);
-
-        // 1. Create Order
-        try {
-            const res = await fetch('/api/create-order', {
-                method: 'POST',
-                body: JSON.stringify({ amount: total, currency: 'INR' }),
-            });
-            const order = await res.json();
-
-            if (!order.id) {
-                alert('Order creation failed');
-                setLoading(false);
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files && e.target.files[0]) {
+            // Validate file size (5MB)
+            if (e.target.files[0].size > 5 * 1024 * 1024) {
+                setError('File size must be less than 5MB');
                 return;
             }
+            setFile(e.target.files[0]);
+            setError('');
+        }
+    };
 
-            // 2. Open Razorpay
-            const options = {
-                key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-                amount: order.amount,
-                currency: order.currency,
-                name: "Network Masters Hub",
-                description: "Course Enrollment",
-                order_id: order.id,
-                handler: async function (response: any) {
-                    // 3. Verify Payment
-                    const verifyRes = await fetch('/api/verify-payment', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            razorpay_order_id: response.razorpay_order_id,
-                            razorpay_payment_id: response.razorpay_payment_id,
-                            razorpay_signature: response.razorpay_signature,
-                            courses: cart.map(c => c.id),
-                            user: formData
-                        }),
-                    });
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setError('');
+        setIsSubmitting(true);
 
-                    if (verifyRes.ok) {
-                        router.push('/success');
-                    } else {
-                        router.push('/failed');
-                    }
-                },
-                prefill: {
-                    name: formData.name,
-                    email: formData.email,
-                    contact: formData.phone,
-                },
-                theme: {
-                    color: "#2563EB",
-                },
+        if (!file) {
+            setError('Please upload the payment screenshot.');
+            setIsSubmitting(false);
+            return;
+        }
+
+        try {
+            const submitData = new FormData();
+
+            const orderData = {
+                ...formData,
+                totalAmount: totalAmount,
+                courses: cart.map(c => c.id),
+                // paymentStatus and paymentMethod are protected in backend
             };
 
-            const paymentObject = new (window as any).Razorpay(options);
-            paymentObject.open();
+            submitData.append('data', JSON.stringify(orderData));
+            submitData.append('files.paymentScreenshot', file);
 
-        } catch (error) {
-            console.error(error);
-            alert('Payment failed to initialize');
+            const res = await fetch('/api/manual-payment', {
+                method: 'POST',
+                body: submitData,
+            });
+
+            if (!res.ok) {
+                const err = await res.json();
+                throw new Error(err.error?.message || 'Failed to submit payment');
+            }
+
+            clearCart();
+            router.push('/success');
+
+        } catch (err: any) {
+            console.error(err);
+            setError(err.message || 'Something went wrong. Please try again.');
         } finally {
-            setLoading(false);
+            setIsSubmitting(false);
         }
     };
 
     return (
-        <div className="container py-20 px-4 md:px-6 max-w-4xl mx-auto">
-            <h1 className="text-3xl font-bold mb-8">Checkout</h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div>
-                    <h3 className="text-xl font-bold mb-4">Billing Details</h3>
-                    <form onSubmit={handlePayment} className="space-y-4">
-                        <div className="space-y-2">
-                            <label className="text-sm font-medium">Full Name</label>
-                            <input name="name" required onChange={handleChange} className="w-full border rounded px-3 py-2" placeholder="John Doe" />
-                        </div>
-                        <div className="space-y-2">
-                            <label className="text-sm font-medium">Email</label>
-                            <input name="email" type="email" required onChange={handleChange} className="w-full border rounded px-3 py-2" placeholder="john@example.com" />
-                        </div>
-                        <div className="space-y-2">
-                            <label className="text-sm font-medium">Phone</label>
-                            <input name="phone" type="tel" required onChange={handleChange} className="w-full border rounded px-3 py-2" placeholder="+91..." />
-                        </div>
+        <div className="container py-12 px-4 md:px-6">
+            <h1 className="text-3xl font-bold mb-8 text-center md:text-left">Secure Checkout</h1>
 
-                        <Button type="submit" className="w-full mt-6" disabled={loading}>
-                            {loading ? 'Processing...' : `Pay ₹${total}`}
-                        </Button>
-                    </form>
-                    {/* Load Razorpay Script */}
-                    <Script
-                        id="razorpay-checkout-js"
-                        src="https://checkout.razorpay.com/v1/checkout.js"
-                    />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                {/* Left: Customer Details */}
+                <div>
+                    <div className="bg-white p-6 rounded-xl shadow-sm border mb-8">
+                        <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                            <ShieldCheck className="w-5 h-5 text-green-600" />
+                            Billing Details
+                        </h2>
+                        <form id="checkout-form" onSubmit={handleSubmit} className="space-y-4">
+                            <div>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
+                                <input
+                                    name="customerName"
+                                    required
+                                    className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
+                                    value={formData.customerName}
+                                    onChange={handleInputChange}
+                                    placeholder="John Doe"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
+                                <input
+                                    name="email"
+                                    type="email"
+                                    required
+                                    className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
+                                    value={formData.email}
+                                    onChange={handleInputChange}
+                                    placeholder="john@example.com"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-slate-700 mb-1">Phone Number</label>
+                                <input
+                                    name="phone"
+                                    type="tel"
+                                    required
+                                    className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
+                                    value={formData.phone}
+                                    onChange={handleInputChange}
+                                    placeholder="+91 9999999999"
+                                />
+                            </div>
+                        </form>
+                    </div>
                 </div>
 
-                <div className="bg-slate-50 p-6 rounded-xl h-fit">
-                    <h3 className="text-lg font-bold mb-4">Order Review</h3>
-                    <div className="space-y-3">
-                        {cart.map(item => (
-                            <div key={item.id} className="flex justify-between text-sm">
-                                <span>{item.attributes.title}</span>
-                                <span>₹{item.attributes.price}</span>
-                            </div>
-                        ))}
-                        <div className="border-t pt-3 flex justify-between font-bold">
-                            <span>Total</span>
-                            <span>₹{total}</span>
+                {/* Right: Payment */}
+                <div>
+                    <div className="bg-slate-50 p-6 rounded-xl border space-y-6">
+                        <h2 className="text-xl font-semibold">Payment Summary</h2>
+
+                        {/* Order Items */}
+                        <div className="space-y-2 text-sm text-slate-600 border-b pb-4">
+                            {cart.map((item) => (
+                                <div key={item.id} className="flex justify-between">
+                                    <span>{item.attributes.title}</span>
+                                    <span>₹{item.attributes.price}</span>
+                                </div>
+                            ))}
                         </div>
+
+                        <div className="flex justify-between items-center text-lg font-bold text-slate-900 pb-4 border-b">
+                            <span>Total Amount</span>
+                            <span>₹{totalAmount}</span>
+                        </div>
+
+                        {/* QR Section */}
+                        <div className="bg-white p-6 rounded-lg text-center border-2 border-dashed border-blue-200">
+                            <h3 className="text-lg font-bold text-slate-900 mb-2">Scan & Pay</h3>
+                            <p className="text-sm text-slate-500 mb-4">Use any UPI App (GPay, PhonePe, Paytm)</p>
+
+                            <div className="relative w-48 h-48 mx-auto mb-4 border p-2 rounded">
+                                <Image src="/upi-qr.svg" alt="UPI QR Code" fill className="object-contain" />
+                            </div>
+
+                            <p className="font-mono text-sm bg-slate-100 py-2 px-4 rounded inline-block">
+                                UPI ID: 7840018889@upi
+                            </p>
+                        </div>
+
+                        {/* Upload Section */}
+                        <div className="space-y-4">
+                            <label className="block text-sm font-medium text-slate-700">
+                                Upload Payment Screenshot <span className="text-red-500">*</span>
+                            </label>
+
+                            <div className="flex items-center gap-4">
+                                <label className="flex-1 cursor-pointer">
+                                    <div className="flex items-center justify-center gap-2 w-full px-4 py-3 border border-slate-300 rounded-md bg-white hover:bg-slate-50 transition-colors text-slate-600 text-sm">
+                                        <Upload className="w-4 h-4" />
+                                        {file ? file.name : "Choose Image (JPG/PNG)"}
+                                    </div>
+                                    <input type="file" className="hidden" accept="image/*" onChange={handleFileChange} />
+                                </label>
+                            </div>
+                            {error && <p className="text-red-500 text-sm">{error}</p>}
+                        </div>
+
+                        <Button
+                            form="checkout-form"
+                            type="submit"
+                            className="w-full h-12 text-lg bg-green-600 hover:bg-green-700"
+                            disabled={isSubmitting}
+                        >
+                            {isSubmitting ? (
+                                <>
+                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Processsing...
+                                </>
+                            ) : (
+                                "Submit Payment Verification"
+                            )}
+                        </Button>
+
+                        <p className="text-xs text-center text-slate-500">
+                            We will verify your payment within 24 hours and activate your course access.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     );
-};
-
-export default CheckoutPage;
+}
