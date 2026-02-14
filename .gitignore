@@ -1,0 +1,16 @@
+node_modules/
+.next/
+out/
+build/
+dist/
+.env
+.env.local
+.DS_Store
+.idea/
+.vscode/
+frontend/.next/
+frontend/node_modules/
+backend/node_modules/
+backend/build/
+backend/.tmp/
+backend/.cache/
