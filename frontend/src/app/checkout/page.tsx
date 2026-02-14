@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Upload, ShieldCheck, Loader2 } from 'lucide-react';
 
 export default function CheckoutPage() {
-    const { cart, totalAmount, clearCart } = useCart();
+    const { cart, total, clearCart } = useCart();
     const router = useRouter();
 
     const [formData, setFormData] = useState({
@@ -61,7 +61,7 @@ export default function CheckoutPage() {
 
             const orderData = {
                 ...formData,
-                totalAmount: totalAmount,
+                totalAmount: total,
                 courses: cart.map(c => c.id),
                 // paymentStatus and paymentMethod are protected in backend
             };
@@ -159,7 +159,7 @@ export default function CheckoutPage() {
 
                         <div className="flex justify-between items-center text-lg font-bold text-slate-900 pb-4 border-b">
                             <span>Total Amount</span>
-                            <span>₹{totalAmount}</span>
+                            <span>₹{total}</span>
                         </div>
 
                         {/* QR Section */}
