@@ -15,7 +15,7 @@ const PopularCourseCard: React.FC<PopularCourseCardProps> = ({ course }) => {
     const moduleCount = Array.isArray(modules) ? modules.length : (typeof modules === 'number' ? modules : 10);
 
     return (
-        <div className="flex flex-col bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden h-full transition-all hover:shadow-md">
+        <div className="flex flex-col bg-white rounded-2xl shadow-sm border border-[#E2E8F0] overflow-hidden h-full transition-all hover:shadow-md">
             {/* Image Container */}
             <div className="relative w-full aspect-[16/9] overflow-hidden">
                 <Image

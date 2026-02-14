@@ -9,8 +9,8 @@ const popularCourses = courses;
 
 const Courses = () => {
     return (
-        <section className="py-[120px] bg-[#F8F9FA]">
-            <div className="container px-4 md:px-6">
+        <section className="py-[150px] bg-[#F8F9FA]">
+            <div className="max-w-[1280px] mx-auto w-full">
                 <MotionDiv
                     variants={staggerContainer}
                     initial="hidden"
@@ -28,9 +28,9 @@ const Courses = () => {
                     </MotionDiv>
                 </MotionDiv>
 
-                <MotionSection className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <MotionSection className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[48px]">
                     {popularCourses.map((course) => (
-                        <MotionDiv key={course.id} variants={fadeInUp} className="h-full w-full max-w-[325px] mx-auto">
+                        <MotionDiv key={course.id} variants={fadeInUp} className="h-full w-full mx-auto">
                             <PopularCourseCard course={course} />
                         </MotionDiv>
                     ))}

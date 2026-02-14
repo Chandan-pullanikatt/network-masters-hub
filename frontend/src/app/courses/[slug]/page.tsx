@@ -59,7 +59,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ slug: s
     return (
         <div className="min-h-screen bg-slate-50">
             {/* Hero Section */}
-            <section className="bg-[#003366] text-white py-[120px] relative overflow-hidden">
+            <section className="bg-[#003366] text-white py-[150px] relative overflow-hidden">
                 {/* Background Pattern Overlay */}
                 <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#4d7a97_1px,transparent_1px)] [background-size:20px_20px]"></div>
 
@@ -109,7 +109,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ slug: s
                 </div>
             </div>
 
-            <div className="container px-4 md:px-6 py-[120px] space-y-[120px]">
+            <div className="container px-4 md:px-6 py-[150px] space-y-[150px]">
 
                 {/* Program Overview - Core Skills */}
                 <section id="overview" className="scroll-mt-32">
