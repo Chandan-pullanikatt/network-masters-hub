@@ -9,6 +9,7 @@ import { courses } from '@/lib/courses-data';
 import Link from 'next/link';
 import Image from 'next/image';
 import FAQ from '@/components/sections/FAQ';
+import CourseSchedule from '@/components/sections/CourseSchedule';
 import { useCart } from '@/context/CartContext';
 import { toast } from 'sonner';
 
@@ -100,8 +101,8 @@ export default function CourseDetailPage() {
                 {/* Tabs Navigation */}
                 <div className="px-[24px] pt-[24px] pb-[24px] border-b border-slate-200 mb-[48px]">
                     <div className="flex flex-wrap gap-8 items-center">
-                        {['Overview', 'Roadmap', 'Batches', 'FAQ'].map((item) => {
-                            const id = item.toLowerCase();
+                        {['Overview', 'Roadmap', 'Batches', 'Course Schedule', 'FAQ'].map((item) => {
+                            const id = item.toLowerCase().replace(' ', '-');
                             const isActive = activeSection === id;
                             return (
                                 <button
@@ -302,28 +303,21 @@ export default function CourseDetailPage() {
                             </div>
                         </div>
                     </section>
+
+                    {/* New Course Schedule Section */}
+                    {/* Added ID for linking from tabs */}
+                    <div id="course-schedule" className="scroll-mt-32">
+                        <CourseSchedule />
+                    </div>
+
+                    {/* Shared FAQ Section */}
+                    <div id="faq" className="px-[24px] scroll-mt-32">
+                        <FAQ />
+                    </div>
+
                 </div>
 
-                {/* Shared FAQ Section */}
-                <div className="px-[24px]"> {/* Add padding for FAQ inside the white box or keep it outside? */}
-                    {/* Wait, I should probably put FAQ inside the white box too if it's "All course content" */}
-                    {/* But the prompt said "Overview / Roadmap / Batches / FAQ" tabs. */}
-                    {/* FAQ component is currently outside the white box in previous code (Line 274). */}
-                    {/* But I added an opening div `space-y-[48px]` that wraps everything up to here. */}
-                    {/* So I need to close that `space-y` div, then close the `max-w-[1200px]` div. */}
-                    {/* Let's see: */}
-                    {/* <div className="max-w-[1200px]..."> (Outer white box) */}
-                    {/*   <div className="px-24 ..."> (Tabs) </div> */}
-                    {/*   <div className="space-y-[48px]"> (Content Wrapper) */}
-                    {/*      <section ...> (Overview) */}
-                    {/*      ... */}
-                    {/*      <div ...> (Batches) </div> (This closes at line 271 in view) */}
-                    {/*      <FAQ /> (Line 274) */}
-                    {/*   </div> (Close Content Wrapper) */}
-                    {/* </div> (Close White Box) */}
 
-                    <FAQ />
-                </div>
             </div>
         </div>
     );

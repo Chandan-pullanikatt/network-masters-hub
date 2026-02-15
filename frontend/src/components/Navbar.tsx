@@ -1,10 +1,11 @@
 "use client";
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Menu, X, ShoppingCart } from 'lucide-react';
+import { Menu, X, ShoppingCart, ChevronRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
+import CoursesDropdown from '@/components/CoursesDropdown';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -22,9 +23,10 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Regular links excluding 'Courses' which is now special
     const navLinks = [
         { name: 'Home', href: '/' },
-        { name: 'Courses', href: '/courses/ccna-200-301' },
+        // Courses is handled separately
         { name: 'About Us', href: '/#about' },
         { name: 'Blog', href: '/blog' },
         { name: 'Connect With Us', href: '/#contact' },
@@ -47,15 +49,35 @@ const Navbar = () => {
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center space-x-8">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.name}
-                            href={link.href}
-                            className={`text-sm font-medium transition-colors hover:text-primary ${isHome && !isScrolled ? 'text-white/90 hover:text-white' : ''}`}
-                        >
-                            {link.name}
-                        </Link>
-                    ))}
+                    <Link
+                        href="/"
+                        className={`text-sm font-medium transition-colors hover:text-primary ${isHome && !isScrolled ? 'text-white/90 hover:text-white' : ''}`}
+                    >
+                        Home
+                    </Link>
+
+                    {/* Dropdown for Courses */}
+                    <CoursesDropdown isScrolled={isScrolled} isHome={isHome} />
+
+                    <Link
+                        href="/#about"
+                        className={`text-sm font-medium transition-colors hover:text-primary ${isHome && !isScrolled ? 'text-white/90 hover:text-white' : ''}`}
+                    >
+                        About Us
+                    </Link>
+                    <Link
+                        href="/blog"
+                        className={`text-sm font-medium transition-colors hover:text-primary ${isHome && !isScrolled ? 'text-white/90 hover:text-white' : ''}`}
+                    >
+                        Blog
+                    </Link>
+                    <Link
+                        href="/#contact"
+                        className={`text-sm font-medium transition-colors hover:text-primary ${isHome && !isScrolled ? 'text-white/90 hover:text-white' : ''}`}
+                    >
+                        Connect With Us
+                    </Link>
+
                     <div className="flex items-center gap-4 ml-4">
                         <Button variant="ghost" size="icon" className={`relative ${isHome && !isScrolled ? 'text-white hover:text-white/80 hover:bg-white/10' : ''}`} asChild>
                             <Link href="/cart">
@@ -84,13 +106,47 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             {isOpen && (
-                <div className="md:hidden border-t p-4 space-y-4 bg-background text-foreground">
-                    {navLinks.map((link) => (
-                        <Link key={link.name} href={link.href} className="block text-sm font-medium hover:text-primary" onClick={() => setIsOpen(false)}>
-                            {link.name}
-                        </Link>
-                    ))}
-                    <Button className="w-full">Get Started</Button>
+                <div className="md:hidden border-t p-4 space-y-4 bg-background text-foreground h-[calc(100vh-64px)] overflow-y-auto">
+                    <Link href="/" className="block text-sm font-medium hover:text-primary" onClick={() => setIsOpen(false)}>
+                        Home
+                    </Link>
+
+                    {/* Mobile Courses Section */}
+                    <div className="space-y-2">
+                        <div className="font-semibold text-sm text-primary">Courses</div>
+                        <div className="pl-4 space-y-2 border-l-2 border-slate-100 ml-1">
+                            <div className="space-y-1">
+                                <div className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">In Person Training</div>
+                                <Link href="/#courses" className="block text-sm text-slate-700 hover:text-[#003366] py-1" onClick={() => setIsOpen(false)}>
+                                    View All Courses
+                                </Link>
+                            </div>
+                            <div className="space-y-1">
+                                <div className="text-xs font-bold text-slate-500 uppercase tracking-wide mb-1">Flexible Learning</div>
+                                <Link href="/#courses" className="block text-sm text-slate-700 hover:text-[#003366] py-1" onClick={() => setIsOpen(false)}>
+                                    View All Courses
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+
+                    <Link href="/#about" className="block text-sm font-medium hover:text-primary" onClick={() => setIsOpen(false)}>
+                        About Us
+                    </Link>
+                    <Link href="/blog" className="block text-sm font-medium hover:text-primary" onClick={() => setIsOpen(false)}>
+                        Blog
+                    </Link>
+                    <Link href="/#contact" className="block text-sm font-medium hover:text-primary" onClick={() => setIsOpen(false)}>
+                        Connect With Us
+                    </Link>
+                    <div className="pt-4 border-t space-y-3">
+                        <Button className="w-full justify-start" variant="ghost" asChild>
+                            <Link href="/login">Login</Link>
+                        </Button>
+                        <Button className="w-full bg-[#003366]" asChild>
+                            <Link href="/register">Get Started</Link>
+                        </Button>
+                    </div>
                 </div>
             )}
         </nav>
