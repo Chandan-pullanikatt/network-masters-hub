@@ -1,5 +1,6 @@
 "use client";
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Menu, X, ShoppingCart, ChevronRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
@@ -43,8 +44,15 @@ const Navbar = () => {
         <nav className={navbarClasses}>
             <div className="container mx-auto flex h-16 items-center justify-between px-4">
                 <Link href="/" className="flex items-center space-x-2">
-                    {/* Logo placeholder or text */}
-                    <div className="h-8 w-12 bg-gray-200/20 rounded backdrop-blur-sm"></div>
+                    {/* Logo */}
+                    <Image
+                        src="/assets/logo.png"
+                        alt="Network Masters Logo"
+                        width={180}
+                        height={48}
+                        className="h-10 md:h-12 w-auto object-contain"
+                        priority
+                    />
                 </Link>
 
                 {/* Desktop Menu */}
