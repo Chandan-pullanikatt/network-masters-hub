@@ -12,7 +12,7 @@ export const courses: Course[] = [
             modules: 5,
             videoHours: 40,
             price: 15000, // From homepage
-            image: { data: { id: 1, attributes: { url: '/assets/p1.png', alternativeText: 'CCNA', width: 640, height: 360 } } },
+            image: { data: { id: 1, attributes: { url: '/assets/p1.webp', alternativeText: 'CCNA', width: 640, height: 360 } } },
             hero: {
                 title: "Cisco CCNA 200–301 Course (Training & Certificate)",
                 subtitle: "Kickstart your networking career with the industry standard certification.",

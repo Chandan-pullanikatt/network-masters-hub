@@ -127,7 +127,7 @@ export default function AboutUsPage() {
                                         src="/assets/cef.png"
                                         alt="Pankaj Sethi - Founder"
                                         fill
-                                        className="object-fill"
+                                        className="object-cover object-top"
                                     />
                                 </div>
                             </div>
