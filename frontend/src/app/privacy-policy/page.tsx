@@ -103,23 +103,7 @@ export default function PrivacyPolicyPage() {
 
                         </div>
 
-                        {/* Contact Box */}
-                        <div className="bg-[#F3F6FB] p-[20px] rounded-[8px] mt-[32px] border border-slate-100">
-                            <h3 className="text-[16px] font-bold text-[#1a1a1a] mb-2">Questions or Concerns?</h3>
-                            <p className="text-[14px] text-slate-600 mb-4">
-                                If you have any questions regarding this Privacy Policy, please contact our data protection officer.
-                            </p>
-                            <div className="flex flex-col sm:flex-row gap-4 text-[14px]">
-                                <a href="mailto:privacy@networkmastershub.com" className="flex items-center gap-2 text-[#003366] font-medium hover:underline">
-                                    <Mail className="w-4 h-4" />
-                                    privacy@networkmastershub.com
-                                </a>
-                                <div className="flex items-center gap-2 text-slate-600">
-                                    <MapPin className="w-4 h-4" />
-                                    Tech District, San Francisco, CA
-                                </div>
-                            </div>
-                        </div>
+
 
                     </div>
 
