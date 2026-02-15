@@ -220,8 +220,10 @@ export default function CourseDetailPage() {
                             <div className="w-[340px] flex-shrink-0 bg-[#003366] text-white rounded-[12px] p-[24px] shadow-lg flex flex-col h-full">
                                 <p className="text-blue-200 text-sm font-medium mb-1">Total Course Fee</p>
                                 <div className="flex items-baseline gap-2 mb-4">
-                                    <span className="text-3xl font-bold">₹8,500</span>
-                                    <span className="text-slate-400 text-lg line-through">(₹12,000)</span>
+                                    <span className="text-3xl font-bold">₹{course.attributes.price.toLocaleString('en-IN')}</span>
+                                    {course.attributes.hero.originalPrice && (
+                                        <span className="text-slate-400 text-lg line-through">(₹{course.attributes.hero.originalPrice.toLocaleString('en-IN')})</span>
+                                    )}
                                 </div>
 
                                 <ul className="space-y-2 mb-auto">

@@ -12,12 +12,12 @@ export const courses: Course[] = [
             duration: "7 weeks", // From homepage
             modules: 10,
             videoHours: 45, // Inferred from "45 days" duration mention or generic
-            price: 8499, // From homepage
+            price: 8500, // From homepage
             image: { data: { id: 1, attributes: { url: '/assets/p1.webp', alternativeText: 'CCNA', width: 640, height: 360 } } },
             hero: {
                 title: "Become a Job-Ready Network Engineer with CCNA (200-301)",
                 subtitle: "Master the fundamentals of networking, security, and automation through hands-on labs and expert-led mentorship and launch your career with confidence.",
-                price: 8499,
+                price: 8500,
                 originalPrice: 12000,
                 startDate: "Upcoming",
                 batches: [
@@ -59,12 +59,12 @@ export const courses: Course[] = [
             duration: "15 weeks", // From homepage
             modules: 10,
             videoHours: 60,
-            price: 29999, // From homepage
+            price: 25000, // From homepage
             image: { data: { id: 2, attributes: { url: '/assets/p2.webp', alternativeText: 'CCNP', width: 640, height: 360 } } },
             hero: {
                 title: "CCNP (Encor and Enarsi) Online Training Course",
                 subtitle: "Advance your career with professional-level networking skills and deep dive into enterprise technologies.",
-                price: 29999,
+                price: 25000,
                 originalPrice: 40000,
                 startDate: "Upcoming",
                 batches: [
@@ -104,12 +104,12 @@ export const courses: Course[] = [
             duration: "7 weeks", // From homepage
             modules: 10,
             videoHours: 35,
-            price: 14999, // From homepage
+            price: 15000, // From homepage
             image: { data: { id: 3, attributes: { url: '/assets/p3.webp', alternativeText: 'SD-WAN', width: 640, height: 360 } } },
             hero: {
                 title: "Cisco SD-WAN Online Course",
                 subtitle: "Master Software-Defined WAN and revolutionize your network infrastructure.",
-                price: 14999,
+                price: 15000,
                 originalPrice: 20000,
                 startDate: "Upcoming",
                 batches: [
@@ -148,12 +148,12 @@ export const courses: Course[] = [
             duration: "7 weeks", // From homepage
             modules: 10,
             videoHours: 25,
-            price: 19999, // From homepage
+            price: 15000, // From homepage
             image: { data: { id: 4, attributes: { url: '/assets/p4.webp', alternativeText: 'Python', width: 640, height: 360 } } },
             hero: {
                 title: "Complete Python Automation Online Course",
                 subtitle: "Automate network tasks using Python. Stop doing manual tasks. Learn to script, automate, and orchestrate.",
-                price: 19999,
+                price: 15000,
                 originalPrice: 25000,
                 startDate: "Upcoming",
                 batches: [
@@ -193,12 +193,12 @@ export const courses: Course[] = [
             duration: "20 weeks", // From homepage
             modules: 20,
             videoHours: 100,
-            price: 34999, // From homepage
+            price: 30000, // From homepage
             image: { data: { id: 5, attributes: { url: '/assets/p5.webp', alternativeText: 'Combo', width: 640, height: 360 } } },
             hero: {
                 title: "CCNA & CCNP Combo Batch",
                 subtitle: "The ultimate package to take you from a novice to a professional network engineer.",
-                price: 34999,
+                price: 30000,
                 originalPrice: 45000,
                 startDate: "Upcoming",
                 batches: [

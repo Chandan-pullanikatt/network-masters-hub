@@ -42,7 +42,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-blue-700 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm border border-slate-100">
-                    ${price}
+                    ₹{price.toLocaleString('en-IN')}
                 </div>
             </div>
 
