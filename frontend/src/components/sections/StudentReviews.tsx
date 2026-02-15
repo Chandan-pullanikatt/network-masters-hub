@@ -77,8 +77,8 @@ export default function StudentReviews() {
                             <h3 className="text-lg font-bold text-slate-900 mb-6">Post Your Reviews and comments</h3>
 
                             <div className="border-2 border-dashed border-slate-200 rounded-xl p-8 flex flex-col items-center justify-center bg-slate-50/50">
-                                <Button className="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 shadow-sm gap-2 h-12 px-6 rounded-full mb-3">
-                                    Login to Rate & Review
+                                <Button className="bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 shadow-sm gap-2 h-12 px-6 rounded-full mb-3" asChild>
+                                    <Link href="/login">Login to Rate & Review</Link>
                                 </Button>
                                 <p className="text-xs text-slate-400">Only verified students can post reviews</p>
                             </div>
