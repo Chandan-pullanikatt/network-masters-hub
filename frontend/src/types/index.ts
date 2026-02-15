@@ -49,8 +49,16 @@ export interface Course {
             id: string;
             title: string;
             desc: string;
-            topics: string;
+            topics?: string;
         }[];
+        roadmapModules?: {
+            [key: string]: {
+                id: string;
+                title: string;
+                desc: string;
+                topics?: string;
+            }[];
+        };
         faqs?: {
             question: string;
             answer: string;
