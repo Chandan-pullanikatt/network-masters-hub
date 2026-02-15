@@ -23,9 +23,12 @@ const ManualPaymentForm: React.FC<ManualPaymentFormProps> = ({ onFileChange, fil
             <div className="grid gap-6 md:grid-cols-2">
                 {/* QR Code Section */}
                 <div className="flex flex-col items-center justify-center space-y-4 rounded-lg bg-muted/50 p-6">
-                    <div className="flex h-48 w-48 items-center justify-center rounded-lg bg-white p-2 shadow-sm">
-                        {/* Placeholder for QR Code */}
-                        <div className="h-full w-full bg-neutral-200" />
+                    <div className="flex bg-white p-2 rounded-lg shadow-sm">
+                        <img
+                            src="/assets/qrcode.jpeg"
+                            alt="Payment QR Code"
+                            className="h-48 w-48 object-contain"
+                        />
                     </div>
                     <p className="text-sm font-medium text-muted-foreground">Scan QR to Pay</p>
                 </div>
@@ -35,11 +38,11 @@ const ManualPaymentForm: React.FC<ManualPaymentFormProps> = ({ onFileChange, fil
                     <div className="rounded-lg bg-muted/50 p-4">
                         <h4 className="mb-2 font-medium text-foreground">Bank Transfer Details</h4>
                         <div className="space-y-2 text-sm text-muted-foreground">
-                            <p><span className="font-semibold text-foreground">Bank:</span> Example Bank</p>
-                            <p><span className="font-semibold text-foreground">Account Name:</span> Network Masters</p>
-                            <p><span className="font-semibold text-foreground">Account No:</span> 1234567890</p>
-                            <p><span className="font-semibold text-foreground">IFSC Code:</span> EXMP0001234</p>
-                            <p><span className="font-semibold text-foreground">UPI ID:</span> pay@example</p>
+                            <p><span className="font-semibold text-foreground">Bank Name:</span> ICICI BANK</p>
+                            <p><span className="font-semibold text-foreground">Account Holder:</span> PANKAJ SETHI</p>
+                            <p><span className="font-semibold text-foreground">Account No:</span> 061001536930</p>
+                            <p><span className="font-semibold text-foreground">IFSC Code:</span> ICIC0000610</p>
+                            <p><span className="font-semibold text-foreground">VPA:</span> 9013880205@icici</p>
                         </div>
                     </div>
 
