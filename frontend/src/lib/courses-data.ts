@@ -227,10 +227,8 @@ export const courses: Course[] = [
                 ]
             },
             roadmap: [
-                { id: '01', title: 'CCNA Phase', desc: 'Weeks 1-7: Covering all CCNA 200-301 topics.', topics: 'Fundamentals - Access' },
-                { id: '02', title: 'Transition', desc: 'Week 8: Bridging the gap and advanced labs.', topics: 'Complex Labs' },
-                { id: '03', title: 'CCNP Core', desc: 'Weeks 9-14: ENCOR material and architecture.', topics: 'Architecture - Virtualization' },
-                { id: '04', title: 'CCNP Concentration', desc: 'Weeks 15-20: ENARSI deep dive into routing.', topics: 'Advanced Routing - Services' },
+                { id: '01', title: 'CCNA (200–301)', desc: 'Build a strong foundation in Cisco networking fundamentals, including routing, switching, IP services, and network security. Detailed topic coverage is available on the CCNA course page.' },
+                { id: '02', title: 'CCNP Enterprise', desc: 'Advance your enterprise networking expertise through two core training components—ENCOR and ENARSI—covering advanced routing, infrastructure, security, and troubleshooting skills required for professional-level roles.' }
             ],
             faqs: [
                 { question: "Is this intensive?", answer: "Yes, it covers a lot of ground effectively." }
