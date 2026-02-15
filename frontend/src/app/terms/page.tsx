@@ -28,17 +28,6 @@ export default function TermsPage() {
                         <p className="text-[14px] text-slate-500 font-medium">
                             Effective Date: January 1, 2024 &nbsp;•&nbsp; Last Modified: May 15, 2024
                         </p>
-
-                        <div className="flex gap-4 mt-6">
-                            <button className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-printer"><polyline points="6 9 6 2 18 2 18 9" /><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" /><rect width="12" height="8" x="6" y="14" /></svg>
-                                Print PDF
-                            </button>
-                            <button className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-share-2"><circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" /><line x1="8.59" x2="15.42" y1="13.51" y2="17.49" /><line x1="15.41" x2="8.59" y1="6.51" y2="10.49" /></svg>
-                                Share Link
-                            </button>
-                        </div>
                     </div>
 
                     {/* Main Content Card */}
@@ -201,7 +190,6 @@ export default function TermsPage() {
 
                 </div>
             </div>
-            {/* Footer is global (handled by layout/FooterWrapper) */}
         </div>
     );
 }
