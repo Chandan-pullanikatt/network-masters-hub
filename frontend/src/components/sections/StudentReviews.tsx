@@ -128,7 +128,7 @@ export default function StudentReviews() {
 
                         {/* Load More */}
                         <div className="mt-8 text-center">
-                            <Button variant="outline" className="rounded-full w-full max-w-2xl h-12 text-blue-600 border-blue-100 hover:bg-blue-50 font-medium">
+                            <Button variant="outline" className="rounded-full w-full max-w-2xl h-12 text-blue-600 border-blue-100 hover:bg-blue-50 font-medium" suppressHydrationWarning>
                                 Load More Reviews
                             </Button>
                         </div>

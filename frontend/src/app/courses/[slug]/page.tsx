@@ -5,7 +5,7 @@ import { useState, use } from 'react';
 import { notFound, useParams, useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import { Button } from '@/components/ui/button';
-import { User, Shield, Server, Activity, CheckCircle2, Clock, Calendar, Database, Globe, Cpu, Cloud, Code } from 'lucide-react';
+import { User, Shield, Server, Activity, CheckCircle2, Clock, Calendar, Database, Globe, Cpu, Cloud, Code, Award, Lock } from 'lucide-react';
 import { courses } from '@/lib/courses-data';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -34,6 +34,7 @@ export default function CourseDetailPage() {
     const slug = params?.slug as string;
     const course = getCourseBySlug(slug);
     const [activeSection, setActiveSection] = useState('overview');
+    const [activeModule, setActiveModule] = useState('encor');
     const { addToCart } = useCart();
     const { isAuthenticated } = useAuth();
     const router = useRouter();
@@ -55,7 +56,7 @@ export default function CourseDetailPage() {
         return notFound();
     }
 
-    const { hero, overview, roadmap } = course.attributes;
+    const { hero, overview, roadmap, roadmapModules } = course.attributes;
 
     const scrollToSection = (id: string) => {
         setActiveSection(id);

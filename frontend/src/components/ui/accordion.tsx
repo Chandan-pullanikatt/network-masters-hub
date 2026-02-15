@@ -32,6 +32,7 @@ const AccordionTrigger = React.forwardRef<
                 className
             )}
             {...props}
+            suppressHydrationWarning
         >
             {children}
             <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200" />
