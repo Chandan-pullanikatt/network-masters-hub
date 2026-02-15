@@ -117,13 +117,15 @@ export const courses: Course[] = [
                 ]
             },
             overview: {
-                title: "SD-WAN Mastery",
-                description: "Transition from traditional WAN to the flexible, secure, and cost-effective SD-WAN.",
+                title: "Program Overview",
+                description: "A dual-focus approach to master both core and concentration areas.",
                 skills: [
-                    { title: 'Overlay', icon: Cloud, desc: 'OMP, TLOCs, and Fabric operation' },
-                    { title: 'Templates', icon: Code, desc: 'Feature and Device templates configuration' },
-                    { title: 'Policies', icon: Shield, desc: 'Centralized and Local policies for traffic control' },
-                    { title: 'Onboarding', icon: Server, desc: 'Zero Touch Provisioning and PnP' }
+                    { title: 'SD-WAN Architecture', icon: Cloud, desc: 'Master the Orchestration, Management, Control, and Data planes within the Cisco SD-WAN fabric.' },
+                    { title: 'Deployment & Config', icon: Server, desc: 'End-to-end controller deployment (vManage, vBond, vSmart) and WAN Edge router onboarding.' },
+                    { title: 'Policies & Traffic', icon: Globe, desc: 'Implementing Control and Data policies for intelligent path selection and Application-Aware Routing.' },
+                    { title: 'SD-WAN Security', icon: Shield, desc: 'Securing the fabric with Enterprise Firewall, IPS, URL Filtering, and Advanced Malware Protection.' },
+                    { title: 'Monitoring & Troubleshoot', icon: Activity, desc: 'Using vManage for real-time monitoring, diagnostic tools, and fabric-wide troubleshooting.' },
+                    { title: 'Automation & API', icon: Code, desc: 'Leveraging REST APIs for network automation and vManage integration with external tools.' }
                 ]
             },
             roadmap: [

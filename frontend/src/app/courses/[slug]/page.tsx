@@ -145,19 +145,32 @@ export default function CourseDetailPage() {
                             </p>
                         </div>
 
-                        <div className="flex flex-wrap lg:flex-nowrap gap-[24px] justify-center lg:justify-start">
-                            {overview?.skills.map((skill: any, idx: number) => (
-                                <div key={idx} className="bg-[#EBF3FA] p-[16px] rounded-[12px] border border-slate-100/50 hover:shadow-md transition-shadow w-[262px] h-[175px] flex-shrink-0 flex flex-col justify-between">
-                                    <div>
-                                        <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center border border-slate-200 mb-3 text-[#003366]">
-                                            <skill.icon className="w-5 h-5" />
+                        {slug === 'cisco-sd-wan' ? (
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {overview?.skills.map((skill: any, idx: number) => (
+                                    <div key={idx} className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-start h-full group">
+                                        <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                            <skill.icon className="w-7 h-7" />
                                         </div>
-                                        <h3 className="text-lg font-bold text-slate-900 mb-1 leading-tight">{skill.title}</h3>
+                                        <h3 className="text-xl font-bold text-slate-900 mb-3">{skill.title}</h3>
+                                        <p className="text-slate-600 text-sm leading-relaxed">{skill.desc}</p>
                                     </div>
-                                    <p className="text-slate-600 text-sm leading-snug line-clamp-3">{skill.desc}</p>
-                                </div>
-                            ))}
-                        </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="flex flex-wrap lg:flex-nowrap gap-[24px] justify-center lg:justify-start">
+                                {overview?.skills.map((skill: any, idx: number) => (
+                                    <div key={idx} className="bg-[#EBF3FA] p-[16px] rounded-[12px] border border-slate-100/50 hover:shadow-md transition-shadow w-[262px] h-[175px] flex-shrink-0 flex flex-col justify-between">
+                                        <div>
+                                            <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center border border-slate-200 mb-3 text-[#003366]">
+                                                <skill.icon className="w-5 h-5" />
+                                            </div>
+                                            <h3 className="text-lg font-bold text-slate-900 mb-1 leading-tight">{skill.title}</h3>
+                                        </div>
+                                        <p className="text-slate-600 text-sm leading-snug line-clamp-3">{skill.desc}</p>
+                                    </div>
+                                ))}
+                            </div>
                     </section>
 
                     {/* Learning Roadmap */}
