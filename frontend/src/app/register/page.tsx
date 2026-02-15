@@ -32,7 +32,10 @@ export default function RegisterPage() {
         setLoading(true);
 
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}/api/auth/local/register`, {
+            const BASE_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
+            console.log("STRAPI URL:", BASE_URL);
+
+            const res = await fetch(`${BASE_URL}/api/auth/local/register`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

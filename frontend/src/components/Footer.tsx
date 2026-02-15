@@ -19,9 +19,9 @@ const Footer = () => {
                             <Image
                                 src="/assets/logo.png"
                                 alt="Network Masters Logo"
-                                width={150}
-                                height={40}
-                                className="h-8 md:h-10 w-auto object-contain mb-6"
+                                width={160}
+                                height={48}
+                                className="h-10 md:h-12 w-auto object-contain mb-6"
                             />
                         </Link>
                         {/* Alternatively use text if no logo image */}

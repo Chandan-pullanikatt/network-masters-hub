@@ -3,11 +3,11 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function POST(req: NextRequest) {
     try {
         const formData = await req.formData();
-        const strapiUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
+        const BASE_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 
         // Using native fetch in Node 18+ (Next.js 13+) handles FormData boundaries automatically.
         // We cast to any to allow 'duplex' option which is required for streaming bodies in some environments.
-        const res = await fetch(`${strapiUrl}/api/manual-payment`, {
+        const res = await fetch(`${BASE_URL}/api/manual-payment`, {
             method: 'POST',
             body: formData,
             duplex: 'half'

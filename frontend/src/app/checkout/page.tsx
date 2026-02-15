@@ -92,7 +92,8 @@ export default function CheckoutPage() {
             // Append file
             formDataToSend.append("paymentScreenshot", paymentScreenshot);
 
-            const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}/api/orders/manual-payment`, {
+            const BASE_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
+            const res = await fetch(`${BASE_URL}/api/orders/manual-payment`, {
                 method: "POST",
                 body: formDataToSend,
             });

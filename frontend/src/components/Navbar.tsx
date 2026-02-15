@@ -49,8 +49,8 @@ const Navbar = () => {
                         src="/assets/logo.png"
                         alt="Network Masters Logo"
                         width={180}
-                        height={48}
-                        className="h-10 md:h-12 w-auto object-contain"
+                        height={56}
+                        className="h-12 md:h-14 w-auto object-contain"
                         priority
                     />
                 </Link>
