@@ -10,6 +10,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import FAQ from '@/components/sections/FAQ';
 import CourseSchedule from '@/components/sections/CourseSchedule';
+import EnquiryCTA from '@/components/sections/EnquiryCTA';
+import StudentReviews from '@/components/sections/StudentReviews';
 import { useCart } from '@/context/CartContext';
 import { toast } from 'sonner';
 
@@ -310,9 +312,19 @@ export default function CourseDetailPage() {
                         <CourseSchedule />
                     </div>
 
+                    {/* Enquiry Section */}
+                    <div className="scroll-mt-32">
+                        <EnquiryCTA />
+                    </div>
+
                     {/* Shared FAQ Section */}
                     <div id="faq" className="px-[24px] scroll-mt-32">
                         <FAQ />
+                    </div>
+
+                    {/* Student Reviews Section */}
+                    <div className="scroll-mt-32">
+                        <StudentReviews />
                     </div>
 
                 </div>
