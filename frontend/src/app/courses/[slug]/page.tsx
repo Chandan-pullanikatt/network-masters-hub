@@ -145,7 +145,117 @@ export default function CourseDetailPage() {
                             </p>
                         </div>
 
-                        {slug === 'cisco-sd-wan' ? (
+                        {slug === 'ccna-ccnp-combo' ? (
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                {/* CCNA Card */}
+                                <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-lg relative overflow-hidden">
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full -mr-8 -mt-8 z-0"></div>
+                                    <div className="relative z-10">
+                                        <div className="flex items-center gap-4 mb-8">
+                                            <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600">
+                                                <User className="w-8 h-8" />
+                                            </div>
+                                            <div>
+                                                <h3 className="text-2xl font-bold text-slate-900">CCNA (Foundation Level)</h3>
+                                                <p className="text-blue-600 font-medium">Prerequisite & Basics</p>
+                                            </div>
+                                        </div>
+
+                                        <div className="space-y-6">
+                                            <div className="flex gap-4">
+                                                <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-blue-600 flex-shrink-0">
+                                                    <Database className="w-5 h-5" />
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-bold text-slate-900">OSI Model & Architecture</h4>
+                                                    <p className="text-sm text-slate-600">Mastering the 7 layers and end-to-end data flow.</p>
+                                                </div>
+                                            </div>
+                                            <div className="flex gap-4">
+                                                <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-blue-600 flex-shrink-0">
+                                                    <Globe className="w-5 h-5" />
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-bold text-slate-900">IP Addressing & Subnetting</h4>
+                                                    <p className="text-sm text-slate-600">IPv4/IPv6 address management and VLSM.</p>
+                                                </div>
+                                            </div>
+                                            <div className="flex gap-4">
+                                                <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-blue-600 flex-shrink-0">
+                                                    <Activity className="w-5 h-5" />
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-bold text-slate-900">Switching Technologies</h4>
+                                                    <p className="text-sm text-slate-600">VLANs, STP, and EtherChannel basics.</p>
+                                                </div>
+                                            </div>
+                                            <div className="flex gap-4">
+                                                <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-blue-600 flex-shrink-0">
+                                                    <Shield className="w-5 h-5" />
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-bold text-slate-900">Network Security Fundamentals</h4>
+                                                    <p className="text-sm text-slate-600">Port security, ACLs, and basic device hardening.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* CCNP Card */}
+                                <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-lg relative overflow-hidden">
+                                    <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-50 rounded-bl-full -mr-8 -mt-8 z-0"></div>
+                                    <div className="relative z-10">
+                                        <div className="flex items-center gap-4 mb-8">
+                                            <div className="w-16 h-16 bg-indigo-100 rounded-2xl flex items-center justify-center text-indigo-600">
+                                                <Award className="w-8 h-8" />
+                                            </div>
+                                            <div>
+                                                <h3 className="text-2xl font-bold text-slate-900">CCNP Enterprise</h3>
+                                                <p className="text-indigo-600 font-medium">Professional Level Mastery</p>
+                                            </div>
+                                        </div>
+
+                                        <div className="grid grid-cols-2 gap-8">
+                                            <div>
+                                                <h4 className="font-bold text-slate-900 mb-4 uppercase text-sm tracking-wider">ENCORE</h4>
+                                                <ul className="space-y-3">
+                                                    <li className="flex items-center gap-2 text-slate-600 text-sm">
+                                                        <Server className="w-4 h-4 text-indigo-500" />
+                                                        Dual Stack Architecture
+                                                    </li>
+                                                    <li className="flex items-center gap-2 text-slate-600 text-sm">
+                                                        <Cloud className="w-4 h-4 text-indigo-500" />
+                                                        Virtualization
+                                                    </li>
+                                                    <li className="flex items-center gap-2 text-slate-600 text-sm">
+                                                        <Code className="w-4 h-4 text-indigo-500" />
+                                                        Network Automation
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div>
+                                                <h4 className="font-bold text-slate-900 mb-4 uppercase text-sm tracking-wider">ENARSI</h4>
+                                                <ul className="space-y-3">
+                                                    <li className="flex items-center gap-2 text-slate-600 text-sm">
+                                                        <Activity className="w-4 h-4 text-indigo-500" />
+                                                        Advanced Layer 3
+                                                    </li>
+                                                    <li className="flex items-center gap-2 text-slate-600 text-sm">
+                                                        <Lock className="w-4 h-4 text-indigo-500" />
+                                                        VPN Technologies
+                                                    </li>
+                                                    <li className="flex items-center gap-2 text-slate-600 text-sm">
+                                                        <Shield className="w-4 h-4 text-indigo-500" />
+                                                        Infrastructure Security
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ) : slug === 'cisco-sd-wan' ? (
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {overview?.skills.map((skill: any, idx: number) => (
                                     <div key={idx} className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-start h-full group">

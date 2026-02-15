@@ -129,12 +129,12 @@ export const courses: Course[] = [
                 ]
             },
             roadmap: [
-                { id: '01', title: 'Introduction', desc: 'SD-WAN components, architecture, and benefits over traditional WAN.', topics: 'vSmart - vBond - vManage' },
-                { id: '02', title: 'Deployment', desc: 'Controller deployment, certificate management, and initial bringing up.', topics: 'Certificates - ZTP' },
-                { id: '03', title: 'Templates', desc: 'Creating and attaching device and feature templates.', topics: 'CLI vs Feature Templates' },
-                { id: '04', title: 'Policies', desc: 'Traffic flow manipulation, application aware routing, and security policies.', topics: 'App-Route - Cflowd' },
-                { id: '05', title: 'Security', desc: 'Zone based firewall, IPS, and URL filtering within SD-WAN.', topics: 'ZBFW - URL Filtering' },
-                { id: '06', title: 'Management', desc: 'Upgrading, monitoring, and troubleshooting the SD-WAN fabric.', topics: 'Upgrade - Restore' }
+                { id: '01', title: 'Architecture', desc: 'Understand SD-WAN fundamentals, architecture design, and the roles of control, data, and management planes in modern enterprise networks.', topics: 'Control Plane - Data Plane - Mgmt Plane' },
+                { id: '02', title: 'Controller Deployment', desc: 'Learn the deployment and configuration of SD-WAN controllers, including vManage, vSmart, and vBond, to build a fully functional SD-WAN environment.', topics: 'vManage - vSmart - vBond' },
+                { id: '03', title: 'Router Deployment', desc: 'Master the onboarding, configuration, and integration of SD-WAN edge routers within enterprise network infrastructures.', topics: 'Edge Routers - Onboarding - Config' },
+                { id: '04', title: 'Policies', desc: 'Explore centralized policy creation for intelligent traffic steering, application awareness, and optimized path control.', topics: 'Traffic Steering - App Aware - Path Control' },
+                { id: '05', title: 'Security and QoS', desc: 'Implement SD-WAN security features including IPSec encryption, network segmentation, and quality of service (QoS) to ensure secure and reliable performance.', topics: 'IPSec - Segmentation - QoS' },
+                { id: '06', title: 'Management and Operation', desc: 'Develop skills in monitoring, analytics, troubleshooting, and managing day-to-day SD-WAN operations for high network availability and performance.', topics: 'Monitoring - Analytics - Troubleshooting' }
             ],
             faqs: [
                 { question: "Do I need a lab?", answer: "We provide hosted labs for practice." }
