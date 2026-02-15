@@ -1,6 +1,5 @@
-
 import { Course } from '@/types';
-import { User, Server, Shield, Activity, Database, Globe, Lock, Cpu, Cloud, Code } from 'lucide-react';
+import { User, Server, Shield, Activity, Database, Globe, Lock, Cpu, Cloud, Code, Compass, Lightbulb } from 'lucide-react';
 
 export const courses: Course[] = [
     {
@@ -8,45 +7,52 @@ export const courses: Course[] = [
         attributes: {
             title: "Cisco CCNA 200–301 Course (Training & Certificate)",
             slug: "ccna-200-301",
-            description: "Master the fundamentals of networking.",
-            duration: "7 weeks", // From homepage
-            modules: 10,
-            videoHours: 45, // Inferred from "45 days" duration mention or generic
-            price: 8500, // From homepage
-            image: { data: { id: 1, attributes: { url: '/assets/p1.webp', alternativeText: 'CCNA', width: 640, height: 360 } } },
+            description: "Master the fundamentals of networking with our comprehensive CCNA course.",
+            duration: "6 weeks", // From homepage
+            modules: 5,
+            videoHours: 40,
+            price: 15000, // From homepage
+            image: { data: { id: 1, attributes: { url: '/assets/p1.png', alternativeText: 'CCNA', width: 640, height: 360 } } },
             hero: {
-                title: "Become a Job-Ready Network Engineer with CCNA (200-301)",
-                subtitle: "Master the fundamentals of networking, security, and automation through hands-on labs and expert-led mentorship and launch your career with confidence.",
-                price: 8500,
-                originalPrice: 12000,
-                startDate: "Upcoming",
+                title: "Cisco CCNA 200–301 Course (Training & Certificate)",
+                subtitle: "Kickstart your networking career with the industry standard certification.",
+                price: 15000,
+                originalPrice: 25000,
+                startDate: "June 15, 2024",
                 batches: [
-                    { name: "Weekday Batch", time: "Flexible", days: "Monday - Friday", status: "Open" },
-                    { name: "Weekend Batch", time: "Flexible", days: "Saturday & Sunday", status: "Open" }
+                    { name: "Weekend Batch", time: "10:00 AM – 02:00 PM", days: "Saturday, Sunday", status: "Open" },
+                    { name: "Weekday Evening", time: "07:00 PM – 09:00 PM", days: "Mon – Fri", status: "Filling Fast" }
                 ]
             },
             overview: {
-                title: "Program Overview",
-                description: "This CCNA program covers networking foundations, routing & switching, network services & security, and troubleshooting skills.",
+                title: "Course Overview",
+                description: "A comprehensive deep-dive into networking fundamentals.",
                 skills: [
-                    { title: 'Foundations', icon: User, desc: 'OSI vs TCP/IP, IP addressing & Subnetting, Data flow' },
-                    { title: 'Routing & Switching', icon: Server, desc: 'VLANs, trunking, inter-VLAN routing, Static & dynamic routing' },
-                    { title: 'Security', icon: Shield, desc: 'NAT, DHCP, DNS, ACLs, Basic network security' },
-                    { title: 'Troubleshooting', icon: Activity, desc: 'Identify issues, CLI commands, Real-life scenarios' },
+                    { title: 'Network Fundamentals', icon: Globe, desc: 'Routers, Switches, Cabling, TCP/UDP' },
+                    { title: 'Network Access', icon: Database, desc: 'VLANs, STP, EtherChannel' },
+                    { title: 'IP Connectivity', icon: Server, desc: 'IPv4/IPv6 Routing, OSPF' },
+                    { title: 'IP Services', icon: Activity, desc: 'DHCP, DNS, NTP, QoS' },
+                    { title: 'Security Fundamentals', icon: Shield, desc: 'VPNs, ACLs, Security Policies' },
+                    { title: 'Automation', icon: Code, desc: 'REST APIs, SDN, Puppet/Chef' },
                 ]
             },
+            roadmapModules: {
+                encor: [], // Not used for CCNA
+                enarsi: []
+            },
             roadmap: [
-                { id: '01', title: 'Network Fundamentals', desc: 'Understand how networks work, including devices, protocols, and data flow basics.', topics: 'Devices - Protocols - Data Flow' },
-                { id: '02', title: 'IP Connectivity', desc: 'Learn IP addressing, subnetting, and routing concepts for network communication.', topics: 'IP Addressing - Subnetting - Routing' },
-                { id: '03', title: 'Network Access', desc: 'Configure and manage switches, VLANs, and access to wired and wireless networks.', topics: 'Switches - VLANs - Wireless' },
-                { id: '04', title: 'IP Services', desc: 'DHCP, DNS, NAT, and other essential network services.', topics: 'DHCP - DNS - NAT' },
-                { id: '05', title: 'Security Fundamentals', desc: 'Network security basics, VPNs, ACLs, and Layer 2 security features.', topics: 'VPNs - ACLs - Layer 2 Security' },
-                { id: '06', title: 'Automation', desc: 'Introduction to network automation, SDN, and APIs.', topics: 'SDN - APIs - Configuration Management' },
+                { id: '01', title: 'Network Fundamentals', desc: 'Introduction to networking concepts, routers, switches, and cabling.' },
+                { id: '02', title: 'IP Connectivity', desc: 'Mastering IPv4/IPv6 addressing, subnetting, and routing protocols.' },
+                { id: '03', title: 'Network Access', desc: 'Understanding VLANs, Trunking, Spanning Tree Protocol, and EtherChannel.' },
+                { id: '04', title: 'IP Services', desc: 'Configuring DHCP, DNS, NTP, and Quality of Service (QoS) for network optimization.' },
+                { id: '05', title: 'Security Fundamentals', desc: 'Implementing basic security measures, VPNs, ACLs, and device hardening.' },
+                { id: '06', title: 'Automation & Programmability', desc: 'Introduction to network automation, REST APIs, and Software-Defined Networking (SDN).' }
             ],
             faqs: [
-                { question: "What is the duration of the course?", answer: "The course duration is approximately 45 days or 7 weeks." },
-                { question: "Is certification included?", answer: "The course prepares you for the CCNA 200-301 certification exam, which is taken separately." },
-                { question: "Do you offer lab access?", answer: "Yes, we provide unlimited lab access for practice." }
+                { question: "Do I need prior experience?", answer: "No, this course starts from the basics." },
+                { question: "Is lab access included?", answer: "Yes, 24/7 lab access is provided." },
+                { question: "What is the passing score?", answer: "The passing score for CCNA 200-301 is roughly 825/1000." },
+                { question: "How long is the certification valid?", answer: "CCNA certification is valid for 3 years." }
             ]
         }
     },
@@ -72,13 +78,29 @@ export const courses: Course[] = [
                 ]
             },
             overview: {
-                title: "Advanced Enterprise Skills",
-                description: "Targeted for network engineers looking to upgrade their skills to the professional level.",
+                title: "Program Overview",
+                description: "A dual-focus approach to master both core and concentration areas.",
                 skills: [
-                    { title: 'Advanced Routing', icon: Server, desc: 'Deep dive into OSPF, EIGRP, BGP, and path control' },
-                    { title: 'Switching', icon: Database, desc: 'Advanced VLANs, STP, and High Availability' },
-                    { title: 'Virtualization', icon: Cloud, desc: 'Network virtualization, VRF, and GRE tunnels' },
-                    { title: 'Assurance', icon: Activity, desc: 'Network assurance, monitoring, and troubleshooting tools' },
+                    {
+                        title: '350-401 ENCOR',
+                        icon: Compass,
+                        desc: 'Implementing and Operating Cisco Enterprise Network Core Technologies.',
+                        points: [
+                            'Dual stack (IPv4 and IPv6) architecture',
+                            'Virtualization and Cloud Connectivity',
+                            'Network Assurance & Monitoring'
+                        ]
+                    },
+                    {
+                        title: '300-410 ENARSI',
+                        icon: Lightbulb,
+                        desc: 'Implementing Cisco Enterprise Advanced Routing and Services.',
+                        points: [
+                            'Layer 3 technologies & Routing Protocols',
+                            'VPN services and Infrastructure Security',
+                            'Advanced Troubleshooting techniques'
+                        ]
+                    }
                 ]
             },
             roadmapModules: {

@@ -15,9 +15,10 @@ import EnquiryCTA from '@/components/sections/EnquiryCTA';
 import StudentReviews from '@/components/sections/StudentReviews';
 import { useCart } from '@/context/CartContext';
 import { toast } from 'sonner';
+import { Course } from '@/types';
 
 // Helper to get course by slug
-function getCourseBySlug(slug: string) {
+function getCourseBySlug(slug: string): Course | undefined {
     if (!slug) return undefined;
     const decodedSlug = decodeURIComponent(slug);
     // console.log(`Searching for slug: "${slug}"`);
@@ -256,6 +257,34 @@ export default function CourseDetailPage() {
                                     </div>
                                 </div>
                             </div>
+                        ) : slug === 'ccnp-enterprise' ? (
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                {overview?.skills.map((skill: any, idx: number) => (
+                                    <div key={idx} className="bg-white rounded-3xl p-8 border border-slate-100 shadow-lg relative overflow-hidden h-full flex flex-col">
+                                        <div className={`absolute top-0 right-0 w-40 h-40 rounded-bl-full -mr-10 -mt-10 z-0 opacity-50 ${idx === 0 ? 'bg-blue-50' : 'bg-indigo-50'}`}></div>
+
+                                        <div className="relative z-10 flex flex-col h-full">
+                                            <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${idx === 0 ? 'bg-blue-50 text-blue-600' : 'bg-indigo-50 text-indigo-600'}`}>
+                                                <skill.icon className="w-7 h-7" />
+                                            </div>
+
+                                            <h3 className="text-2xl font-bold text-slate-900 mb-3">{skill.title}</h3>
+                                            <p className="text-slate-600 mb-8 leading-relaxed">{skill.desc}</p>
+
+                                            {skill.points && (
+                                                <ul className="space-y-4 mt-auto">
+                                                    {skill.points.map((point: string, pIdx: number) => (
+                                                        <li key={pIdx} className="flex items-start gap-3 text-slate-700 font-medium">
+                                                            <CheckCircle2 className={`w-5 h-5 flex-shrink-0 mt-0.5 ${idx === 0 ? 'text-blue-600' : 'text-indigo-600'}`} />
+                                                            <span>{point}</span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            )}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         ) : slug === 'cisco-sd-wan' ? (
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {overview?.skills.map((skill: any, idx: number) => (
@@ -318,7 +347,7 @@ export default function CourseDetailPage() {
                                 {/* Vertical Line */}
                                 <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-blue-100 -translate-x-1/2 hidden md:block"></div>
 
-                                {(roadmapModules ? roadmapModules[activeModule] : roadmap).map((item: any, idx: number) => (
+                                {((roadmapModules && roadmapModules[activeModule]) || roadmap || []).map((item: any, idx: number) => (
                                     <div key={idx} className={`relative flex flex-col md:flex-row gap-[96px] mb-[40px] items-center text-left ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
                                         {/* Timeline Dot */}
                                         <div className="absolute left-1/2 top-1/2 w-4 h-4 rounded-full bg-[#003366] ring-4 ring-white shadow-sm -translate-x-1/2 -translate-y-1/2 z-10 hidden md:block"></div>
@@ -365,8 +394,8 @@ export default function CourseDetailPage() {
                                 <p className="text-blue-200 text-sm font-medium mb-1">Total Course Fee</p>
                                 <div className="flex items-baseline gap-2 mb-4">
                                     <span className="text-3xl font-bold">₹{course.attributes.price.toLocaleString('en-IN')}</span>
-                                    {course.attributes.hero.originalPrice && (
-                                        <span className="text-slate-400 text-lg line-through">(₹{course.attributes.hero.originalPrice.toLocaleString('en-IN')})</span>
+                                    {course.attributes.hero?.originalPrice && (
+                                        <span className="text-slate-400 text-lg line-through">(₹{course.attributes.hero?.originalPrice.toLocaleString('en-IN')})</span>
                                     )}
                                 </div>
 

@@ -43,6 +43,7 @@ export interface Course {
                 title: string;
                 icon: any; // LucideIcon type if possible, or any
                 desc: string;
+                points?: string[];
             }[];
         };
         roadmap?: {
