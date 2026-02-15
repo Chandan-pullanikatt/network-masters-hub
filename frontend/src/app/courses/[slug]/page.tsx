@@ -285,7 +285,7 @@ export default function CourseDetailPage() {
                     </section>
 
                     {/* Learning Roadmap */}
-                    {roadmap && roadmap.length > 0 && (
+                    {(roadmapModules || (roadmap && roadmap.length > 0)) && (
                         <section id="roadmap" className="scroll-mt-32 w-[1200px] mx-auto bg-[#0079FF]/5 rounded-[12px] pt-[48px] pb-[48px] px-[40px]">
                             <div className="text-center mb-[48px]">
                                 <h2 className="text-3xl font-bold text-slate-900 mb-[8px]">Curriculum Roadmap</h2>
@@ -294,11 +294,30 @@ export default function CourseDetailPage() {
                                 </p>
                             </div>
 
+                            {roadmapModules && (
+                                <div className="flex justify-center gap-4 mb-12">
+                                    <button
+                                        onClick={() => setActiveModule('encor')}
+                                        className={`flex items-center gap-2 px-6 py-2 rounded-full text-sm font-semibold transition-all ${activeModule === 'encor' ? 'text-[#003366]' : 'text-slate-400 hover:text-slate-600'}`}
+                                    >
+                                        <div className={`w-2.5 h-2.5 rounded-full ${activeModule === 'encor' ? 'bg-[#003366]' : 'bg-slate-300'}`}></div>
+                                        ENCORE Modules
+                                    </button>
+                                    <button
+                                        onClick={() => setActiveModule('enarsi')}
+                                        className={`flex items-center gap-2 px-6 py-2 rounded-full text-sm font-semibold transition-all ${activeModule === 'enarsi' ? 'text-[#003366]' : 'text-slate-400 hover:text-slate-600'}`}
+                                    >
+                                        <div className={`w-2.5 h-2.5 rounded-full ${activeModule === 'enarsi' ? 'bg-[#003366]' : 'bg-slate-300'}`}></div>
+                                        ENARSI Modules
+                                    </button>
+                                </div>
+                            )}
+
                             <div className="relative">
                                 {/* Vertical Line */}
                                 <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-blue-100 -translate-x-1/2 hidden md:block"></div>
 
-                                {roadmap.map((item: any, idx: number) => (
+                                {(roadmapModules ? roadmapModules[activeModule] : roadmap).map((item: any, idx: number) => (
                                     <div key={idx} className={`relative flex flex-col md:flex-row gap-[96px] mb-[40px] items-center text-left ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
                                         {/* Timeline Dot */}
                                         <div className="absolute left-1/2 top-1/2 w-4 h-4 rounded-full bg-[#003366] ring-4 ring-white shadow-sm -translate-x-1/2 -translate-y-1/2 z-10 hidden md:block"></div>

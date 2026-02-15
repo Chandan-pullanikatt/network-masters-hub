@@ -81,14 +81,23 @@ export const courses: Course[] = [
                     { title: 'Assurance', icon: Activity, desc: 'Network assurance, monitoring, and troubleshooting tools' },
                 ]
             },
-            roadmap: [
-                { id: '01', title: 'Architecture', desc: 'Enterprise network architecture, tiering, and design principles.', topics: 'Design - High Availability' },
-                { id: '02', title: 'Virtualization', desc: 'Understanding device virtualization, data path virtualization, and network virtualization.', topics: 'VRF - GRE - LISP' },
-                { id: '03', title: 'Infrastructure', desc: 'Layer 2, Layer 3, Wireless, and IP Services.', topics: 'MST - BGP - QoS' },
-                { id: '04', title: 'Network Assurance', desc: 'Diagnosing network problems using tools like debug, conditionally debug, trace route, ping, SNMP, and Syslog.', topics: 'NetFlow - SPAN - IP SLA' },
-                { id: '05', title: 'Security', desc: 'Device access control, infrastructure security features, and wireless security features.', topics: 'CoPP - ACLs - AAA' },
-                { id: '06', title: 'Automation', desc: 'Python, JSON, XML, YAML, NETCONF, RESTCONF, and EEM.', topics: 'EEM - RESTCONF - Ansible' },
-            ],
+            roadmapModules: {
+                encor: [
+                    { id: '01', title: 'Architecture', desc: 'Understand how enterprise networks are designed and how core components work together to deliver scalable, reliable, and efficient communication.' },
+                    { id: '02', title: 'Automation', desc: 'Learn automation concepts that simplify network operations, improve efficiency, and streamline configuration and management tasks' },
+                    { id: '03', title: 'Infrastructure', desc: 'Master switching and routing fundamentals used in enterprise environments to build stable and high-performing networks' },
+                    { id: '04', title: 'IP Services', desc: 'Explore essential IP services that ensure smooth, secure, and reliable communication across enterprise networks' },
+                    { id: '05', title: 'Network Assurance', desc: 'Develop skills to monitor, troubleshoot, and maintain network performance for consistent uptime and optimal reliability' },
+                    { id: '06', title: 'Security', desc: 'Build a strong foundation in securing enterprise networks against common threats, vulnerabilities, and unauthorized access.' },
+                    { id: '07', title: 'Virtualization', desc: 'Understand virtualization concepts used in modern enterprise network deployments to enhance flexibility and scalability.' }
+                ],
+                enarsi: [
+                    { id: '01', title: 'Infrastructure Security', desc: 'Learn how to secure routing infrastructure and protect critical network services to ensure a safe and resilient enterprise environment.' },
+                    { id: '02', title: 'Layer-3 Technologies', desc: 'Master advanced routing protocols and real-world troubleshooting techniques used in complex enterprise networks.' },
+                    { id: '03', title: 'VPN Technology', desc: 'Understand how secure VPN solutions are designed and implemented to enable safe and encrypted communication across enterprise networks.' }
+                ]
+            },
+            roadmap: [], // Default empty, handled by component logic for this course
             faqs: [
                 { question: "Is CCNA required?", answer: "CCNA level knowledge is highly recommended." },
                 { question: "Does this cover both exams?", answer: "Yes, it covers both ENCOR (Core) and ENARSI (Concentration)." }
