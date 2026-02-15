@@ -4,6 +4,8 @@ import { Button } from '@/components/ui/button';
 import { Clock, BookOpen, Video } from 'lucide-react';
 import { Course } from '@/types';
 import { useCart } from '@/context/CartContext';
+import { useAuth } from '@/context/AuthContext';
+import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 
 interface CourseCardProps {
@@ -14,11 +16,18 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
     const { title, slug, duration, modules, videoHours, price, image } = course.attributes;
     const imageUrl = image?.data?.attributes?.url || '/placeholder-course.jpg';
     const { addToCart } = useCart();
+    const { isAuthenticated } = useAuth();
+    const router = useRouter();
 
     // Modules count handling (if modules is JSON/RichText)
     const moduleCount = Array.isArray(modules) ? modules.length : 10; // Default/Fallback
 
     const handleAddToCart = () => {
+        if (!isAuthenticated) {
+            toast.error("Please login to add items to cart");
+            router.push("/login");
+            return;
+        }
         addToCart(course);
         toast.success("Added to cart");
     };

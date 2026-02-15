@@ -58,9 +58,9 @@ export default function RegisterPage() {
             if (data.error) {
                 toast.error(data.error.message);
             } else {
-                login(data.jwt, data.user);
-                toast.success("Account created successfully");
-                router.push("/");
+                // login(data.jwt, data.user); // Removed auto-login
+                toast.success("Account created successfully. Please login.");
+                router.push("/login");
             }
         } catch (error) {
             toast.error("An error occurred. Please try again.");

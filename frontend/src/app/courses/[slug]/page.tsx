@@ -2,7 +2,8 @@
 "use client";
 
 import { useState, use } from 'react';
-import { notFound, useParams } from 'next/navigation';
+import { notFound, useParams, useRouter } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext';
 import { Button } from '@/components/ui/button';
 import { User, Shield, Server, Activity, CheckCircle2, Clock, Calendar, Database, Globe, Cpu, Cloud, Code } from 'lucide-react';
 import { courses } from '@/lib/courses-data';
@@ -34,8 +35,16 @@ export default function CourseDetailPage() {
     const course = getCourseBySlug(slug);
     const [activeSection, setActiveSection] = useState('overview');
     const { addToCart } = useCart();
+    const { isAuthenticated } = useAuth();
+    const router = useRouter();
 
     const handleAddToCart = () => {
+        if (!isAuthenticated) {
+            toast.error("Please login to add items to cart");
+            router.push("/login");
+            return;
+        }
+
         if (course) {
             addToCart(course);
             toast.success("Added to cart");
@@ -234,8 +243,18 @@ export default function CourseDetailPage() {
 
                                 <div className="flex gap-3 mt-auto pt-4">
 
-                                    <Button className="flex-1 bg-blue-600 hover:bg-blue-700 h-9 text-sm" asChild>
-                                        <Link href="/checkout">Buy Now</Link>
+                                    <Button
+                                        className="flex-1 bg-blue-600 hover:bg-blue-700 h-9 text-sm"
+                                        onClick={() => {
+                                            if (!isAuthenticated) {
+                                                toast.error("Please login to purchase");
+                                                router.push("/login");
+                                            } else {
+                                                router.push("/checkout");
+                                            }
+                                        }}
+                                    >
+                                        Buy Now
                                     </Button>
                                     <Button
                                         variant="outline"
