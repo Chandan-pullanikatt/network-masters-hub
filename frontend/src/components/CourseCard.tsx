@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Clock, BookOpen, Video } from 'lucide-react';
 import { Course } from '@/types';
+import { useCart } from '@/context/CartContext';
+import { toast } from 'sonner';
 
 interface CourseCardProps {
     course: Course;
@@ -11,9 +13,15 @@ interface CourseCardProps {
 const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
     const { title, slug, duration, modules, videoHours, price, image } = course.attributes;
     const imageUrl = image?.data?.attributes?.url || '/placeholder-course.jpg';
+    const { addToCart } = useCart();
 
     // Modules count handling (if modules is JSON/RichText)
     const moduleCount = Array.isArray(modules) ? modules.length : 10; // Default/Fallback
+
+    const handleAddToCart = () => {
+        addToCart(course);
+        toast.success("Added to cart");
+    };
 
     return (
         <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full">
@@ -55,7 +63,11 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
                     <Button variant="outline" size="sm" className="h-7 text-xs w-full text-slate-600 hover:text-blue-700 hover:bg-blue-50 border-slate-200" asChild>
                         <Link href={`/courses/${slug}`}>View Details</Link>
                     </Button>
-                    <Button size="sm" className="h-7 text-xs w-full bg-blue-600 hover:bg-blue-700 text-white shadow-md shadow-blue-600/20">
+                    <Button
+                        size="sm"
+                        className="h-7 text-xs w-full bg-blue-600 hover:bg-blue-700 text-white shadow-md shadow-blue-600/20"
+                        onClick={handleAddToCart}
+                    >
                         Add to Cart
                     </Button>
                 </div>

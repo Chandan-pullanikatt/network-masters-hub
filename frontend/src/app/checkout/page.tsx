@@ -1,217 +1,204 @@
 "use client";
 
-import { useState } from 'react';
-import { useCart } from '@/context/CartContext';
-import { useRouter } from 'next/navigation';
-import Image from 'next/image';
-import { Button } from '@/components/ui/button';
-import { Upload, ShieldCheck, Loader2 } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useCart } from "@/context/CartContext";
+import { useAuth } from "@/context/AuthContext";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import ManualPaymentForm from "@/components/ManualPaymentForm";
+import { toast } from "sonner";
+import { motion } from "framer-motion";
 
 export default function CheckoutPage() {
     const { cart, total, clearCart } = useCart();
+    const { user } = useAuth();
     const router = useRouter();
 
     const [formData, setFormData] = useState({
-        customerName: '',
-        email: '',
-        phone: ''
+        customerName: "",
+        email: "",
+        phone: "",
     });
-    const [file, setFile] = useState<File | null>(null);
+
+    const [paymentScreenshot, setPaymentScreenshot] = useState<File | null>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [error, setError] = useState('');
+    const [fileError, setFileError] = useState("");
 
-    if (cart.length === 0) {
-        return (
-            <div className="container py-20 text-center">
-                <h2 className="text-2xl font-bold mb-4">Your cart is empty</h2>
-                <Button onClick={() => router.push('/courses')}>Browse Courses</Button>
-            </div>
-        );
-    }
+    // Auto-fill form if user is logged in
+    useEffect(() => {
+        if (user) {
+            setFormData({
+                customerName: user.username,
+                email: user.email,
+                phone: "", // User object might not have phone
+            });
+        }
+    }, [user]);
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Redirect if cart is empty
+    useEffect(() => {
+        if (cart.length === 0) {
+            router.push("/cart");
+        }
+    }, [cart, router]);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files && e.target.files[0]) {
-            // Validate file size (5MB)
-            if (e.target.files[0].size > 5 * 1024 * 1024) {
-                setError('File size must be less than 5MB');
-                return;
+    const handleFileChange = (file: File | null) => {
+        setPaymentScreenshot(file);
+        if (file) {
+            if (file.size > 5 * 1024 * 1024) {
+                setFileError("File size exceeds 5MB");
+            } else {
+                setFileError("");
             }
-            setFile(e.target.files[0]);
-            setError('');
+        } else {
+            setFileError("");
         }
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setError('');
-        setIsSubmitting(true);
 
-        if (!file) {
-            setError('Please upload the payment screenshot.');
-            setIsSubmitting(false);
+        if (cart.length === 0) {
+            toast.error("Your cart is empty");
             return;
         }
 
+        if (!paymentScreenshot) {
+            toast.error("Please upload payment screenshot");
+            setFileError("Please upload payment screenshot");
+            return;
+        }
+
+        if (fileError) return;
+
+        setIsSubmitting(true);
+
         try {
-            const submitData = new FormData();
+            const formDataToSend = new FormData();
+            formDataToSend.append("customerName", formData.customerName);
+            formDataToSend.append("email", formData.email);
+            formDataToSend.append("phone", formData.phone);
+            formDataToSend.append("totalAmount", total.toString());
 
-            const orderData = {
-                ...formData,
-                totalAmount: total,
-                courses: cart.map(c => c.id),
-                // paymentStatus and paymentMethod are protected in backend
-            };
+            // Send course IDs
+            const courseIds = cart.map(item => item.id);
+            formDataToSend.append("courses", JSON.stringify(courseIds));
 
-            submitData.append('data', JSON.stringify(orderData));
-            submitData.append('files.paymentScreenshot', file);
+            // Append file
+            formDataToSend.append("paymentScreenshot", paymentScreenshot);
 
-            const res = await fetch('/api/manual-payment', {
-                method: 'POST',
-                body: submitData,
+            const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}/api/orders/manual-payment`, {
+                method: "POST",
+                body: formDataToSend,
             });
 
             if (!res.ok) {
-                const err = await res.json();
-                throw new Error(err.error?.message || 'Failed to submit payment');
+                const errorData = await res.json();
+                throw new Error(errorData.error?.message || "Payment submission failed");
             }
 
+            toast.success("Order submitted successfully!");
             clearCart();
-            router.push('/success');
+            router.push("/payment-submitted");
 
-        } catch (err: any) {
-            console.error(err);
-            setError(err.message || 'Something went wrong. Please try again.');
+        } catch (error: any) {
+            console.error("Payment Error:", error);
+            toast.error(error.message || "Failed to submit order. Please try again.");
         } finally {
             setIsSubmitting(false);
         }
     };
 
     return (
-        <div className="container py-12 px-4 md:px-6">
-            <h1 className="text-3xl font-bold mb-8 text-center md:text-left">Secure Checkout</h1>
+        <div className="container mx-auto px-6 py-16 md:px-12 max-w-4xl">
+            <h1 className="mb-8 text-3xl font-bold text-foreground">Checkout</h1>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                {/* Left: Customer Details */}
-                <div>
-                    <div className="bg-white p-6 rounded-xl shadow-sm border mb-8">
-                        <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-                            <ShieldCheck className="w-5 h-5 text-green-600" />
-                            Billing Details
-                        </h2>
-                        <form id="checkout-form" onSubmit={handleSubmit} className="space-y-4">
+            <div className="grid gap-8 md:grid-cols-3">
+                <div className="md:col-span-2 space-y-8">
+                    {/* User Details Form */}
+                    <div className="rounded-xl border border-border bg-card p-6 shadow-sm">
+                        <h2 className="mb-4 text-xl font-bold text-foreground">Contact Information</h2>
+                        <div className="space-y-4">
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
-                                <input
+                                <label htmlFor="customerName" className="block text-sm font-medium mb-1 text-foreground">
+                                    Full Name
+                                </label>
+                                <Input
+                                    id="customerName"
                                     name="customerName"
                                     required
-                                    className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
                                     value={formData.customerName}
-                                    onChange={handleInputChange}
+                                    onChange={handleChange}
                                     placeholder="John Doe"
+                                    className="bg-background/50"
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
-                                <input
+                                <label htmlFor="email" className="block text-sm font-medium mb-1 text-foreground">
+                                    Email
+                                </label>
+                                <Input
+                                    id="email"
                                     name="email"
                                     type="email"
                                     required
-                                    className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
                                     value={formData.email}
-                                    onChange={handleInputChange}
+                                    onChange={handleChange}
                                     placeholder="john@example.com"
+                                    className="bg-background/50"
                                 />
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-slate-700 mb-1">Phone Number</label>
-                                <input
+                                <label htmlFor="phone" className="block text-sm font-medium mb-1 text-foreground">
+                                    Phone
+                                </label>
+                                <Input
+                                    id="phone"
                                     name="phone"
                                     type="tel"
                                     required
-                                    className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 outline-none"
                                     value={formData.phone}
-                                    onChange={handleInputChange}
-                                    placeholder="+91 9999999999"
+                                    onChange={handleChange}
+                                    placeholder="+91 98765 43210"
+                                    className="bg-background/50"
                                 />
                             </div>
-                        </form>
+                        </div>
                     </div>
+
+                    {/* Payment Section */}
+                    <ManualPaymentForm onFileChange={handleFileChange} fileError={fileError} />
+
+                    <Button
+                        onClick={(e) => handleSubmit(e as any)}
+                        disabled={isSubmitting}
+                        className="w-full bg-[#003366] hover:bg-[#002244] text-white py-6 text-lg"
+                    >
+                        {isSubmitting ? "Submitting Order..." : `Pay ₹${total} & Place Order`}
+                    </Button>
                 </div>
 
-                {/* Right: Payment */}
-                <div>
-                    <div className="bg-slate-50 p-6 rounded-xl border space-y-6">
-                        <h2 className="text-xl font-semibold">Payment Summary</h2>
-
-                        {/* Order Items */}
-                        <div className="space-y-2 text-sm text-slate-600 border-b pb-4">
+                {/* Order Summary Sidebar */}
+                <div className="md:col-span-1">
+                    <div className="rounded-xl border border-border bg-card p-6 shadow-sm sticky top-24">
+                        <h2 className="mb-4 text-lg font-bold text-foreground">Your Order</h2>
+                        <div className="space-y-4 mb-4">
                             {cart.map((item) => (
-                                <div key={item.id} className="flex justify-between">
-                                    <span>{item.attributes.title}</span>
-                                    <span>₹{item.attributes.price}</span>
+                                <div key={item.id} className="flex justify-between text-sm">
+                                    <span className="text-muted-foreground truncate w-2/3">{item.attributes.title}</span>
+                                    <span className="font-medium text-foreground">₹{item.attributes.price}</span>
                                 </div>
                             ))}
                         </div>
-
-                        <div className="flex justify-between items-center text-lg font-bold text-slate-900 pb-4 border-b">
-                            <span>Total Amount</span>
+                        <div className="border-t border-border pt-4 flex justify-between font-bold text-lg text-foreground">
+                            <span>Total</span>
                             <span>₹{total}</span>
                         </div>
-
-                        {/* QR Section */}
-                        <div className="bg-white p-6 rounded-lg text-center border-2 border-dashed border-blue-200">
-                            <h3 className="text-lg font-bold text-slate-900 mb-2">Scan & Pay</h3>
-                            <p className="text-sm text-slate-500 mb-4">Use any UPI App (GPay, PhonePe, Paytm)</p>
-
-                            <div className="relative w-48 h-48 mx-auto mb-4 border p-2 rounded">
-                                <Image src="/upi-qr.svg" alt="UPI QR Code" fill className="object-contain" />
-                            </div>
-
-                            <p className="font-mono text-sm bg-slate-100 py-2 px-4 rounded inline-block">
-                                UPI ID: 7840018889@upi
-                            </p>
-                        </div>
-
-                        {/* Upload Section */}
-                        <div className="space-y-4">
-                            <label className="block text-sm font-medium text-slate-700">
-                                Upload Payment Screenshot <span className="text-red-500">*</span>
-                            </label>
-
-                            <div className="flex items-center gap-4">
-                                <label className="flex-1 cursor-pointer">
-                                    <div className="flex items-center justify-center gap-2 w-full px-4 py-3 border border-slate-300 rounded-md bg-white hover:bg-slate-50 transition-colors text-slate-600 text-sm">
-                                        <Upload className="w-4 h-4" />
-                                        {file ? file.name : "Choose Image (JPG/PNG)"}
-                                    </div>
-                                    <input type="file" className="hidden" accept="image/*" onChange={handleFileChange} />
-                                </label>
-                            </div>
-                            {error && <p className="text-red-500 text-sm">{error}</p>}
-                        </div>
-
-                        <Button
-                            form="checkout-form"
-                            type="submit"
-                            className="w-full h-12 text-lg bg-green-600 hover:bg-green-700"
-                            disabled={isSubmitting}
-                        >
-                            {isSubmitting ? (
-                                <>
-                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Processsing...
-                                </>
-                            ) : (
-                                "Submit Payment Verification"
-                            )}
-                        </Button>
-
-                        <p className="text-xs text-center text-slate-500">
-                            We will verify your payment within 24 hours and activate your course access.
-                        </p>
                     </div>
                 </div>
             </div>

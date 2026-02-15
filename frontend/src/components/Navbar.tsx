@@ -1,15 +1,18 @@
 "use client";
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ShoppingCart } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import { useCart } from '@/context/CartContext';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const pathname = usePathname();
     const isHome = pathname === '/';
     const [isScrolled, setIsScrolled] = useState(false);
+    const { cart } = useCart();
+    const cartItemCount = cart.length;
 
     useEffect(() => {
         const handleScroll = () => {
@@ -54,6 +57,16 @@ const Navbar = () => {
                         </Link>
                     ))}
                     <div className="flex items-center gap-4 ml-4">
+                        <Button variant="ghost" size="icon" className={`relative ${isHome && !isScrolled ? 'text-white hover:text-white/80 hover:bg-white/10' : ''}`} asChild>
+                            <Link href="/cart">
+                                <ShoppingCart className="h-5 w-5" />
+                                {cartItemCount > 0 && (
+                                    <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-red-500 text-[10px] font-bold text-white flex items-center justify-center">
+                                        {cartItemCount}
+                                    </span>
+                                )}
+                            </Link>
+                        </Button>
                         <Button variant="ghost" className={`text-sm font-medium ${isHome && !isScrolled ? 'text-white hover:text-white/80 hover:bg-white/10' : ''}`} asChild>
                             <Link href="/login">Login</Link>
                         </Button>

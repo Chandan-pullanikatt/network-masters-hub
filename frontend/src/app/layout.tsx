@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 import { Toaster } from 'sonner';
 
 import { CartProvider } from "@/context/CartContext";
+import { AuthProvider } from "@/context/AuthContext";
 
 export default function RootLayout({
   children,
@@ -24,12 +25,14 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className={urbanist.className}>
         <CartProvider>
-          <div className="flex min-h-screen flex-col">
-            <Navbar />
-            <div className="flex-1">{children}</div>
-            <Footer />
-          </div>
-          <Toaster richColors position="top-right" />
+          <AuthProvider>
+            <div className="flex min-h-screen flex-col">
+              <Navbar />
+              <div className="flex-1">{children}</div>
+              <Footer />
+            </div>
+            <Toaster richColors position="top-right" />
+          </AuthProvider>
         </CartProvider>
       </body>
     </html>

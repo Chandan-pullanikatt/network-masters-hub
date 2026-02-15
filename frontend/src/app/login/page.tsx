@@ -1,0 +1,121 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { toast } from "sonner";
+import { motion } from "framer-motion";
+
+export default function LoginPage() {
+    const [identifier, setIdentifier] = useState("");
+    const [password, setPassword] = useState("");
+    const [loading, setLoading] = useState(false);
+    const { login } = useAuth();
+    const router = useRouter();
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoading(true);
+
+        try {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}/api/auth/local`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    identifier,
+                    password,
+                }),
+            });
+
+            const data = await res.json();
+
+            if (data.error) {
+                toast.error(data.error.message);
+            } else {
+                login(data.jwt, data.user);
+                toast.success("Logged in successfully");
+                router.push("/");
+            }
+        } catch (error) {
+            toast.error("An error occurred. Please try again.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="w-full max-w-md space-y-8 rounded-xl border border-border bg-card p-8 shadow-lg"
+            >
+                <div className="text-center">
+                    <h2 className="text-3xl font-bold tracking-tight text-foreground">
+                        Welcome Back
+                    </h2>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                        Sign in to access your courses
+                    </p>
+                </div>
+                <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+                    <div className="space-y-4">
+                        <div>
+                            <label htmlFor="email-address" className="sr-only">
+                                Email address
+                            </label>
+                            <Input
+                                id="email-address"
+                                name="identifier"
+                                type="email"
+                                autoComplete="email"
+                                required
+                                placeholder="Email address"
+                                value={identifier}
+                                onChange={(e) => setIdentifier(e.target.value)}
+                                className="bg-background/50"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="password" className="sr-only">
+                                Password
+                            </label>
+                            <Input
+                                id="password"
+                                name="password"
+                                type="password"
+                                autoComplete="current-password"
+                                required
+                                placeholder="Password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="bg-background/50"
+                            />
+                        </div>
+                    </div>
+
+                    <Button
+                        disabled={loading}
+                        className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+                    >
+                        {loading ? "Signing in..." : "Sign in"}
+                    </Button>
+                </form>
+                <div className="text-center text-sm">
+                    <p className="text-muted-foreground">
+                        Don't have an account?{" "}
+                        <Link href="/register" className="font-medium text-primary hover:text-primary/80">
+                            Register here
+                        </Link>
+                    </p>
+                </div>
+            </motion.div>
+        </div>
+    );
+}

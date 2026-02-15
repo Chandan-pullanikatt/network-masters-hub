@@ -1,76 +1,109 @@
 "use client";
 
-import { Trash2 } from 'lucide-react';
+import Link from "next/link";
+import { useCart } from "@/context/CartContext";
+import { Button } from "@/components/ui/button";
+import { Trash2, ShoppingBag } from "lucide-react";
+import { motion } from "framer-motion";
 
-import { Button } from '@/components/ui/button';
-import { useCart } from '@/context/CartContext';
-import Link from 'next/link';
-
-const CartPage = () => {
+export default function CartPage() {
     const { cart, removeFromCart, total } = useCart();
+
+    const container = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
+    };
+
+    const itemVariant = {
+        hidden: { opacity: 0, y: 20 },
+        show: { opacity: 1, y: 0 }
+    };
 
     if (cart.length === 0) {
         return (
-            <div className="min-h-[60vh] flex flex-col items-center justify-center space-y-4">
-                <h2 className="text-2xl font-bold">Your Cart is Empty</h2>
-                <p className="text-slate-600">Browse our courses and start learning today!</p>
-                <Button asChild>
-                    <Link href="/courses">Browse Courses</Link>
-                </Button>
+            <div className="flex min-h-[60vh] flex-col items-center justify-center space-y-4 px-4 text-center">
+                <ShoppingBag className="h-16 w-16 text-muted-foreground" />
+                <h2 className="text-2xl font-bold text-foreground">Your cart is empty</h2>
+                <p className="text-muted-foreground">Looks like you haven't added any courses yet.</p>
+                <Link href="/courses/ccna-200-301">
+                    <Button>Browse Courses</Button>
+                </Link>
             </div>
         );
     }
 
     return (
-        <div className="container py-20 px-4 md:px-6">
-            <h1 className="text-3xl font-bold mb-8">Your Cart</h1>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div className="lg:col-span-2 space-y-4">
-                    {cart.map((item) => (
-                        <div key={item.id} className="flex items-center justify-between p-4 border rounded-lg bg-white shadow-sm">
-                            <div className="flex items-center gap-4">
-                                <div className="w-20 h-12 bg-gray-200 rounded overflow-hidden relative">
-                                    {/* Image placeholder */}
-                                    <div className="absolute inset-0 bg-slate-300"></div>
+        <div className="container mx-auto px-6 py-16 md:px-12 max-w-7xl">
+            <h1 className="mb-8 text-3xl font-bold text-foreground">Shopping Cart</h1>
+
+            <div className="grid gap-8 lg:grid-cols-3">
+                {/* Cart Items List */}
+                <div className="lg:col-span-2">
+                    <motion.div
+                        variants={container}
+                        initial="hidden"
+                        animate="show"
+                        className="space-y-4"
+                    >
+                        {cart.map((item) => (
+                            <motion.div
+                                key={item.id}
+                                variants={itemVariant}
+                                className="flex items-center justify-between rounded-xl border border-border bg-card p-4 shadow-sm transition-shadow hover:shadow-md"
+                            >
+                                <div className="flex flex-col space-y-1">
+                                    <h3 className="font-semibold text-foreground">{item.attributes.title}</h3>
+                                    <p className="text-sm text-muted-foreground">Video Course</p>
                                 </div>
-                                <div>
-                                    <h3 className="font-semibold">{item.attributes.title}</h3>
-                                    <p className="text-sm text-slate-500">{item.attributes.duration}</p>
+                                <div className="flex items-center space-x-4">
+                                    <p className="font-bold text-primary">₹{item.attributes.price}</p>
+                                    <Button
+                                        variant="ghost"
+                                        size="icon"
+                                        onClick={() => removeFromCart(item.id)}
+                                        className="text-muted-foreground hover:text-destructive"
+                                    >
+                                        <Trash2 className="h-4 w-4" />
+                                    </Button>
                                 </div>
-                            </div>
-                            <div className="flex items-center gap-6">
-                                <span className="font-bold">${item.attributes.price}</span>
-                                <Button variant="ghost" size="icon" onClick={() => removeFromCart(item.id)} className="text-red-500 hover:text-red-700 hover:bg-red-50">
-                                    <Trash2 className="h-5 w-5" />
-                                </Button>
-                            </div>
-                        </div>
-                    ))}
+                            </motion.div>
+                        ))}
+                    </motion.div>
                 </div>
 
+                {/* Order Summary */}
                 <div className="lg:col-span-1">
-                    <div className="bg-slate-50 p-6 rounded-xl border space-y-4">
-                        <h3 className="text-lg font-bold">Order Summary</h3>
-                        <div className="flex justify-between text-sm">
-                            <span>Subtotal</span>
-                            <span>${total}</span>
+                    <div className="rounded-xl border border-border bg-card p-6 shadow-sm sticky top-24">
+                        <h2 className="mb-4 text-xl font-bold text-foreground">Order Summary</h2>
+                        <div className="space-y-2 border-b border-border pb-4">
+                            <div className="flex justify-between text-muted-foreground">
+                                <span>Subtotal</span>
+                                <span>₹{total}</span>
+                            </div>
+                            <div className="flex justify-between text-muted-foreground">
+                                <span>Tax</span>
+                                <span>₹0</span>
+                            </div>
                         </div>
-                        <div className="flex justify-between text-sm text-green-600">
-                            <span>Discount</span>
-                            <span>-$0.00</span>
-                        </div>
-                        <div className="border-t pt-4 flex justify-between font-bold text-lg">
+                        <div className="mt-4 flex justify-between text-lg font-bold text-foreground">
                             <span>Total</span>
-                            <span>${total}</span>
+                            <span>₹{total}</span>
                         </div>
-                        <Button className="w-full" size="lg" asChild>
-                            <Link href="/checkout">Proceed to Checkout</Link>
-                        </Button>
+                        <div className="mt-6">
+                            <Link href="/checkout">
+                                <Button className="w-full bg-[#003366] hover:bg-[#002244] text-white">
+                                    Proceed to Checkout
+                                </Button>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     );
-};
-
-export default CartPage;
+}

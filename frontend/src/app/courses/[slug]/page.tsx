@@ -9,6 +9,8 @@ import { courses } from '@/lib/courses-data';
 import Link from 'next/link';
 import Image from 'next/image';
 import FAQ from '@/components/sections/FAQ';
+import { useCart } from '@/context/CartContext';
+import { toast } from 'sonner';
 
 // Helper to get course by slug
 function getCourseBySlug(slug: string) {
@@ -28,6 +30,14 @@ export default function CourseDetailPage() {
     const slug = params?.slug as string;
     const course = getCourseBySlug(slug);
     const [activeSection, setActiveSection] = useState('overview');
+    const { addToCart } = useCart();
+
+    const handleAddToCart = () => {
+        if (course) {
+            addToCart(course);
+            toast.success("Added to cart");
+        }
+    };
 
     if (!course) {
         return notFound();
@@ -220,8 +230,17 @@ export default function CourseDetailPage() {
                                 </ul>
 
                                 <div className="flex gap-3 mt-auto pt-4">
-                                    <Button className="flex-1 bg-blue-600 hover:bg-blue-700 h-9 text-sm">Buy Now</Button>
-                                    <Button variant="outline" className="flex-1 bg-white text-[#003366] hover:bg-slate-100 h-9 border-none text-sm">Add to Cart</Button>
+
+                                    <Button className="flex-1 bg-blue-600 hover:bg-blue-700 h-9 text-sm" asChild>
+                                        <Link href="/checkout">Buy Now</Link>
+                                    </Button>
+                                    <Button
+                                        variant="outline"
+                                        className="flex-1 bg-white text-[#003366] hover:bg-slate-100 h-9 border-none text-sm"
+                                        onClick={handleAddToCart}
+                                    >
+                                        Add to Cart
+                                    </Button>
                                 </div>
                             </div>
 
