@@ -9,5 +9,6 @@
 
 
 [context.production.environment]
-  NEXT_PUBLIC_STRAPI_URL = "https://your-strapi-backend-url.com" 
+  NEXT_PUBLIC_STRAPI_URL = "https://network-masters-hub.onrender.com"
+
   # Update this in Netlify UI after deploying backend
