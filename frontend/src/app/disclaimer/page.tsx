@@ -125,16 +125,7 @@ export default function DisclaimerPage() {
 
                         </div>
 
-                        {/* Contact Link */}
-                        <div className="mt-[64px] text-center">
-                            <p className="text-[15px] text-slate-600 mb-2">
-                                Have questions regarding this disclaimer?
-                            </p>
-                            <a href="mailto:legal@networkmastershub.com" className="text-[#003366] font-bold text-[15px] hover:underline flex items-center justify-center gap-1 group">
-                                Contact Legal Department
-                                <span className="group-hover:translate-x-1 transition-transform">→</span>
-                            </a>
-                        </div>
+
 
                     </div>
 
