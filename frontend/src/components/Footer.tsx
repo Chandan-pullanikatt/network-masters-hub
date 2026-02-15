@@ -19,9 +19,9 @@ const Footer = () => {
                             <Image
                                 src="/assets/logo.png"
                                 alt="Network Masters Logo"
-                                width={160}
-                                height={48}
-                                className="h-10 md:h-12 w-auto object-contain mb-6"
+                                width={240}
+                                height={80}
+                                className="h-16 md:h-20 w-auto object-contain mb-6"
                             />
                         </Link>
                         {/* Alternatively use text if no logo image */}
@@ -32,7 +32,7 @@ const Footer = () => {
                         <h4 className="text-lg font-semibold mb-6 text-gray-200">Quick Links</h4>
                         <ul className="space-y-4 text-gray-400">
                             <li><Link href="/" className="hover:text-blue-400 transition-colors">Home</Link></li>
-                            <li><Link href="/about" className="hover:text-blue-400 transition-colors">About Us</Link></li>
+                            <li><Link href="/aboutus" className="hover:text-blue-400 transition-colors">About Us</Link></li>
                             <li><Link href="/blog" className="hover:text-blue-400 transition-colors">Blog</Link></li>
                             <li><Link href="/contact" className="hover:text-blue-400 transition-colors">Connect With Us</Link></li>
                         </ul>

@@ -122,14 +122,12 @@ export default function AboutUsPage() {
                         <div className="flex flex-col lg:flex-row items-center justify-center gap-[40px]">
                             {/* Left Column (Founder Image) */}
                             <div className="flex-shrink-0">
-                                <div className="relative w-full lg:w-[491px] h-auto rounded-[16px] overflow-hidden">
-                                    {/* Assuming cef.png is the founder based on context. If not, can be swapped. */}
+                                <div className="relative w-full lg:w-[491px] h-[550px] rounded-[16px] overflow-hidden">
                                     <Image
                                         src="/assets/cef.png"
                                         alt="Pankaj Sethi - Founder"
-                                        width={491}
-                                        height={550}
-                                        className="object-cover w-full h-auto rounded-[16px]"
+                                        fill
+                                        className="object-fill"
                                     />
                                 </div>
                             </div>
