@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Urbanist } from "next/font/google"; // Switch to Urbanist
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import FooterWrapper from "@/components/FooterWrapper";
+import Footer from "@/components/Footer";
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -29,7 +29,7 @@ export default function RootLayout({
             <div className="flex min-h-screen flex-col">
               <Navbar />
               <div className="flex-1">{children}</div>
-              <FooterWrapper />
+              <Footer />
             </div>
             <Toaster richColors position="top-right" />
           </AuthProvider>

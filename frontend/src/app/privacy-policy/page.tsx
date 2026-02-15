@@ -126,61 +126,7 @@ export default function PrivacyPolicyPage() {
                 </div>
             </div>
             {/* Footer is global, no need to add here */}
-            {/* Custom Footer for Privacy Policy */}
-            <div className="w-full bg-white border-t border-slate-100 py-16 mt-auto">
-                <div className="w-full max-w-[1200px] mx-auto px-[40px] flex flex-col gap-12">
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-                        {/* Column 1: Logo & Tagline */}
-                        <div className="col-span-1 md:col-span-1.5 flex flex-col gap-6">
-                            <div className="flex items-center gap-2">
-                                <div className="bg-[#003366] text-white p-2 rounded-md">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-asterisk"><path d="M12 6v12" /><path d="M17.196 9 6.804 15" /><path d="m6.804 9 10.392 6" /></svg>
-                                </div>
-                                <span className="text-xl font-bold text-[#1a1a1a]">Network Masters Hub</span>
-                            </div>
-                            <p className="text-[14px] text-slate-500 leading-relaxed max-w-[300px]">
-                                Empowering the next generation of networking professionals through hands-on labs and expert-led certifications.
-                            </p>
-                        </div>
 
-                        {/* Column 2: Resources */}
-                        <div>
-                            <h4 className="font-bold text-[#1a1a1a] mb-6">Resources</h4>
-                            <ul className="space-y-4 text-[14px] text-slate-500">
-                                <li><Link href="#" className="hover:text-[#003366] transition-colors">Lab Access</Link></li>
-                                <li><Link href="#" className="hover:text-[#003366] transition-colors">Study Guides</Link></li>
-                                <li><Link href="#" className="hover:text-[#003366] transition-colors">Student Forum</Link></li>
-                            </ul>
-                        </div>
-
-                        {/* Column 3: Legal */}
-                        <div>
-                            <h4 className="font-bold text-[#1a1a1a] mb-6">Legal</h4>
-                            <ul className="space-y-4 text-[14px] text-slate-500">
-                                <li><Link href="/privacy-policy" className="text-[#003366] font-medium hover:text-[#003366] transition-colors">Privacy Policy</Link></li>
-                                <li><Link href="#" className="hover:text-[#003366] transition-colors">Terms of Service</Link></li>
-                                <li><Link href="#" className="hover:text-[#003366] transition-colors">Cookie Policy</Link></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    {/* Bottom Bar */}
-                    <div className="border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[13px] text-slate-400">
-                        <p>&copy; 2023 Network Masters Hub. All rights reserved.</p>
-                        <div className="flex gap-4">
-                            <Link href="#" className="hover:text-[#003366] transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
-                            </Link>
-                            <Link href="#" className="hover:text-[#003366] transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-youtube"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17" /><path d="m10 15 5-3-5-3z" /></svg>
-                            </Link>
-                            <Link href="#" className="hover:text-[#003366] transition-colors">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     );
 }
