@@ -68,7 +68,7 @@ const Navbar = () => {
                     <CoursesDropdown isScrolled={isScrolled} isHome={isHome} />
 
                     <Link
-                        href="/#about"
+                        href="/aboutus"
                         className={`text-sm font-medium transition-colors hover:text-primary ${isHome && !isScrolled ? 'text-white/90 hover:text-white' : ''}`}
                     >
                         About Us
@@ -138,7 +138,7 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    <Link href="/#about" className="block text-sm font-medium hover:text-primary" onClick={() => setIsOpen(false)}>
+                    <Link href="/aboutus" className="block text-sm font-medium hover:text-primary" onClick={() => setIsOpen(false)}>
                         About Us
                     </Link>
                     <Link href="/blog" className="block text-sm font-medium hover:text-primary" onClick={() => setIsOpen(false)}>
