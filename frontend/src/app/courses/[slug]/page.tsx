@@ -40,6 +40,22 @@ export default function CourseDetailPage() {
     const { isAuthenticated } = useAuth();
     const router = useRouter();
 
+    const [enrollLoading, setEnrollLoading] = useState(false);
+
+    const handleEnroll = () => {
+        if (!course) return;
+
+        setEnrollLoading(true);
+        addToCart(course);
+
+        if (isAuthenticated) {
+            router.push("/checkout");
+        } else {
+            toast.error("Please login to continue to checkout");
+            router.push("/login?returnUrl=/checkout");
+        }
+    };
+
     const handleAddToCart = () => {
         if (!isAuthenticated) {
             toast.error("Please login to add items to cart");
@@ -99,8 +115,13 @@ export default function CourseDetailPage() {
                         {hero?.subtitle || course.attributes.description}
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <Button size="lg" className="bg-white text-[#003366] hover:bg-blue-50 font-semibold px-8 h-12">
-                            Enroll Now
+                        <Button
+                            size="lg"
+                            className="bg-white text-[#003366] hover:bg-blue-50 font-semibold px-8 h-12"
+                            onClick={handleEnroll}
+                            disabled={enrollLoading}
+                        >
+                            {enrollLoading ? "Redirecting..." : "Enroll Now"}
                         </Button>
                         <Button variant="outline" size="lg" className="text-white border-white hover:bg-white/10 px-8 h-12 bg-transparent">
                             Download Syllabus
@@ -348,7 +369,7 @@ export default function CourseDetailPage() {
                                 <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-blue-100 -translate-x-1/2 hidden md:block"></div>
 
                                 {((roadmapModules && roadmapModules[activeModule]) || roadmap || []).map((item: any, idx: number) => (
-                                    <div key={idx} className={`relative flex flex-col md:flex-row gap-[96px] mb-[40px] items-center text-left ${idx % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+                                    <div key={idx} className={`relative flex flex-col md:flex-row gap-[96px] mb-[40px] items-center text-left ${idx % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
                                         {/* Timeline Dot */}
                                         <div className="absolute left-1/2 top-1/2 w-4 h-4 rounded-full bg-[#003366] ring-4 ring-white shadow-sm -translate-x-1/2 -translate-y-1/2 z-10 hidden md:block"></div>
 
@@ -366,7 +387,7 @@ export default function CourseDetailPage() {
                                                 <h3 className="text-xl font-bold text-slate-900 mb-2">{item.title}</h3>
                                                 <p className="text-slate-600 mb-4 leading-relaxed text-sm line-clamp-3">{item.desc}</p>
                                                 {item.topics && (
-                                                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-blue-200 bg-blue-50 text-blue-700 text-xs font-medium w-fit">
+                                                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-blue-200 bg-white text-blue-700 text-xs font-medium w-fit">
                                                         Topics Covered: {item.topics}
                                                     </div>
                                                 )}
@@ -420,16 +441,10 @@ export default function CourseDetailPage() {
 
                                     <Button
                                         className="flex-1 bg-blue-600 hover:bg-blue-700 h-9 text-sm"
-                                        onClick={() => {
-                                            if (!isAuthenticated) {
-                                                toast.error("Please login to purchase");
-                                                router.push("/login");
-                                            } else {
-                                                router.push("/checkout");
-                                            }
-                                        }}
+                                        onClick={handleEnroll}
+                                        disabled={enrollLoading}
                                     >
-                                        Buy Now
+                                        {enrollLoading ? "Redirecting..." : "Buy Now"}
                                     </Button>
                                     <Button
                                         variant="outline"

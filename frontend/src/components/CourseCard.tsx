@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -22,14 +25,18 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
     // Modules count handling (if modules is JSON/RichText)
     const moduleCount = Array.isArray(modules) ? modules.length : 10; // Default/Fallback
 
-    const handleAddToCart = () => {
-        if (!isAuthenticated) {
-            toast.error("Please login to add items to cart");
-            router.push("/login");
-            return;
-        }
+    const [enrollLoading, setEnrollLoading] = useState(false);
+
+    const handleEnroll = () => {
+        setEnrollLoading(true);
         addToCart(course);
-        toast.success("Added to cart");
+
+        if (isAuthenticated) {
+            router.push("/checkout");
+        } else {
+            toast.error("Please login to continue to checkout");
+            router.push("/login?returnUrl=/checkout");
+        }
     };
 
     return (
@@ -75,9 +82,10 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
                     <Button
                         size="sm"
                         className="h-7 text-xs w-full bg-blue-600 hover:bg-blue-700 text-white shadow-md shadow-blue-600/20"
-                        onClick={handleAddToCart}
+                        onClick={handleEnroll}
+                        disabled={enrollLoading}
                     >
-                        Add to Cart
+                        {enrollLoading ? "Redirecting..." : "Enroll Now"}
                     </Button>
                 </div>
             </div>

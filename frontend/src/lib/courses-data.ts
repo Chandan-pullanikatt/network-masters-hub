@@ -25,28 +25,23 @@ export const courses: Course[] = [
                 ]
             },
             overview: {
-                title: "Course Overview",
-                description: "A comprehensive deep-dive into networking fundamentals.",
+                title: "Core Skills You'll Master",
+                description: "Our curriculum is designed to take you from beginner to certified networking professional with practical, job-ready skills",
                 skills: [
-                    { title: 'Network Fundamentals', icon: Globe, desc: 'Routers, Switches, Cabling, TCP/UDP' },
-                    { title: 'Network Access', icon: Database, desc: 'VLANs, STP, EtherChannel' },
-                    { title: 'IP Connectivity', icon: Server, desc: 'IPv4/IPv6 Routing, OSPF' },
-                    { title: 'IP Services', icon: Activity, desc: 'DHCP, DNS, NTP, QoS' },
-                    { title: 'Security Fundamentals', icon: Shield, desc: 'VPNs, ACLs, Security Policies' },
-                    { title: 'Automation', icon: Code, desc: 'REST APIs, SDN, Puppet/Chef' },
+                    { title: 'Foundations', icon: User, desc: 'OSI model, TCP/IP basics, physical cabling, and switching fundamentals' },
+                    { title: 'Routing', icon: Server, desc: 'Static and dynamic routing (OSPF), VLAN configuration, and network segmentation' },
+                    { title: 'Security', icon: Shield, desc: 'Access Control Lists (ACLs), port security, and VLAN security fundamentals' },
+                    { title: 'Automation', icon: Code, desc: 'Network automation basics, programmable networks, and modern networking concepts.' },
                 ]
             },
-            roadmapModules: {
-                encor: [], // Not used for CCNA
-                enarsi: []
-            },
+
             roadmap: [
-                { id: '01', title: 'Network Fundamentals', desc: 'Introduction to networking concepts, routers, switches, and cabling.' },
-                { id: '02', title: 'IP Connectivity', desc: 'Mastering IPv4/IPv6 addressing, subnetting, and routing protocols.' },
-                { id: '03', title: 'Network Access', desc: 'Understanding VLANs, Trunking, Spanning Tree Protocol, and EtherChannel.' },
-                { id: '04', title: 'IP Services', desc: 'Configuring DHCP, DNS, NTP, and Quality of Service (QoS) for network optimization.' },
-                { id: '05', title: 'Security Fundamentals', desc: 'Implementing basic security measures, VPNs, ACLs, and device hardening.' },
-                { id: '06', title: 'Automation & Programmability', desc: 'Introduction to network automation, REST APIs, and Software-Defined Networking (SDN).' }
+                { id: '01', title: 'Network Fundamentals', desc: 'Build a strong foundation with the OSI and TCP/IP models, cabling types, and essential networking components — the core building blocks of every network engineer.', topics: 'OSI Model - IPv4/IPv6 Basics' },
+                { id: '02', title: 'Network Access', desc: 'Master Ethernet switching, VLAN configuration, Spanning Tree Protocol (STP), and inter-switch trunking concepts to control and segment networks efficiently.', topics: 'VLANs - Spanning Tree Protocol' },
+                { id: '03', title: 'IP Connectivity', desc: 'Learn how to configure and troubleshoot IPv4/IPv6 addressing, static routing, and dynamic routing protocols like OSPF for real-world networking environments.', topics: 'OSPF - Static Routes' },
+                { id: '04', title: 'IP Services', desc: 'Understand critical network services such as NAT (Network Address Translation), DHCP, NTP, and SNMP for monitoring, automation, and efficient device management.', topics: 'NAT/DHCP - SNMP' },
+                { id: '05', title: 'Security Fundamentals', desc: 'Protect and secure networks by learning about threat landscapes, Access Control Lists (ACLs), VPN technologies, and port security best practices.', topics: 'Firewalls - Network Security' },
+                { id: '06', title: 'Automation & Programmability', desc: 'Step into modern networking with Software-Defined Networking (SDN), REST APIs, JSON data formats, and automation tools used in enterprise environments.', topics: 'REST APIs - SDN Controllers' }
             ],
             faqs: [
                 { question: "Do I need prior experience?", answer: "No, this course starts from the basics." },

@@ -39,7 +39,7 @@ export default function CheckoutPage() {
     // Redirect if cart is empty
     useEffect(() => {
         if (cart.length === 0) {
-            router.push("/cart");
+            router.push("/courses");
         }
     }, [cart, router]);
 
