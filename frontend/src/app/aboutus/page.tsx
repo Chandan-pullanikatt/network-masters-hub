@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { User, Monitor, Compass } from "lucide-react";
+import { UserCheck, Server, Briefcase } from "lucide-react";
 
 export default function AboutUsPage() {
     return (
@@ -12,24 +12,25 @@ export default function AboutUsPage() {
                 {/* Content Container */}
                 <div className="w-full max-w-[1200px] px-[120px] flex flex-col gap-[80px] mb-[80px]">
 
-                    {/* SECTION 1 — HERO */}
-                    <section className="flex flex-col items-center text-center mt-[172px] gap-2 w-full max-w-[823px] mx-auto">
-                        {/* Small Top Badge */}
-                        <div className="bg-white/50 border border-slate-200 rounded-full px-4 py-1.5 backdrop-blur-sm">
-                            <span className="text-[14px] text-[#003366] font-medium tracking-wide">
-                                Leading the IT Education Revolution
-                            </span>
+                    <section className="flex flex-col items-center text-center mt-[172px] w-full max-w-[823px] mx-auto">
+                        <div className="bg-[#EAF1F8] border border-blue-200/60 rounded-3xl p-8 md:p-12 flex flex-col items-center gap-4 shadow-sm">
+                            {/* Small Top Badge */}
+                            <div className="bg-white/80 border border-blue-100 rounded-full px-4 py-1.5 backdrop-blur-sm shadow-sm">
+                                <span className="text-[14px] text-[#003366] font-medium tracking-wide">
+                                    Leading the IT Education Revolution
+                                </span>
+                            </div>
+
+                            {/* Main Heading */}
+                            <h1 className="text-[44px] font-bold text-[#1a1a1a] leading-[1.2] tracking-tight mt-2">
+                                Empowering the Next Generation <br /> of Network Engineers
+                            </h1>
+
+                            {/* Subtext */}
+                            <p className="text-[16px] text-slate-600 max-w-[600px] leading-relaxed">
+                                We bridge the gap between academic knowledge and real-world networking challenges through immersive, hands-on training aligned with global certification standards.
+                            </p>
                         </div>
-
-                        {/* Main Heading */}
-                        <h1 className="text-[44px] font-bold text-[#1a1a1a] leading-[1.2] tracking-tight">
-                            Empowering the Next Generation <br /> of Network Engineers
-                        </h1>
-
-                        {/* Subtext */}
-                        <p className="text-[16px] text-slate-600 max-w-[600px] leading-relaxed">
-                            We bridge the gap between academic knowledge and real-world networking challenges through immersive, hands-on training aligned with global certification standards.
-                        </p>
                     </section>
 
                     {/* SECTION 2 — OUR CORE VALUES */}
@@ -48,12 +49,12 @@ export default function AboutUsPage() {
                                 {/* Card 1 */}
                                 <div className="bg-white rounded-xl p-[24px] flex flex-col items-start gap-4 shadow-sm hover:shadow-md transition-shadow h-full">
                                     <div className="bg-[#EAF1F8] p-3 rounded-lg text-[#003366]">
-                                        <User className="w-6 h-6" />
+                                        <UserCheck className="w-6 h-6" />
                                     </div>
                                     <div>
-                                        <h3 className="text-[18px] font-bold text-[#1a1a1a] mb-2">Person Instruction</h3>
+                                        <h3 className="text-[18px] font-bold text-[#1a1a1a] mb-2">Expert-Led Instruction</h3>
                                         <p className="text-[14px] text-slate-600 leading-relaxed">
-                                            Benefit from live instruction by passionate Cisco expert
+                                            Gain direct mentorship from certified and industry-experienced networking professional.
                                         </p>
                                     </div>
                                 </div>
@@ -61,12 +62,12 @@ export default function AboutUsPage() {
                                 {/* Card 2 */}
                                 <div className="bg-white rounded-xl p-[24px] flex flex-col items-start gap-4 shadow-sm hover:shadow-md transition-shadow h-full">
                                     <div className="bg-[#EAF1F8] p-3 rounded-lg text-[#003366]">
-                                        <Monitor className="w-6 h-6" />
+                                        <Server className="w-6 h-6" />
                                     </div>
                                     <div>
-                                        <h3 className="text-[18px] font-bold text-[#1a1a1a] mb-2">Round-the-clock lab access</h3>
+                                        <h3 className="text-[18px] font-bold text-[#1a1a1a] mb-2">Round the clock Lab Access</h3>
                                         <p className="text-[14px] text-slate-600 leading-relaxed">
-                                            You will enjoy access to a cutting-edge lab environment to refine your abilities
+                                            Practice, experiment, and strengthen your technical skills with hands-on infrastructure designed for real industry scenarios.
                                         </p>
                                     </div>
                                 </div>
@@ -74,12 +75,12 @@ export default function AboutUsPage() {
                                 {/* Card 3 */}
                                 <div className="bg-white rounded-xl p-[24px] flex flex-col items-start gap-4 shadow-sm hover:shadow-md transition-shadow h-full">
                                     <div className="bg-[#EAF1F8] p-3 rounded-lg text-[#003366]">
-                                        <Compass className="w-6 h-6" />
+                                        <Briefcase className="w-6 h-6" />
                                     </div>
                                     <div>
-                                        <h3 className="text-[18px] font-bold text-[#1a1a1a] mb-2">Personalized Career Guidance</h3>
+                                        <h3 className="text-[18px] font-bold text-[#1a1a1a] mb-2">Personalised Career Guidance</h3>
                                         <p className="text-[14px] text-slate-600 leading-relaxed">
-                                            Secure your networking role with PM Networking training for Cisco technologies.
+                                            From certification preparation to job readiness, we support your journey toward securing a professional role in networking and IT infrastructure.
                                         </p>
                                     </div>
                                 </div>
