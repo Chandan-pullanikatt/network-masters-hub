@@ -42,7 +42,7 @@ const Hero = () => {
                         </span>
                     </motion.div>
 
-                    <motion.h1 variants={fadeInUp} className="text-4xl md:text-5xl lg:text-[52px] font-bold tracking-tight leading-tight text-white drop-shadow-sm mb-2">
+                    <motion.h1 variants={fadeInUp} className="text-[52px] font-bold tracking-tight leading-tight text-white drop-shadow-sm mb-2">
                         Master IT & Networking with <br />
                         industry-led training
                     </motion.h1>

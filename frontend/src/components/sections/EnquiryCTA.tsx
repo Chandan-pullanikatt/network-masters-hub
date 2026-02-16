@@ -74,14 +74,14 @@ const EnquiryCTA = () => {
                 <div className="flex flex-col lg:flex-row rounded-3xl overflow-hidden shadow-xl bg-white max-w-6xl mx-auto">
 
                     {/* Left Side - Dark Blue Visual */}
-                    <div className="lg:w-[40%] bg-[#003B70] p-12 text-white flex flex-col justify-between relative overflow-hidden">
+                    <div className="lg:w-[40%] bg-[#003B70] p-6 md:p-12 text-white flex flex-col justify-between relative overflow-hidden">
                         {/* Background decorative elements - attempting to match the 'x' pattern or subtle texture if possible, otherwise keeping clean dark blue */}
                         <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none"
                             style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
 
                         <div className="relative z-10 space-y-8">
                             <div>
-                                <h2 className="text-3xl font-bold mb-4 leading-tight">Book Your Complimentary<br />Career Consultation</h2>
+                                <h2 className="text-2xl md:text-3xl font-bold mb-4 leading-tight">Book Your Complimentary<br />Career Consultation</h2>
                                 <p className="text-blue-100/90 text-lg">
                                     Schedule a Free 1-on-1 Session for Personalized Guidance!
                                 </p>
@@ -122,7 +122,7 @@ const EnquiryCTA = () => {
                     </div>
 
                     {/* Right Side - Form */}
-                    <div className="lg:w-[60%] p-12 bg-white">
+                    <div className="lg:w-[60%] p-6 md:p-12 bg-white">
                         <div className="mb-8">
                             <h3 className="text-3xl font-bold text-slate-900 mb-2">Send an Enquiry</h3>
                             <p className="text-slate-500 text-sm">Complete the form below and our team will get back to you within 24 hours</p>

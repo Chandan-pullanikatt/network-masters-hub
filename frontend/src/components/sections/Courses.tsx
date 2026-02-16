@@ -9,8 +9,8 @@ const popularCourses = courses;
 
 const Courses = () => {
     return (
-        <section id="courses" className="py-20 md:py-32 bg-[#F8F9FA]">
-            <div className="max-w-7xl mx-auto w-full px-4 md:px-8">
+        <section id="courses" className="py-[150px] bg-[#F8F9FA]">
+            <div className="max-w-[1280px] mx-auto w-full px-6">
                 <MotionDiv
                     variants={staggerContainer}
                     initial="hidden"

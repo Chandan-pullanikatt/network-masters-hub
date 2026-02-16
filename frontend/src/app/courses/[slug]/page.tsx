@@ -130,11 +130,11 @@ export default function CourseDetailPage() {
                 </div>
             </div>
 
-            <div className="max-w-[1200px] mx-auto rounded-[12px] relative z-10 -mt-[100px] bg-white shadow-xl px-0 pb-[60px] mb-[120px]">
+            <div className="max-w-7xl mx-auto rounded-[12px] relative z-10 -mt-[100px] bg-white shadow-xl px-0 pb-[60px] mb-[120px] w-full">
 
                 {/* Tabs Navigation */}
-                <div className="px-[24px] pt-[24px] pb-[24px] border-b border-slate-200 mb-[48px]">
-                    <div className="flex flex-wrap gap-8 items-center">
+                <div className="px-4 md:px-6 pt-[24px] pb-[24px] border-b border-slate-200 mb-[48px] overflow-x-auto">
+                    <div className="flex gap-8 items-center min-w-max">
                         {['Overview', 'Roadmap', 'Batches', 'Course Schedule', 'FAQ'].map((item) => {
                             const id = item.toLowerCase().replace(' ', '-');
                             const isActive = activeSection === id;
@@ -160,7 +160,7 @@ export default function CourseDetailPage() {
                 <div className="space-y-[48px]">
 
                     {/* Program Overview - Core Skills */}
-                    <section id="overview" className="scroll-mt-32 w-[1120px] mx-auto">
+                    <section id="overview" className="scroll-mt-32 max-w-6xl mx-auto px-4">
                         <div className="text-center mb-[48px]">
                             <h2 className="text-3xl font-bold text-slate-900 mb-4">{overview?.title || "Course Overview"}</h2>
                             <p className="text-slate-600 max-w-2xl mx-auto">
@@ -321,7 +321,7 @@ export default function CourseDetailPage() {
                         ) : (
                             <div className="flex flex-wrap lg:flex-nowrap gap-[24px] justify-center lg:justify-start">
                                 {overview?.skills.map((skill: any, idx: number) => (
-                                    <div key={idx} className="bg-[#EBF3FA] p-[16px] rounded-[12px] border border-slate-100/50 hover:shadow-md transition-shadow w-[262px] h-[175px] flex-shrink-0 flex flex-col justify-between">
+                                    <div key={idx} className="bg-[#EBF3FA] p-[16px] rounded-[12px] border border-slate-100/50 hover:shadow-md transition-shadow w-full sm:w-[262px] h-[175px] flex-shrink-0 flex flex-col justify-between">
                                         <div>
                                             <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center border border-slate-200 mb-3 text-[#003366]">
                                                 <skill.icon className="w-5 h-5" />
@@ -337,7 +337,7 @@ export default function CourseDetailPage() {
 
                     {/* Learning Roadmap */}
                     {(roadmapModules || (roadmap && roadmap.length > 0)) && (
-                        <section id="roadmap" className="scroll-mt-32 w-[1200px] mx-auto bg-[#0079FF]/5 rounded-[12px] pt-[48px] pb-[48px] px-[40px]">
+                        <section id="roadmap" className="scroll-mt-32 max-w-7xl mx-auto bg-[#0079FF]/5 rounded-[12px] py-12 px-4 md:px-10">
                             <div className="text-center mb-[48px]">
                                 <h2 className="text-3xl font-bold text-slate-900 mb-[8px]">Curriculum Roadmap</h2>
                                 <p className="text-slate-600 max-w-2xl mx-auto">
@@ -369,13 +369,13 @@ export default function CourseDetailPage() {
                                 <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-blue-100 -translate-x-1/2 hidden md:block"></div>
 
                                 {((roadmapModules && roadmapModules[activeModule]) || roadmap || []).map((item: any, idx: number) => (
-                                    <div key={idx} className={`relative flex flex-col md:flex-row gap-[96px] mb-[40px] items-center text-left ${idx % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
+                                    <div key={idx} className={`relative flex flex-col md:flex-row gap-8 md:gap-[96px] mb-[40px] items-center text-left ${idx % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
                                         {/* Timeline Dot */}
                                         <div className="absolute left-1/2 top-1/2 w-4 h-4 rounded-full bg-[#003366] ring-4 ring-white shadow-sm -translate-x-1/2 -translate-y-1/2 z-10 hidden md:block"></div>
 
                                         {/* Content Card */}
-                                        <div className="w-[506px] h-[254px]">
-                                            <div className="bg-white p-[16px] rounded-[12px] shadow-sm border border-slate-100 hover:shadow-md transition-shadow h-full flex flex-col justify-center">
+                                        <div className="w-full md:w-1/2 md:max-w-[506px]">
+                                            <div className="bg-white p-[16px] rounded-[12px] shadow-sm border border-slate-100 hover:shadow-md transition-shadow h-full flex flex-col justify-center min-h-[250px]">
                                                 <div className="flex items-center gap-4 mb-3">
                                                     <span className="text-4xl font-light text-slate-300">{item.id}</span>
                                                     <div className="ml-auto">
@@ -393,7 +393,7 @@ export default function CourseDetailPage() {
                                                 )}
                                             </div>
                                         </div>
-                                        <div className="w-[506px] hidden md:block"></div>
+                                        <div className="w-full md:w-1/2 hidden md:block"></div>
                                     </div>
                                 ))}
                             </div>
@@ -401,7 +401,7 @@ export default function CourseDetailPage() {
                     )}
 
                     {/* Upcoming Batches Section */}
-                    <section id="batches" className="scroll-mt-32 w-[1120px] h-[568px] mx-auto pt-[48px] pb-[48px] px-[40px] bg-white rounded-[12px] shadow-sm border border-slate-100 mb-[100px]">
+                    <section id="batches" className="scroll-mt-32 max-w-6xl mx-auto py-12 px-4 md:px-10 bg-white rounded-[12px] shadow-sm border border-slate-100 mb-[100px]">
                         <div className="text-center mb-[48px]">
                             <h2 className="text-3xl font-bold mb-[8px]">Upcoming Batches</h2>
                             <p className="text-slate-600 max-w-2xl mx-auto">
@@ -409,9 +409,9 @@ export default function CourseDetailPage() {
                             </p>
                         </div>
 
-                        <div className="flex gap-[40px] h-[calc(100%-100px)]">
+                        <div className="flex flex-col lg:flex-row gap-[40px] h-auto">
                             {/* Pricing Card */}
-                            <div className="w-[340px] flex-shrink-0 bg-[#003366] text-white rounded-[12px] p-[24px] shadow-lg flex flex-col h-full">
+                            <div className="w-full lg:w-[340px] flex-shrink-0 bg-[#003366] text-white rounded-[12px] p-[24px] shadow-lg flex flex-col h-auto lg:h-full">
                                 <p className="text-blue-200 text-sm font-medium mb-1">Total Course Fee</p>
                                 <div className="flex items-baseline gap-2 mb-4">
                                     <span className="text-3xl font-bold">₹{course.attributes.price.toLocaleString('en-IN')}</span>

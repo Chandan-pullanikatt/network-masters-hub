@@ -11,7 +11,7 @@ const testimonials = Array(6).fill({
 const Testimonials = () => {
     return (
         <section className="py-20 bg-[#F8F9FA]">
-            <div className="max-w-7xl mx-auto w-full px-4 md:px-8">
+            <div className="max-w-[1280px] mx-auto w-full px-6">
                 <MotionDiv
                     variants={staggerContainer}
                     initial="hidden"
