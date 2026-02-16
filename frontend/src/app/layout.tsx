@@ -26,7 +26,7 @@ export default function RootLayout({
       <body className={urbanist.className}>
         <CartProvider>
           <AuthProvider>
-            <div className="flex min-h-screen flex-col">
+            <div className="flex min-h-screen flex-col w-full overflow-x-hidden">
               <Navbar />
               <div className="flex-1">{children}</div>
               <Footer />

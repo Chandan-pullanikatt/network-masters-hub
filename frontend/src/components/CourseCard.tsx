@@ -40,7 +40,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
     };
 
     return (
-        <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full">
+        <div className="group relative flex flex-col w-full max-w-sm mx-auto overflow-hidden rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 h-full">
             <div className="h-[170px] w-full overflow-hidden relative">
                 <Image
                     src={imageUrl}

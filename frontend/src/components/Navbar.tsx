@@ -42,7 +42,7 @@ const Navbar = () => {
 
     return (
         <nav className={navbarClasses}>
-            <div className="container mx-auto flex h-16 items-center justify-between px-4">
+            <div className="container mx-auto flex h-16 items-center justify-between px-2 md:px-4">
                 <Link href="/" className="flex items-center space-x-2">
                     {/* Logo */}
                     <Image
@@ -114,7 +114,7 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             {isOpen && (
-                <div className="md:hidden border-t p-4 space-y-4 bg-background text-foreground h-[calc(100vh-64px)] overflow-y-auto">
+                <div className="fixed inset-0 top-16 z-50 bg-background text-foreground overflow-y-auto pb-20 px-4 pt-4 border-t shadow-lg md:hidden">
                     <Link href="/" className="block text-sm font-medium hover:text-primary" onClick={() => setIsOpen(false)}>
                         Home
                     </Link>

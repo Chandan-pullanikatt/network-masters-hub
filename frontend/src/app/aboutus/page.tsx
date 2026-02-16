@@ -10,10 +10,10 @@ export default function AboutUsPage() {
             <div className="w-full max-w-[1440px] flex flex-col items-center">
 
                 {/* Content Container */}
-                <div className="w-full max-w-[1200px] px-[120px] flex flex-col gap-[80px] mb-[80px]">
+                <div className="w-full max-w-7xl px-4 md:px-8 lg:px-12 flex flex-col gap-12 md:gap-20 mb-20">
 
                     {/* SECTION 1 — HERO */}
-                    <section className="flex flex-col items-center text-center mt-[172px] gap-2 w-full max-w-[823px] mx-auto">
+                    <section className="flex flex-col items-center text-center mt-24 md:mt-32 gap-2 w-full max-w-3xl mx-auto">
                         {/* Small Top Badge */}
                         <div className="bg-white/50 border border-slate-200 rounded-full px-4 py-1.5 backdrop-blur-sm">
                             <span className="text-[14px] text-[#003366] font-medium tracking-wide">
@@ -33,7 +33,7 @@ export default function AboutUsPage() {
                     </section>
 
                     {/* SECTION 2 — OUR CORE VALUES */}
-                    <section className="w-full bg-[#EAF1F8] rounded-xl px-[40px] py-[64px]">
+                    <section className="w-full bg-[#EAF1F8] rounded-xl px-6 py-10 md:p-16">
                         <div className="flex flex-col items-center gap-[48px]">
                             {/* Heading Block */}
                             <div className="text-center">
@@ -105,7 +105,7 @@ export default function AboutUsPage() {
                         </div>
 
                         {/* Right Column (Image) */}
-                        <div className="flex-shrink-0">
+                        <div className="flex-shrink-0 w-full lg:w-auto">
                             <div className="relative w-full lg:w-[491px] h-[290px] rounded-[24px] overflow-hidden shadow-lg">
                                 <Image
                                     src="/assets/aboutus1.png"
@@ -121,7 +121,7 @@ export default function AboutUsPage() {
                     <section className="w-full bg-[#F5F8FC] py-[80px]">
                         <div className="flex flex-col lg:flex-row items-center justify-center gap-[40px]">
                             {/* Left Column (Founder Image) */}
-                            <div className="flex-shrink-0">
+                            <div className="flex-shrink-0 w-full lg:w-auto">
                                 <div className="relative w-full lg:w-[491px] h-[550px] rounded-[16px] overflow-hidden">
                                     <Image
                                         src="/assets/cef.png"

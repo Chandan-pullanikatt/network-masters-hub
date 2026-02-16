@@ -28,7 +28,7 @@ const features = [
 const Features = () => {
     return (
         <section className="py-20 bg-white">
-            <div className="max-w-[1280px] mx-auto w-full px-6">
+            <div className="max-w-7xl mx-auto w-full px-4 md:px-8">
                 <MotionDiv
                     variants={staggerContainer}
                     initial="hidden"
