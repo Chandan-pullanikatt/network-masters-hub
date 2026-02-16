@@ -93,21 +93,27 @@ export default function AboutUsPage() {
                         {/* Left Column (Text) */}
                         <div className="flex-1 max-w-[600px] flex flex-col gap-4">
                             <h2 className="text-[28px] font-bold text-[#1a1a1a] leading-tight">
-                                A Journey Fueled by Technical Curiosity and a Passion for Teaching
+                                A Journey Rooted in Technical Excellence and a Passion for Mentorship
                             </h2>
                             <div className="space-y-4 text-[16px] text-slate-600 leading-relaxed">
                                 <p>
-                                    Founded in 2012, NetAcademy began as a single-server setup in a small office. Today, we've grown into a trusted IT education hub, empowering thousands of students to master the infrastructure powering the modern digital world.
+                                    Network Masters Hub was founded with a clear vision — to bridge the gap between theoretical knowledge and real-world IT infrastructure expertise.
                                 </p>
                                 <p>
-                                    Our mission is simple yet powerful — to democratize high-quality networking education and equip learners with the skills needed to thrive in the 21st century.
+                                    The journey began with Pankaj’s career as a Network Engineer, where hands-on experience across enterprise environments shaped a deep understanding of networking systems, troubleshooting, and infrastructure design. Over the years, this technical foundation evolved into mastery — mentoring aspiring professionals, leading advanced training programs, and guiding more than 5,000+ students toward successful IT careers.
+                                </p>
+                                <p>
+                                    With over a decade of industry and training experience, Network Masters Hub stands as a platform built on practical exposure, real-world scenarios, and career-focused learning.
+                                </p>
+                                <p>
+                                    Our mission is simple yet powerful — to elevate the standards of networking education and equip learners with the technical confidence, problem-solving ability, and industry-ready skills required to thrive in the 21st-century IT landscape.
                                 </p>
                             </div>
                         </div>
 
                         {/* Right Column (Image) */}
                         <div className="flex-shrink-0">
-                            <div className="relative w-full lg:w-[491px] h-[290px] rounded-[24px] overflow-hidden shadow-lg">
+                            <div className="relative w-full lg:w-[491px] h-[350px] lg:h-[550px] rounded-[24px] overflow-hidden shadow-lg">
                                 <Image
                                     src="/assets/aboutus1.png"
                                     alt="Our Journey"
@@ -118,12 +124,11 @@ export default function AboutUsPage() {
                         </div>
                     </section>
 
-                    {/* SECTION 4 — MEET OUR VISIONARY */}
                     <section className="w-full bg-[#F5F8FC] py-[80px]">
                         <div className="flex flex-col lg:flex-row items-center justify-center gap-[40px]">
                             {/* Left Column (Founder Image) */}
                             <div className="flex-shrink-0">
-                                <div className="relative w-full lg:w-[491px] h-[550px] rounded-[16px] overflow-hidden">
+                                <div className="relative w-full lg:w-[491px] h-[500px] lg:h-[780px] rounded-[16px] overflow-hidden">
                                     <Image
                                         src="/assets/cef.png"
                                         alt="Pankaj Sethi - Founder"
@@ -154,12 +159,72 @@ export default function AboutUsPage() {
                                     {/* Description */}
                                     <div className="text-[15px] text-slate-600 leading-[160%] space-y-4">
                                         <p>
-                                            Pankaj Sethi, the visionary behind Network Masters Hub, is not just an instructor but a catalyst for transformation in the field of networking. Armed with a Bachelor of Technology degree from BRCM College of Engineering and Technology, Bhiwani, and an MBA from Symbiosis International University, Pankaj honed his skills at various MNCs for over 15 years before following his true calling—teaching.
+                                            Pankaj Sethi is the driving force behind Network Masters Hub — a technology leader, mentor, and industry practitioner committed to redefining networking education in India.
                                         </p>
                                         <p>
-                                            His passion for simplifying complex networking concepts has earned him the reputation of being one of the top educators. With over 4 years of teaching experience, Pankaj has guided countless students and professionals to achieve remarkable success in their careers. Network Masters Hub, under his adept mentorship, has emerged as the fastest-growing platform in India for CISCO Certification, offering a beacon of knowledge and excellence to all aspiring networking professionals.
+                                            Beginning his career as a Network Engineer, Pankaj built his expertise through extensive hands-on experience in enterprise IT environments, working across complex infrastructures and mission-critical networks. Over the years, his deep technical foundation evolved into a mastery of both execution and mentorship — bridging the gap between industry requirements and classroom learning.
+                                        </p>
+                                        <p>
+                                            With more than a decade of industry exposure and having guided 5,000+ aspiring professionals, Pankaj has established himself as a trusted authority in networking and infrastructure training. His ability to simplify complex architectures into practical, real-world applications has empowered countless learners to build confident and successful IT careers.
+                                        </p>
+                                        <p>
+                                            Under his leadership, Network Masters Hub stands as a results-driven platform focused on hands-on expertise, structured career pathways, and industry-ready skill development — setting new benchmarks in professional networking education.
                                         </p>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* SECTION 5 — CERTIFICATIONS */}
+                    <section className="w-full bg-white py-[80px] rounded-2xl my-8 shadow-sm border border-slate-100">
+                        <div className="flex flex-col items-center text-center gap-10 max-w-[1000px] mx-auto px-6">
+
+                            {/* Header Content */}
+                            <div className="flex flex-col items-center gap-4">
+                                <div className="bg-[#EAF1F8] border border-blue-100 rounded-full px-4 py-1.5 backdrop-blur-sm">
+                                    <span className="text-[12px] text-[#003366] font-bold tracking-wide uppercase">
+                                        Global Certifications
+                                    </span>
+                                </div>
+                                <h2 className="text-[28px] font-bold text-[#1a1a1a]">
+                                    Validated Expertise
+                                </h2>
+                                <p className="text-[16px] text-slate-600 max-w-[800px] leading-relaxed">
+                                    "Certified with CCNA, Cisco Certified Specialist, and CCNP Enterprise, I bring advanced enterprise networking expertise backed by globally recognized Cisco standards. My approach focuses on practical skills, real-world troubleshooting, and job-ready implementation — not just theory."
+                                </p>
+                            </div>
+
+                            {/* Images Grid */}
+                            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 mt-2">
+                                {/* Cert 1 */}
+                                <div className="relative w-[180px] h-[180px] grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-105">
+                                    <Image
+                                        src="/assets/aboutus2.png"
+                                        alt="CCNA Certification"
+                                        fill
+                                        className="object-contain"
+                                    />
+                                </div>
+
+                                {/* Cert 2 */}
+                                <div className="relative w-[180px] h-[180px] grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-105">
+                                    <Image
+                                        src="/assets/aboutus3.png"
+                                        alt="Cisco Certified Specialist"
+                                        fill
+                                        className="object-contain"
+                                    />
+                                </div>
+
+                                {/* Cert 3 */}
+                                <div className="relative w-[180px] h-[180px] grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-105">
+                                    <Image
+                                        src="/assets/aboutus4.png"
+                                        alt="CCNP Enterprise"
+                                        fill
+                                        className="object-contain"
+                                    />
                                 </div>
                             </div>
                         </div>
