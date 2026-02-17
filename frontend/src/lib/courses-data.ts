@@ -1,5 +1,5 @@
 import { Course } from '@/types';
-import { User, Server, Shield, Activity, Database, Globe, Lock, Cpu, Cloud, Code, Compass, Lightbulb } from 'lucide-react';
+import { User, Server, Shield, Activity, Database, Globe, Lock, Cpu, Cloud, Code, Compass, Lightbulb, Layers, Route, ShieldCheck, Bot } from 'lucide-react';
 
 export const courses: Course[] = [
     {
@@ -28,10 +28,10 @@ export const courses: Course[] = [
                 title: "Core Skills You'll Master",
                 description: "Our curriculum is designed to take you from beginner to certified networking professional with practical, job-ready skills",
                 skills: [
-                    { title: 'Foundations', icon: User, desc: 'OSI model, TCP/IP basics, physical cabling, and switching fundamentals' },
-                    { title: 'Routing', icon: Server, desc: 'Static and dynamic routing (OSPF), VLAN configuration, and network segmentation' },
-                    { title: 'Security', icon: Shield, desc: 'Access Control Lists (ACLs), port security, and VLAN security fundamentals' },
-                    { title: 'Automation', icon: Code, desc: 'Network automation basics, programmable networks, and modern networking concepts.' },
+                    { title: 'Foundations', icon: Layers, desc: 'OSI model, TCP/IP basics, physical cabling, and switching fundamentals' },
+                    { title: 'Routing', icon: Route, desc: 'Static and dynamic routing (OSPF), VLAN configuration, and network segmentation' },
+                    { title: 'Security', icon: ShieldCheck, desc: 'Access Control Lists (ACLs), port security, and VLAN security fundamentals' },
+                    { title: 'Automation', icon: Bot, desc: 'Network automation basics, programmable networks, and modern networking concepts.' },
                 ]
             },
 
@@ -253,3 +253,4 @@ export const courses: Course[] = [
         }
     }
 ];
+

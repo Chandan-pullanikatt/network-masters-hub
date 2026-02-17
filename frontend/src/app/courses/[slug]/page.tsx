@@ -336,10 +336,9 @@ export default function CourseDetailPage() {
                     {(roadmapModules || (roadmap && roadmap.length > 0)) && (
                         <section id="roadmap" className="scroll-mt-32 max-w-7xl mx-auto bg-[#0079FF]/5 rounded-[12px] py-12 px-4 md:px-10">
                             <div className="text-center mb-[48px]">
-                                <h2 className="text-3xl font-bold text-slate-900 mb-[8px]">Curriculum Roadmap</h2>
-                                <p className="text-slate-600 max-w-2xl mx-auto">
+                                <h2 className="text-3xl font-bold text-slate-900 max-w-2xl mx-auto">
                                     A structured journey to mastery.
-                                </p>
+                                </h2>
                             </div>
 
                             {roadmapModules && (
