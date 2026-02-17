@@ -427,7 +427,7 @@ export default function CourseDetailPage() {
 
                                 <ul className="space-y-2 mb-auto">
                                     {[
-                                        '60+ hours of learning',
+                                        `${course.attributes.videoHours}+ hours of learning`,
                                         'Instructor-led HD sessions',
                                         'Job & interview support',
                                         'Scenario-based practice',

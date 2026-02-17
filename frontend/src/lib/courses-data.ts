@@ -69,7 +69,8 @@ export const courses: Course[] = [
                 originalPrice: 40000,
                 startDate: "Upcoming",
                 batches: [
-                    { name: "Weekend Intensive", time: "09:00 AM – 01:00 PM (IST)", days: "Saturday, Sunday", status: "Filling Fast" }
+                    { name: "Weekday Evening Batch", time: "05:00 PM – 07:00 PM", days: "Monday – Friday", status: "Filling Fast", startDate: "23rd February, 2026" },
+                    { name: "Weekend Evening Batch", time: "05:00 PM – 08:00 PM", days: "Saturday, Sunday", status: "Open", startDate: "28th February, 2026" }
                 ]
             },
             overview: {
@@ -78,7 +79,7 @@ export const courses: Course[] = [
                 skills: [
                     {
                         title: '350-401 ENCOR',
-                        icon: Compass,
+                        icon: Cpu,
                         desc: 'Implementing and Operating Cisco Enterprise Network Core Technologies.',
                         points: [
                             'Dual stack (IPv4 and IPv6) architecture',
@@ -88,7 +89,7 @@ export const courses: Course[] = [
                     },
                     {
                         title: '300-410 ENARSI',
-                        icon: Lightbulb,
+                        icon: Route,
                         desc: 'Implementing Cisco Enterprise Advanced Routing and Services.',
                         points: [
                             'Layer 3 technologies & Routing Protocols',
