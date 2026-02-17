@@ -8,16 +8,16 @@ export const courses: Course[] = [
             title: "Cisco CCNA 200–301 Course (Training & Certificate)",
             slug: "ccna-200-301",
             description: "Master the fundamentals of networking with our comprehensive CCNA course.",
-            duration: "7 weeks", // From homepage
+            duration: "7 Weeks", // From homepage
             modules: 6,
             videoHours: 60,
-            price: 15000, // From homepage
+            price: 8500, // From homepage
             image: { data: { id: 1, attributes: { url: '/assets/p1.webp', alternativeText: 'CCNA', width: 640, height: 360 } } },
             hero: {
                 title: "Cisco CCNA 200–301 Course (Training & Certificate)",
                 subtitle: "Kickstart your networking career with the industry standard certification.",
-                price: 15000,
-                originalPrice: 25000,
+                price: 8500,
+                originalPrice: 15000,
                 startDate: "June 15, 2024",
                 batches: [
                     { name: "Weekday Evening Batch", time: "08:00 PM – 10:00 PM", days: "Monday – Friday", status: "Filling Fast", startDate: "23rd February 2026" },
@@ -57,7 +57,7 @@ export const courses: Course[] = [
             title: "CCNP (Encor and Enarsi) Online Training Course",
             slug: "ccnp-enterprise",
             description: "Advance your career with professional-level networking skills.",
-            duration: "12 weeks", // From homepage
+            duration: "12 Weeks", // From homepage
             modules: 10,
             videoHours: 120,
             price: 25000, // From homepage
@@ -127,7 +127,7 @@ export const courses: Course[] = [
             title: "Cisco SD-WAN Online Course | Get Lifetime Access",
             slug: "cisco-sd-wan",
             description: "Master Software-Defined WAN.",
-            duration: "4 weeks", // From homepage
+            duration: "4 Weeks", // From homepage
             modules: 6,
             videoHours: 40,
             price: 15000, // From homepage
@@ -173,7 +173,7 @@ export const courses: Course[] = [
             title: "Complete Python Automation Online Course for Network Engineers",
             slug: "python-automation",
             description: "Automate network tasks using Python.",
-            duration: "4 weeks", // From homepage
+            duration: "4 Weeks", // From homepage
             modules: 5,
             videoHours: 40,
             price: 15000, // From homepage
@@ -218,7 +218,7 @@ export const courses: Course[] = [
             title: "CCNA & CCNP Combo Batch",
             slug: "ccna-ccnp-combo",
             description: "Comprehensive networking mastery.",
-            duration: "20 weeks", // From homepage
+            duration: "20 Weeks", // From homepage
             modules: 16,
             videoHours: 180,
             price: 30000, // From homepage

@@ -15,7 +15,7 @@ export default function RefundPolicyPage() {
 
                     {/* Header Section */}
                     <div className="w-full max-w-[800px] mb-[48px] text-center flex flex-col items-center">
-                        <h1 className="text-[44px] font-bold text-[#003366] leading-[1.2] tracking-tight mb-4">
+                        <h1 className="text-[44px] font-bold text-white bg-[#003366] px-6 py-2 rounded-lg leading-[1.2] tracking-tight mb-4 uppercase">
                             Refund Policy
                         </h1>
                         <div className="bg-[#E7F0FF] text-[#0047AB] px-4 py-1.5 rounded-full text-[13px] font-bold flex items-center gap-2 mb-6">
@@ -23,7 +23,7 @@ export default function RefundPolicyPage() {
                             Important Enrollment Information
                         </div>
                         <p className="text-[15px] text-slate-600 leading-relaxed max-w-[600px]">
-                            At Network Masters Hub, we strive to provide world-class IT education. We strongly recommend all prospective students to thoroughly review course details, syllabi, and prerequisites before completing enrollment.
+                            At Network Masters Hub, we strive to provide world-class IT education. We strongly recommend all prospective students to thoroughly review course details, syllabus, and prerequisites before completing enrollment.
                         </p>
                     </div>
 
@@ -122,11 +122,7 @@ export default function RefundPolicyPage() {
 
                         </div>
 
-                        <div className="mt-[64px] pt-[32px] border-t border-slate-100 text-center">
-                            <p className="text-[12px] text-slate-400">
-                                Last updated: October 24, 2023
-                            </p>
-                        </div>
+
 
                     </div>
 
