@@ -34,6 +34,7 @@ export interface Course {
                 time: string;
                 days: string;
                 status: string;
+                startDate?: string;
             }[];
         };
         overview?: {

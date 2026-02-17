@@ -46,7 +46,7 @@ const PopularCourseCard: React.FC<PopularCourseCardProps> = ({ course }) => {
                         <div className="w-5 h-5 flex items-center justify-center bg-slate-100 rounded text-slate-400">
                             <div className="w-2.5 h-2.5 bg-slate-300 rounded-sm"></div>
                         </div>
-                        <span>{moduleCount} Module</span>
+                        <span>{moduleCount} Modules</span>
                     </div>
                     <div className="flex items-center gap-3 text-sm text-slate-600">
                         <div className="w-5 h-5 flex items-center justify-center bg-slate-100 rounded text-slate-400">

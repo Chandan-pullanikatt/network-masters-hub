@@ -8,9 +8,9 @@ export const courses: Course[] = [
             title: "Cisco CCNA 200–301 Course (Training & Certificate)",
             slug: "ccna-200-301",
             description: "Master the fundamentals of networking with our comprehensive CCNA course.",
-            duration: "6 weeks", // From homepage
-            modules: 5,
-            videoHours: 40,
+            duration: "7 weeks", // From homepage
+            modules: 6,
+            videoHours: 60,
             price: 15000, // From homepage
             image: { data: { id: 1, attributes: { url: '/assets/p1.webp', alternativeText: 'CCNA', width: 640, height: 360 } } },
             hero: {
@@ -20,8 +20,8 @@ export const courses: Course[] = [
                 originalPrice: 25000,
                 startDate: "June 15, 2024",
                 batches: [
-                    { name: "Weekend Batch", time: "10:00 AM – 02:00 PM", days: "Saturday, Sunday", status: "Open" },
-                    { name: "Weekday Evening", time: "07:00 PM – 09:00 PM", days: "Mon – Fri", status: "Filling Fast" }
+                    { name: "Weekday Evening Batch", time: "08:00 PM – 10:00 PM", days: "Monday – Friday", status: "Filling Fast", startDate: "23rd February 2026" },
+                    { name: "Weekend Morning Batch", time: "10:00 AM – 01:00 PM", days: "Saturday, Sunday", status: "Open", startDate: "28th February 2026" }
                 ]
             },
             overview: {
@@ -57,9 +57,9 @@ export const courses: Course[] = [
             title: "CCNP (Encor and Enarsi) Online Training Course",
             slug: "ccnp-enterprise",
             description: "Advance your career with professional-level networking skills.",
-            duration: "15 weeks", // From homepage
+            duration: "12 weeks", // From homepage
             modules: 10,
-            videoHours: 60,
+            videoHours: 120,
             price: 25000, // From homepage
             image: { data: { id: 2, attributes: { url: '/assets/p2.webp', alternativeText: 'CCNP', width: 640, height: 360 } } },
             hero: {
@@ -127,9 +127,9 @@ export const courses: Course[] = [
             title: "Cisco SD-WAN Online Course | Get Lifetime Access",
             slug: "cisco-sd-wan",
             description: "Master Software-Defined WAN.",
-            duration: "7 weeks", // From homepage
-            modules: 10,
-            videoHours: 35,
+            duration: "4 weeks", // From homepage
+            modules: 6,
+            videoHours: 40,
             price: 15000, // From homepage
             image: { data: { id: 3, attributes: { url: '/assets/p3.webp', alternativeText: 'SD-WAN', width: 640, height: 360 } } },
             hero: {
@@ -173,9 +173,9 @@ export const courses: Course[] = [
             title: "Complete Python Automation Online Course for Network Engineers",
             slug: "python-automation",
             description: "Automate network tasks using Python.",
-            duration: "7 weeks", // From homepage
-            modules: 10,
-            videoHours: 25,
+            duration: "4 weeks", // From homepage
+            modules: 5,
+            videoHours: 40,
             price: 15000, // From homepage
             image: { data: { id: 4, attributes: { url: '/assets/p4.webp', alternativeText: 'Python', width: 640, height: 360 } } },
             hero: {
@@ -219,8 +219,8 @@ export const courses: Course[] = [
             slug: "ccna-ccnp-combo",
             description: "Comprehensive networking mastery.",
             duration: "20 weeks", // From homepage
-            modules: 20,
-            videoHours: 100,
+            modules: 16,
+            videoHours: 180,
             price: 30000, // From homepage
             image: { data: { id: 5, attributes: { url: '/assets/p5.webp', alternativeText: 'Combo', width: 640, height: 360 } } },
             hero: {

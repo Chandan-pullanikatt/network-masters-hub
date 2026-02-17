@@ -362,19 +362,16 @@ export default function CourseDetailPage() {
                                 </div>
                             )}
 
-                            <motion.div
-                                variants={staggerContainer}
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: true, amount: 0.1 }}
-                                className="relative"
-                            >
+                            <div className="relative">
                                 {/* Vertical Line */}
                                 <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-blue-100 -translate-x-1/2 hidden md:block"></div>
 
                                 {((roadmapModules && roadmapModules[activeModule]) || roadmap || []).map((item: any, idx: number) => (
                                     <motion.div
                                         key={idx}
+                                        initial="hidden"
+                                        whileInView="visible"
+                                        viewport={{ once: true, margin: "-50px" }}
                                         variants={fadeInUp}
                                         className={`relative flex flex-col md:flex-row gap-8 md:gap-[96px] mb-[40px] items-center text-left ${idx % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
                                     >
@@ -404,7 +401,7 @@ export default function CourseDetailPage() {
                                         <div className="w-full md:w-1/2 hidden md:block"></div>
                                     </motion.div>
                                 ))}
-                            </motion.div>
+                            </div>
                         </section>
                     )}
 
@@ -466,53 +463,35 @@ export default function CourseDetailPage() {
 
                             {/* Batches List & Info */}
                             <div className="flex-1 flex flex-col justify-between h-full">
-                                {/* Batch 1 */}
-                                <div className="bg-blue-50/50 rounded-[12px] border border-blue-200 p-[16px] relative">
-                                    <div className="absolute -top-3 left-4 bg-[#003366] text-white text-[10px] font-bold px-2 py-0.5 rounded-sm">
-                                        Fast Filling
-                                    </div>
-                                    <div className="flex justify-between items-start mb-2 mt-1">
-                                        <div>
-                                            <h3 className="text-base font-bold text-slate-900">Weekday Evening Batch</h3>
-                                            <p className="text-slate-500 text-xs">Starts: 15th October 2024</p>
+                                {course.attributes.hero?.batches?.map((batch, index) => (
+                                    <div key={index} className="bg-blue-50/50 rounded-[12px] border border-blue-200 p-[16px] relative mb-4 last:mb-0">
+                                        {batch.status === "Filling Fast" && (
+                                            <div className="absolute -top-3 left-4 bg-[#003366] text-white text-[10px] font-bold px-2 py-0.5 rounded-sm">
+                                                Fast Filling
+                                            </div>
+                                        )}
+                                        <div className="flex justify-between items-start mb-2 mt-1">
+                                            <div>
+                                                <h3 className="text-base font-bold text-slate-900">{batch.name}</h3>
+                                                {batch.startDate && <p className="text-slate-500 text-xs">Starts: {batch.startDate}</p>}
+                                            </div>
+                                            <Button className="bg-[#003366] hover:bg-[#002244] text-white h-7 text-xs px-3">Book Now</Button>
                                         </div>
-                                        <Button className="bg-[#003366] hover:bg-[#002244] text-white h-7 text-xs px-3">Book Now</Button>
-                                    </div>
-                                    <div className="flex items-center gap-4 text-xs text-slate-600">
-                                        <div className="flex items-center gap-1.5">
-                                            <Clock className="w-3.5 h-3.5 text-blue-600" />
-                                            <span>7:30 PM - 9:30 PM (IST)</span>
-                                        </div>
-                                        <div className="flex items-center gap-1.5">
-                                            <Calendar className="w-3.5 h-3.5 text-blue-600" />
-                                            <span>Monday, Wednesday, Friday</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Batch 2 */}
-                                <div className="bg-blue-50/50 rounded-[12px] border border-blue-200 p-[16px] relative">
-                                    <div className="flex justify-between items-start mb-2 mt-1">
-                                        <div>
-                                            <h3 className="text-base font-bold text-slate-900">Weekend Morning Batch</h3>
-                                            <p className="text-slate-500 text-xs">Starts: 19th October 2024</p>
-                                        </div>
-                                        <Button className="bg-[#003366] hover:bg-[#002244] text-white h-7 text-xs px-3">Book Now</Button>
-                                    </div>
-                                    <div className="flex items-center gap-4 text-xs text-slate-600">
-                                        <div className="flex items-center gap-1.5">
-                                            <Clock className="w-3.5 h-3.5 text-blue-600" />
-                                            <span>10:00 AM - 1:00 PM (IST)</span>
-                                        </div>
-                                        <div className="flex items-center gap-1.5">
-                                            <Calendar className="w-3.5 h-3.5 text-blue-600" />
-                                            <span>Saturday, Sunday</span>
+                                        <div className="flex items-center gap-4 text-xs text-slate-600">
+                                            <div className="flex items-center gap-1.5">
+                                                <Clock className="w-3.5 h-3.5 text-blue-600" />
+                                                <span>{batch.time}</span>
+                                            </div>
+                                            <div className="flex items-center gap-1.5">
+                                                <Calendar className="w-3.5 h-3.5 text-blue-600" />
+                                                <span>{batch.days}</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                ))}
 
                                 {/* Info Note */}
-                                <div className="bg-transparent rounded-xl pt-2 border-t border-slate-100">
+                                <div className="bg-transparent rounded-xl pt-2 border-t border-slate-100 mt-4">
                                     <h4 className="font-bold text-slate-900 mb-1 text-sm">Flexible Learning Environment</h4>
                                     <p className="text-slate-500 text-xs leading-relaxed">
                                         Missed a class? No worries. All sessions are recorded and uploaded to your student portal within 2 hours.
