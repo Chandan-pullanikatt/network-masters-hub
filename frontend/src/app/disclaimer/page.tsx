@@ -16,19 +16,10 @@ export default function DisclaimerPage() {
                 <div className="w-full max-w-[1200px] px-[40px] pt-[64px] pb-[120px] flex flex-col items-center">
 
                     {/* Header Section */}
-                    <div className="w-full max-w-[800px] mb-[48px]">
-                        <div className="flex items-center gap-2 text-[12px] font-bold text-[#003366] tracking-widest uppercase mb-4">
-                            <span className="text-slate-400">LEGAL</span>
-                            <span className="text-slate-300">›</span>
-                            <span>DISCLAIMER</span>
-                        </div>
-
-                        <h1 className="text-[44px] font-bold text-[#003366] leading-[1.2] tracking-tight mb-2">
+                    <div className="w-full max-w-[800px] mb-[48px] flex flex-col items-center">
+                        <h1 className="text-[44px] font-bold text-white bg-[#003366] px-6 py-2 rounded-lg leading-[1.2] tracking-tight mb-2 uppercase">
                             Disclaimer
                         </h1>
-                        <p className="text-[14px] text-slate-400 italic">
-                            Last Updated: October 24, 2023
-                        </p>
                     </div>
 
                     {/* Main Content Card */}

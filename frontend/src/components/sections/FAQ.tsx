@@ -46,7 +46,7 @@ const FAQ = () => {
                     className="text-center mb-12"
                 >
                     <MotionDiv variants={fadeInUp}>
-                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2">Frequently Asked Questions</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold text-white bg-[#003366] px-6 py-2 rounded-lg inline-block mb-2">Frequently Asked Questions</h2>
                     </MotionDiv>
                     <MotionDiv variants={fadeInUp}>
                         <p className="text-slate-500">Answers to Your Most Common Questions</p>

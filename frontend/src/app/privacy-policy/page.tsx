@@ -14,17 +14,9 @@ export default function PrivacyPolicyPage() {
 
                     {/* Header Section */}
                     <div className="text-center flex flex-col items-center mb-[48px]">
-                        {/* Badge/Tab */}
-                        <div className="bg-[#EAF1F8] border border-slate-200 rounded-full px-3 py-1 mb-4">
-                            <span className="text-[12px] text-[#003366] font-bold tracking-wide uppercase">
-                                Privacy Policy
-                            </span>
-                        </div>
-
-                        <h1 className="text-[44px] font-bold text-[#1a1a1a] leading-[1.2] tracking-tight mb-2">
+                        <h1 className="text-[44px] font-bold text-white bg-[#003366] px-6 py-2 rounded-lg leading-[1.2] tracking-tight mb-2 uppercase">
                             Privacy Policy
                         </h1>
-
                     </div>
 
                     {/* Main Content Card */}
