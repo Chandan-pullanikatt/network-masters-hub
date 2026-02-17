@@ -10,10 +10,10 @@ export default function AboutUsPage() {
             <div className="w-full max-w-[1440px] flex flex-col items-center">
 
                 {/* Content Container */}
-                <div className="w-full max-w-[1200px] px-[120px] flex flex-col gap-[80px] mb-[80px]">
+                <div className="w-full max-w-[1200px] px-6 md:px-12 lg:px-[120px] flex flex-col gap-12 md:gap-[80px] mb-12 md:mb-[80px]">
 
-                    <section className="flex flex-col items-center text-center mt-[172px] w-full max-w-[823px] mx-auto">
-                        <div className="bg-[#EAF1F8] border border-blue-200/60 rounded-3xl p-8 md:p-12 flex flex-col items-center gap-4 shadow-sm">
+                    <section className="flex flex-col items-center text-center mt-32 md:mt-[172px] w-full max-w-[823px] mx-auto">
+                        <div className="bg-[#EAF1F8] border border-blue-200/60 rounded-3xl p-6 md:p-12 flex flex-col items-center gap-4 shadow-sm">
                             {/* Small Top Badge */}
                             <div className="bg-white/80 border border-blue-100 rounded-full px-4 py-1.5 backdrop-blur-sm shadow-sm">
                                 <span className="text-[14px] text-[#003366] font-medium tracking-wide">
@@ -22,7 +22,7 @@ export default function AboutUsPage() {
                             </div>
 
                             {/* Main Heading */}
-                            <h1 className="text-[44px] font-bold text-[#1a1a1a] leading-[1.2] tracking-tight mt-2">
+                            <h1 className="text-3xl md:text-[44px] font-bold text-[#1a1a1a] leading-[1.2] tracking-tight mt-2">
                                 Empowering the Next Generation <br /> of Network Engineers
                             </h1>
 
@@ -34,8 +34,8 @@ export default function AboutUsPage() {
                     </section>
 
                     {/* SECTION 2 — OUR CORE VALUES */}
-                    <section className="w-full bg-[#EAF1F8] rounded-xl px-[40px] py-[64px]">
-                        <div className="flex flex-col items-center gap-[48px]">
+                    <section className="w-full bg-[#EAF1F8] rounded-xl px-6 py-10 md:px-[40px] md:py-[64px]">
+                        <div className="flex flex-col items-center gap-8 md:gap-[48px]">
                             {/* Heading Block */}
                             <div className="text-center">
                                 <h2 className="text-[28px] font-bold text-[#1a1a1a] mb-2">Our Core Values</h2>
@@ -45,7 +45,7 @@ export default function AboutUsPage() {
                             </div>
 
                             {/* Value Cards Row */}
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-[40px] w-full">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-[40px] w-full">
                                 {/* Card 1 */}
                                 <div className="bg-white rounded-xl p-[24px] flex flex-col items-start gap-4 shadow-sm hover:shadow-md transition-shadow h-full">
                                     <div className="bg-[#EAF1F8] p-3 rounded-lg text-[#003366]">
@@ -89,7 +89,7 @@ export default function AboutUsPage() {
                     </section>
 
                     {/* SECTION 3 — JOURNEY SECTION */}
-                    <section className="w-full flex flex-col lg:flex-row items-center gap-[40px]">
+                    <section className="w-full flex flex-col lg:flex-row items-center gap-8 md:gap-[40px]">
                         {/* Left Column (Text) */}
                         <div className="flex-1 max-w-[600px] flex flex-col gap-4">
                             <h2 className="text-[28px] font-bold text-[#1a1a1a] leading-tight">
@@ -124,8 +124,8 @@ export default function AboutUsPage() {
                         </div>
                     </section>
 
-                    <section className="w-full bg-[#F5F8FC] py-[80px]">
-                        <div className="flex flex-col lg:flex-row items-center justify-center gap-[40px]">
+                    <section className="w-full bg-[#F5F8FC] py-10 md:py-[80px]">
+                        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-[40px]">
                             {/* Left Column (Founder Image) */}
                             <div className="flex-shrink-0">
                                 <div className="relative w-full lg:w-[491px] h-[500px] lg:h-[780px] rounded-[16px] overflow-hidden">
@@ -177,8 +177,8 @@ export default function AboutUsPage() {
                     </section>
 
                     {/* SECTION 5 — CERTIFICATIONS */}
-                    <section className="w-full bg-white py-[80px] rounded-2xl my-8 shadow-sm border border-slate-100">
-                        <div className="flex flex-col items-center text-center gap-10 max-w-[1000px] mx-auto px-6">
+                    <section className="w-full bg-white py-10 md:py-[80px] rounded-2xl my-8 shadow-sm border border-slate-100">
+                        <div className="flex flex-col items-center text-center gap-10 max-w-[1000px] mx-auto px-4 md:px-6">
 
                             {/* Header Content */}
                             <div className="flex flex-col items-center gap-4">

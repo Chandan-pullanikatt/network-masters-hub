@@ -11,7 +11,7 @@ export default function RefundPolicyPage() {
             <div className="w-full max-w-[1440px] flex flex-col items-center">
 
                 {/* Content Container */}
-                <div className="w-full max-w-[1200px] px-[40px] pt-[64px] flex flex-col items-center">
+                <div className="w-full max-w-[1200px] px-6 pt-10 md:px-[40px] md:pt-[64px] flex flex-col items-center">
 
                     {/* Header Section */}
                     <div className="w-full max-w-[800px] mb-[48px] text-center flex flex-col items-center">
@@ -134,7 +134,7 @@ export default function RefundPolicyPage() {
             </div>
 
             {/* Before You Enroll Section */}
-            <div className="w-full max-w-[1000px] mb-[120px] mx-auto px-[40px]">
+            <div className="w-full max-w-[1000px] mb-12 md:mb-[120px] mx-auto px-6 md:px-[40px]">
                 <div className="bg-[#EAF1F8]/50 rounded-[16px] p-8">
                     <h3 className="font-bold text-[#1a1a1a] mb-4">Before You Enroll</h3>
                     <div className="grid md:grid-cols-3 gap-4">

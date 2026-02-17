@@ -11,7 +11,7 @@ export default function TermsPage() {
             <div className="w-full max-w-[1440px] flex flex-col items-center">
 
                 {/* Content Container */}
-                <div className="w-full max-w-[1200px] px-[40px] pt-[64px] pb-[120px] flex flex-col items-center">
+                <div className="w-full max-w-[1200px] px-6 py-10 md:px-[40px] md:pt-[64px] md:pb-[120px] flex flex-col items-center">
 
                     {/* Header Section */}
                     <div className="text-center flex flex-col items-center mb-[48px]">

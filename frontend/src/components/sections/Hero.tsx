@@ -38,7 +38,7 @@ const Hero = () => {
                 >
 
 
-                    <motion.h1 variants={fadeInUp} className="text-[52px] font-bold tracking-tight leading-tight text-white drop-shadow-sm mb-2">
+                    <motion.h1 variants={fadeInUp} className="text-4xl md:text-[52px] font-bold tracking-tight leading-tight text-white drop-shadow-sm mb-2">
                         Master IT & Networking with <br />
                         industry-led training
                     </motion.h1>
@@ -52,7 +52,7 @@ const Hero = () => {
                             <Link href="/about">Learn More</Link>
                         </Button>
                         <Button size="lg" className="h-12 px-8 text-base bg-blue-800 hover:bg-blue-700 text-white border-none font-semibold transition-transform hover:scale-105 shadow-lg shadow-blue-900/20" asChild>
-                            <Link href="/courses">Explore Courses</Link>
+                            <Link href="#courses">Explore Courses</Link>
                         </Button>
                     </motion.div>
                 </motion.div>
