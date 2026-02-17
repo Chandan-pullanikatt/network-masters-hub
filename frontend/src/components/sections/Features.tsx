@@ -6,22 +6,22 @@ const features = [
     {
         icon: Monitor,
         title: "Engage with Live Learning",
-        description: "Clear Your Doubts Instantly in our Interactive Sessions. Join us for a Fun and Immersive Learning Experience!"
+        description: "Clear Your Doubts Instantly in our Interactive Sessions. Join us for a Fun and Immersive Learning Experience."
     },
     {
         icon: ShieldCheck,
         title: "Unlimited Lab Access",
-        description: "Practice Anytime, Anywhere. Perfect Your Skills Through Repetitive Practice!"
+        description: "Practice Anytime, Anywhere. Perfect Your Skills Through Repetitive Practice."
     },
     {
         icon: UserCheck,
         title: "Personalized Mentorship",
-        description: "Receive Individualized Guidance at Network Masters Hub. Let Our Advisors Help You Choose the Perfect Course Based on Your Skills and Interests"
+        description: "Receive Individualized Guidance at Network Masters Hub. Let Our Advisors Help You Choose the Perfect Course Based on Your Skills and Interests."
     },
     {
         icon: Video,
         title: "On-Demand Video Learning",
-        description: "Dive into the Latest Syllabus with Pre-Recorded Videos, Available 24/7. Enhance Your Understanding with Quizzes, Assignments, and Detailed Feedback!"
+        description: "Dive into the Latest Syllabus with Pre-Recorded Videos, Available 24/7. Enhance Your Understanding with Quizzes, Assignments, and Detailed Feedback."
     }
 ];
 

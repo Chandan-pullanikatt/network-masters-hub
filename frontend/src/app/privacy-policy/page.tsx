@@ -14,12 +14,17 @@ export default function PrivacyPolicyPage() {
 
                     {/* Header Section */}
                     <div className="text-center flex flex-col items-center mb-[48px]">
+                        {/* Badge/Tab */}
+                        <div className="bg-[#EAF1F8] border border-slate-200 rounded-full px-3 py-1 mb-4">
+                            <span className="text-[12px] text-[#003366] font-bold tracking-wide uppercase">
+                                Privacy Policy
+                            </span>
+                        </div>
+
                         <h1 className="text-[44px] font-bold text-[#1a1a1a] leading-[1.2] tracking-tight mb-2">
                             Privacy Policy
                         </h1>
-                        <p className="text-[14px] text-slate-500 font-medium">
-                            Last Updated: October 24, 2023
-                        </p>
+
                     </div>
 
                     {/* Main Content Card */}

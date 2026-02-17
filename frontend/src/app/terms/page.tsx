@@ -14,20 +14,11 @@ export default function TermsPage() {
                 <div className="w-full max-w-[1200px] px-6 py-10 md:px-[40px] md:pt-[64px] md:pb-[120px] flex flex-col items-center">
 
                     {/* Header Section */}
-                    <div className="text-center flex flex-col items-center mb-[48px]">
-                        {/* Badge */}
-                        <div className="bg-[#EAF1F8] border border-slate-200 rounded-full px-3 py-1 mb-4">
-                            <span className="text-[12px] text-[#003366] font-bold tracking-wide uppercase">
-                                Legal Documentation
-                            </span>
-                        </div>
-
-                        <h1 className="text-[44px] font-bold text-[#1a1a1a] leading-[1.2] tracking-tight mb-2">
+                    {/* Header Section */}
+                    <div className="text-center flex flex-col items-center mb-[48px] w-full">
+                        <h1 className="text-[32px] md:text-[44px] font-bold text-white bg-[#003366] px-12 py-6 rounded-2xl leading-[1.2] tracking-tight shadow-md inline-block">
                             Terms & Conditions
                         </h1>
-                        <p className="text-[14px] text-slate-500 font-medium">
-                            Effective Date: January 1, 2024 &nbsp;•&nbsp; Last Modified: May 15, 2024
-                        </p>
                     </div>
 
                     {/* Main Content Card */}
@@ -172,13 +163,9 @@ export default function TermsPage() {
                         <div className="mt-[64px] text-center pt-[32px] border-t border-slate-100">
                             <h3 className="text-[18px] font-bold text-[#1a1a1a] mb-2">Have questions about our terms?</h3>
                             <p className="text-[14px] text-slate-600 mb-6">
-                                Our legal and support teams are here to help clarify any points of concern.
+                                Our Support Team is here to help clarify any points of concern.
                             </p>
                             <div className="flex justify-center gap-4">
-                                <a href="mailto:legal@networkmastershub.com" className="flex items-center gap-2 px-6 py-3 bg-[#003366] text-white rounded-lg font-medium hover:bg-[#002244] transition-colors">
-                                    <Mail className="w-4 h-4" />
-                                    Email Legal Dept
-                                </a>
                                 <Link href="/contact" className="flex items-center gap-2 px-6 py-3 bg-[#F6FAFF] text-[#003366] border border-[#EAF1F8] rounded-lg font-medium hover:bg-[#EAF1F8] transition-colors">
                                     <MessageSquare className="w-4 h-4" />
                                     Contact Support

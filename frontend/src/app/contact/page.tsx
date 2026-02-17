@@ -35,8 +35,8 @@ export default function ContactPage() {
                         <div>
                             <h4 className="font-bold">Contact</h4>
                             <p className="text-slate-600 text-sm mt-2">
-                                +91 7840018889<br />
-                                hello@networkmastershub.com
+                                +91 9971148345<br />
+                                info@networkmastershub.com
                             </p>
                         </div>
                         <div>

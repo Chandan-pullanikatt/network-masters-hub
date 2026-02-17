@@ -94,7 +94,7 @@ const EnquiryCTA = () => {
                                     </div>
                                     <div>
                                         <p className="text-xs text-blue-200 uppercase tracking-wider font-semibold">Call Us</p>
-                                        <p className="font-bold text-lg">+91 7840018889</p>
+                                        <p className="font-bold text-lg">+91 9971148345</p>
                                     </div>
                                 </div>
 
@@ -104,7 +104,7 @@ const EnquiryCTA = () => {
                                     </div>
                                     <div>
                                         <p className="text-xs text-blue-200 uppercase tracking-wider font-semibold">Chat on WhatsApp</p>
-                                        <p className="font-bold text-lg">+91 7840018889</p>
+                                        <p className="font-bold text-lg">+91 9971148345</p>
                                     </div>
                                 </div>
 
@@ -114,7 +114,7 @@ const EnquiryCTA = () => {
                                     </div>
                                     <div>
                                         <p className="text-xs text-blue-200 uppercase tracking-wider font-semibold">Email Us</p>
-                                        <p className="font-bold text-lg">admin@networkbulls.com</p>
+                                        <p className="font-bold text-lg">info@networkmastershub.com</p>
                                     </div>
                                 </div>
                             </div>
