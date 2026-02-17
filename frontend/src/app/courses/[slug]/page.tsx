@@ -16,6 +16,8 @@ import StudentReviews from '@/components/sections/StudentReviews';
 import { useCart } from '@/context/CartContext';
 import { toast } from 'sonner';
 import { Course } from '@/types';
+import { motion } from 'framer-motion';
+import { fadeInUp, staggerContainer } from '@/lib/animations';
 
 // Helper to get course by slug
 function getCourseBySlug(slug: string): Course | undefined {
@@ -360,12 +362,22 @@ export default function CourseDetailPage() {
                                 </div>
                             )}
 
-                            <div className="relative">
+                            <motion.div
+                                variants={staggerContainer}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, amount: 0.1 }}
+                                className="relative"
+                            >
                                 {/* Vertical Line */}
                                 <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-blue-100 -translate-x-1/2 hidden md:block"></div>
 
                                 {((roadmapModules && roadmapModules[activeModule]) || roadmap || []).map((item: any, idx: number) => (
-                                    <div key={idx} className={`relative flex flex-col md:flex-row gap-8 md:gap-[96px] mb-[40px] items-center text-left ${idx % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
+                                    <motion.div
+                                        key={idx}
+                                        variants={fadeInUp}
+                                        className={`relative flex flex-col md:flex-row gap-8 md:gap-[96px] mb-[40px] items-center text-left ${idx % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
+                                    >
                                         {/* Timeline Dot */}
                                         <div className="absolute left-1/2 top-1/2 w-4 h-4 rounded-full bg-[#003366] ring-4 ring-white shadow-sm -translate-x-1/2 -translate-y-1/2 z-10 hidden md:block"></div>
 
@@ -373,7 +385,7 @@ export default function CourseDetailPage() {
                                         <div className="w-full md:w-1/2 md:max-w-[506px]">
                                             <div className="bg-white p-[16px] rounded-[12px] shadow-sm border border-slate-100 hover:shadow-md transition-shadow h-full flex flex-col justify-center min-h-[250px]">
                                                 <div className="flex items-center gap-4 mb-3">
-                                                    <span className="text-4xl font-light text-slate-300">{item.id}</span>
+                                                    <span className="text-4xl font-bold text-slate-400 select-none">{item.id}</span>
                                                     <div className="ml-auto">
                                                         <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600">
                                                             <User className="w-4 h-4" />
@@ -390,9 +402,9 @@ export default function CourseDetailPage() {
                                             </div>
                                         </div>
                                         <div className="w-full md:w-1/2 hidden md:block"></div>
-                                    </div>
+                                    </motion.div>
                                 ))}
-                            </div>
+                            </motion.div>
                         </section>
                     )}
 
