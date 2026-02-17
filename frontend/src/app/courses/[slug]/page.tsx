@@ -137,22 +137,24 @@ export default function CourseDetailPage() {
                 {/* Tabs Navigation */}
                 <div className="px-4 md:px-6 pt-[24px] pb-[24px] mb-[48px] overflow-x-auto">
                     <div className="flex gap-4 items-center min-w-max p-1">
-                        {['Overview', 'Roadmap', 'Batches', 'Course Schedule', 'FAQ'].map((item) => {
-                            const id = item.toLowerCase().replace(' ', '-');
-                            const isActive = activeSection === id;
-                            return (
-                                <button
-                                    key={item}
-                                    onClick={() => scrollToSection(id)}
-                                    className={`relative px-5 py-2 rounded-full text-sm md:text-base font-medium transition-all duration-200 ${isActive
-                                        ? 'bg-[#003366] text-white shadow-md'
-                                        : 'text-slate-600 hover:bg-slate-100 hover:text-[#003366]'
-                                        }`}
-                                >
-                                    {item}
-                                </button>
-                            );
-                        })}
+                        {['Overview', 'Roadmap', 'Batches', 'Course Schedule', 'FAQ']
+                            .filter(item => !(slug === 'cisco-sd-wan' && item === 'Course Schedule'))
+                            .map((item) => {
+                                const id = item.toLowerCase().replace(' ', '-');
+                                const isActive = activeSection === id;
+                                return (
+                                    <button
+                                        key={item}
+                                        onClick={() => scrollToSection(id)}
+                                        className={`relative px-5 py-2 rounded-full text-sm md:text-base font-medium transition-all duration-200 ${isActive
+                                            ? 'bg-[#003366] text-white shadow-md'
+                                            : 'text-slate-600 hover:bg-slate-100 hover:text-[#003366]'
+                                            }`}
+                                    >
+                                        {item}
+                                    </button>
+                                );
+                            })}
                     </div>
                 </div>
 
@@ -407,14 +409,17 @@ export default function CourseDetailPage() {
 
                     {/* Upcoming Batches Section */}
                     <section id="batches" className="scroll-mt-32 max-w-6xl mx-auto py-12 px-4 md:px-10 bg-white rounded-[12px] shadow-sm border border-slate-100 mb-[100px]">
-                        <div className="text-center mb-[48px]">
-                            <h2 className="text-3xl font-bold mb-[8px]">Upcoming Batches</h2>
-                            <p className="text-slate-600 max-w-2xl mx-auto">
-                                Secure your seat in our next scheduled batch and begin your journey.
-                            </p>
-                        </div>
+                        {/* Only show header if there are batches */}
+                        {(course.attributes.hero?.batches?.length ?? 0) > 0 && (
+                            <div className="text-center mb-[48px]">
+                                <h2 className="text-3xl font-bold mb-[8px]">Upcoming Batches</h2>
+                                <p className="text-slate-600 max-w-2xl mx-auto">
+                                    Secure your seat in our next scheduled batch and begin your journey.
+                                </p>
+                            </div>
+                        )}
 
-                        <div className="flex flex-col lg:flex-row gap-[40px] h-auto">
+                        <div className={`flex flex-col lg:flex-row gap-[40px] h-auto ${!((course.attributes.hero?.batches?.length ?? 0) > 0) ? 'justify-center' : ''}`}>
                             {/* Pricing Card */}
                             <div className="w-full lg:w-[340px] flex-shrink-0 bg-[#003366] text-white rounded-[12px] p-[24px] shadow-lg flex flex-col h-auto lg:h-full">
                                 <p className="text-blue-200 text-sm font-medium mb-1">Total Course Fee</p>
@@ -462,51 +467,55 @@ export default function CourseDetailPage() {
                             </div>
 
                             {/* Batches List & Info */}
-                            <div className="flex-1 flex flex-col justify-between h-full">
-                                {course.attributes.hero?.batches?.map((batch, index) => (
-                                    <div key={index} className="bg-blue-50/50 rounded-[12px] border border-blue-200 p-[16px] relative mb-4 last:mb-0">
-                                        {batch.status === "Filling Fast" && (
-                                            <div className="absolute -top-3 left-4 bg-[#003366] text-white text-[10px] font-bold px-2 py-0.5 rounded-sm">
-                                                Fast Filling
+                            {(course.attributes.hero?.batches?.length ?? 0) > 0 && (
+                                <div className="flex-1 flex flex-col justify-between h-full">
+                                    {course.attributes.hero?.batches?.map((batch, index) => (
+                                        <div key={index} className="bg-blue-50/50 rounded-[12px] border border-blue-200 p-[16px] relative mb-4 last:mb-0">
+                                            {batch.status === "Filling Fast" && (
+                                                <div className="absolute -top-3 left-4 bg-[#003366] text-white text-[10px] font-bold px-2 py-0.5 rounded-sm">
+                                                    Fast Filling
+                                                </div>
+                                            )}
+                                            <div className="flex justify-between items-start mb-2 mt-1">
+                                                <div>
+                                                    <h3 className="text-base font-bold text-slate-900">{batch.name}</h3>
+                                                    {batch.startDate && <p className="text-slate-500 text-xs">Starts: {batch.startDate}</p>}
+                                                </div>
+                                                <Button className="bg-[#003366] hover:bg-[#002244] text-white h-7 text-xs px-3">Book Now</Button>
                                             </div>
-                                        )}
-                                        <div className="flex justify-between items-start mb-2 mt-1">
-                                            <div>
-                                                <h3 className="text-base font-bold text-slate-900">{batch.name}</h3>
-                                                {batch.startDate && <p className="text-slate-500 text-xs">Starts: {batch.startDate}</p>}
+                                            <div className="flex items-center gap-4 text-xs text-slate-600">
+                                                <div className="flex items-center gap-1.5">
+                                                    <Clock className="w-3.5 h-3.5 text-blue-600" />
+                                                    <span>{batch.time}</span>
+                                                </div>
+                                                <div className="flex items-center gap-1.5">
+                                                    <Calendar className="w-3.5 h-3.5 text-blue-600" />
+                                                    <span>{batch.days}</span>
+                                                </div>
                                             </div>
-                                            <Button className="bg-[#003366] hover:bg-[#002244] text-white h-7 text-xs px-3">Book Now</Button>
                                         </div>
-                                        <div className="flex items-center gap-4 text-xs text-slate-600">
-                                            <div className="flex items-center gap-1.5">
-                                                <Clock className="w-3.5 h-3.5 text-blue-600" />
-                                                <span>{batch.time}</span>
-                                            </div>
-                                            <div className="flex items-center gap-1.5">
-                                                <Calendar className="w-3.5 h-3.5 text-blue-600" />
-                                                <span>{batch.days}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
+                                    ))}
 
-                                {/* Info Note */}
-                                <div className="bg-transparent rounded-xl pt-2 border-t border-slate-100 mt-4">
-                                    <h4 className="font-bold text-slate-900 mb-1 text-sm">Flexible Learning Environment</h4>
-                                    <p className="text-slate-500 text-xs leading-relaxed">
-                                        Missed a class? No worries. All sessions are recorded and uploaded to your student portal within 2 hours.
-                                        You can watch them anytime to practice at your own pace.
-                                    </p>
+                                    {/* Info Note */}
+                                    <div className="bg-transparent rounded-xl pt-2 border-t border-slate-100 mt-4">
+                                        <h4 className="font-bold text-slate-900 mb-1 text-sm">Flexible Learning Environment</h4>
+                                        <p className="text-slate-500 text-xs leading-relaxed">
+                                            Missed a class? No worries. All sessions are recorded and uploaded to your student portal within 2 hours.
+                                            You can watch them anytime to practice at your own pace.
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
+                            )}
                         </div>
                     </section>
 
                     {/* New Course Schedule Section */}
                     {/* Added ID for linking from tabs */}
-                    <div id="course-schedule" className="scroll-mt-32">
-                        <CourseSchedule />
-                    </div>
+                    {slug !== 'cisco-sd-wan' && (
+                        <div id="course-schedule" className="scroll-mt-32">
+                            <CourseSchedule />
+                        </div>
+                    )}
 
                     {/* Enquiry Section */}
                     <div className="scroll-mt-32">

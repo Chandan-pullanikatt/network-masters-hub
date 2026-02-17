@@ -1,5 +1,5 @@
 import { Course } from '@/types';
-import { User, Server, Shield, Activity, Database, Globe, Lock, Cpu, Cloud, Code, Compass, Lightbulb, Layers, Route, ShieldCheck, Bot, Share2, Settings, LineChart } from 'lucide-react';
+import { User, Server, Shield, Activity, Database, Globe, Lock, Cpu, Cloud, Code, Compass, Lightbulb, Layers, Route, ShieldCheck, Bot, Share2, Settings, LineChart, Terminal, Boxes, ArrowLeftRight, Cog } from 'lucide-react';
 
 export const courses: Course[] = [
     {
@@ -139,9 +139,7 @@ export const courses: Course[] = [
                 price: 15000,
                 originalPrice: 20000,
                 startDate: "Upcoming",
-                batches: [
-                    { name: "Regular Batch", time: "8:00 PM – 10:00 PM (IST)", days: "Mon, Wed, Fri", status: "Open" }
-                ]
+                batches: []
             },
             overview: {
                 title: "Program Overview",
@@ -171,7 +169,7 @@ export const courses: Course[] = [
     {
         id: 4,
         attributes: {
-            title: "Complete Python Automation Online Course for Network Engineers",
+            title: "Complete Network Automation Online Course for Network Engineers",
             slug: "python-automation",
             description: "Automate network tasks using Python.",
             duration: "4 Weeks", // From homepage
@@ -180,7 +178,7 @@ export const courses: Course[] = [
             price: 15000, // From homepage
             image: { data: { id: 4, attributes: { url: '/assets/p4.webp', alternativeText: 'Python', width: 640, height: 360 } } },
             hero: {
-                title: "Complete Python Automation Online Course",
+                title: "Complete Network Automation Online Course",
                 subtitle: "Automate network tasks using Python. Stop doing manual tasks. Learn to script, automate, and orchestrate.",
                 price: 15000,
                 originalPrice: 25000,
@@ -193,20 +191,19 @@ export const courses: Course[] = [
                 title: "Network Programmability",
                 description: "The future of networking is code. Learn the tools to stay relevant.",
                 skills: [
-                    { title: 'Python', icon: Code, desc: 'Python basics, data structures, and libraries' },
-                    { title: 'Libraries', icon: Database, desc: 'Netmiko, Napalm, Paramiko, and Nornir' },
-                    { title: 'APIs', icon: Globe, desc: 'REST APIs, JSON, XML, and Postman' },
-                    { title: 'Ansible', icon: Server, desc: 'Playbooks, inventory, and roles for network automation' }
+                    { title: 'Python', icon: Terminal, desc: 'Python basics, data structures, and libraries' },
+                    { title: 'Libraries', icon: Boxes, desc: 'Netmiko, Napalm, Paramiko, and Nornir' },
+                    { title: 'APIs', icon: ArrowLeftRight, desc: 'REST APIs, JSON, XML, and Postman' },
+                    { title: 'Ansible', icon: Cog, desc: 'Playbooks, inventory, and roles for network automation' }
                 ]
             },
             roadmap: [
-                { id: '01', title: 'Python Basics', desc: 'Variables, loops, functions, and data types specifically for network engineers.', topics: 'Lists - Dictionaries - Loops' },
-                { id: '02', title: 'Connectivity', desc: 'Connecting to devices using SSH via Paramiko and Netmiko.', topics: 'SSH - Telnet' },
-                { id: '03', title: 'Data Handling', desc: 'Parsing and manipulating data using Regex, JSON, and YAML.', topics: 'JSON - YAML - Regex' },
-                { id: '04', title: 'Abstraction', desc: 'Using Napalm for vendor-agnostic automation.', topics: 'Getters - Config Merge' },
-                { id: '05', title: 'Ansible', desc: 'Agentless automation using Ansible playbooks.', topics: 'Inventory - Playbooks' },
-                { id: '06', title: 'DevOps', desc: 'Git, CI/CD, and pipeline basics for network configurations.', topics: 'Git - Jenkins' }
-
+                { id: '01', title: 'Python Basics', desc: 'Build a strong foundation in Python programming tailored for network engineers.' },
+                { id: '02', title: 'Network Automation Foundation', desc: 'Understand core automation concepts, tools, and workflows used in modern networking.' },
+                { id: '03', title: 'Device-Level Network Automation', desc: 'Learn to automate routers and switches using scripts, APIs, and CLI-based automation.' },
+                { id: '04', title: 'Controller-Based Network Automation', desc: 'Explore SDN controllers and centralized automation using platforms and REST APIs.' },
+                { id: '05', title: 'Operations', desc: 'Master monitoring, troubleshooting, and maintaining automated network environments.' },
+                { id: '06', title: 'AI in Automation', desc: 'Discover how AI enhances network automation with intelligent analysis and predictive operations.' }
             ],
             faqs: [
                 { question: "Do I need coding experience?", answer: "No, we start from scratch." }
