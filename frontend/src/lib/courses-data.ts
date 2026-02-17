@@ -1,5 +1,5 @@
 import { Course } from '@/types';
-import { User, Server, Shield, Activity, Database, Globe, Lock, Cpu, Cloud, Code, Compass, Lightbulb, Layers, Route, ShieldCheck, Bot } from 'lucide-react';
+import { User, Server, Shield, Activity, Database, Globe, Lock, Cpu, Cloud, Code, Compass, Lightbulb, Layers, Route, ShieldCheck, Bot, Share2, Settings, LineChart } from 'lucide-react';
 
 export const courses: Course[] = [
     {
@@ -147,12 +147,12 @@ export const courses: Course[] = [
                 title: "Program Overview",
                 description: "A dual-focus approach to master both core and concentration areas.",
                 skills: [
-                    { title: 'SD-WAN Architecture', icon: Cloud, desc: 'Master the Orchestration, Management, Control, and Data planes within the Cisco SD-WAN fabric.' },
-                    { title: 'Deployment & Config', icon: Server, desc: 'End-to-end controller deployment (vManage, vBond, vSmart) and WAN Edge router onboarding.' },
-                    { title: 'Policies & Traffic', icon: Globe, desc: 'Implementing Control and Data policies for intelligent path selection and Application-Aware Routing.' },
-                    { title: 'SD-WAN Security', icon: Shield, desc: 'Securing the fabric with Enterprise Firewall, IPS, URL Filtering, and Advanced Malware Protection.' },
-                    { title: 'Monitoring & Troubleshoot', icon: Activity, desc: 'Using vManage for real-time monitoring, diagnostic tools, and fabric-wide troubleshooting.' },
-                    { title: 'Automation & API', icon: Code, desc: 'Leveraging REST APIs for network automation and vManage integration with external tools.' }
+                    { title: 'SD-WAN Architecture', icon: Share2, desc: 'Master the Orchestration, Management, Control, and Data planes within the Cisco SD-WAN fabric.' },
+                    { title: 'Deployment & Config', icon: Settings, desc: 'End-to-end controller deployment (vManage, vBond, vSmart) and WAN Edge router onboarding.' },
+                    { title: 'Policies & Traffic', icon: Route, desc: 'Implementing Control and Data policies for intelligent path selection and Application-Aware Routing.' },
+                    { title: 'SD-WAN Security', icon: Lock, desc: 'Securing the fabric with Enterprise Firewall, IPS, URL Filtering, and Advanced Malware Protection.' },
+                    { title: 'Monitoring & Troubleshoot', icon: LineChart, desc: 'Using vManage for real-time monitoring, diagnostic tools, and fabric-wide troubleshooting.' },
+                    { title: 'Automation & API', icon: Bot, desc: 'Leveraging REST APIs for network automation and vManage integration with external tools.' }
                 ]
             },
             roadmap: [
