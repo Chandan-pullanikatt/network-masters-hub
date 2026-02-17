@@ -138,7 +138,7 @@ export default function CourseDetailPage() {
                 <div className="px-4 md:px-6 pt-[24px] pb-[24px] mb-[48px] overflow-x-auto">
                     <div className="flex gap-4 items-center min-w-max p-1">
                         {['Overview', 'Roadmap', 'Batches', 'Course Schedule', 'FAQ']
-                            .filter(item => !(slug === 'cisco-sd-wan' && item === 'Course Schedule'))
+                            .filter(item => !((slug === 'cisco-sd-wan' || slug === 'python-automation' || slug === 'ccna-ccnp-combo') && item === 'Course Schedule'))
                             .map((item) => {
                                 const id = item.toLowerCase().replace(' ', '-');
                                 const isActive = activeSection === id;
@@ -511,7 +511,7 @@ export default function CourseDetailPage() {
 
                     {/* New Course Schedule Section */}
                     {/* Added ID for linking from tabs */}
-                    {slug !== 'cisco-sd-wan' && (
+                    {(slug !== 'cisco-sd-wan' && slug !== 'python-automation' && slug !== 'ccna-ccnp-combo') && (
                         <div id="course-schedule" className="scroll-mt-32">
                             <CourseSchedule />
                         </div>

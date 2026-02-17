@@ -183,9 +183,7 @@ export const courses: Course[] = [
                 price: 15000,
                 originalPrice: 25000,
                 startDate: "Upcoming",
-                batches: [
-                    { name: "Weekend Workshop", time: "11:00 AM – 2:00 PM (IST)", days: "Saturday Only", status: "Open" }
-                ]
+                batches: []
             },
             overview: {
                 title: "Network Programmability",
@@ -227,9 +225,7 @@ export const courses: Course[] = [
                 price: 30000,
                 originalPrice: 45000,
                 startDate: "Upcoming",
-                batches: [
-                    { name: "Fast Track", time: "6:00 PM – 9:00 PM (IST)", days: "Mon-Fri", status: "Waitlist" }
-                ]
+                batches: []
             },
             overview: {
                 title: "Complete Networking Journey",
