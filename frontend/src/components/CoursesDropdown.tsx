@@ -107,6 +107,17 @@ const CoursesDropdown: React.FC<CoursesDropdownProps> = ({ isScrolled, isHome })
                                         </Link>
                                     ))}
                                 </div>
+                                {activeCategory === 'flexible' && (
+                                    <div className="mt-4 pt-4 border-t border-slate-100 flex justify-end">
+                                        <Link
+                                            href="/flexible-learning"
+                                            className="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1 transition-colors"
+                                            onClick={() => setIsOpen(false)}
+                                        >
+                                            View All Flexible Learning Courses <span className="text-lg">→</span>
+                                        </Link>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </motion.div>
