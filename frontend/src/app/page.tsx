@@ -10,6 +10,8 @@ import EnquiryCTA from '@/components/sections/EnquiryCTA';
 
 import UpcomingBatchesModal from '@/components/home/UpcomingBatchesModal';
 
+import NewsletterSection from '@/components/sections/NewsletterSection';
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-background">
@@ -21,6 +23,7 @@ export default function Home() {
       <Steps />
       <Testimonials />
       <EnquiryCTA />
+      <NewsletterSection />
       <FAQ />
     </main>
   );

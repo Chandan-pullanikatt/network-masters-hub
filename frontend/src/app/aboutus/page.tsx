@@ -176,6 +176,57 @@ export default function AboutUsPage() {
                         </div>
                     </section>
 
+                    {/* SECTION 4.5 — DIRECTOR PROFILE */}
+                    <section className="w-full bg-[#F5F8FC] py-10 md:py-[80px]">
+                        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-[40px]">
+                            {/* Left Column (Director Image) */}
+                            <div className="flex-shrink-0 order-1 lg:order-1">
+                                {/* Keeping image on left to match "aligned exactly in the same layout" request */}
+                                <div className="relative w-full lg:w-[491px] h-[500px] lg:h-[780px] rounded-[16px] overflow-hidden">
+                                    <Image
+                                        src="/assets/chiefdirector.jpeg"
+                                        alt="Dr. Ravika Sethi - Director"
+                                        fill
+                                        className="object-cover object-top"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Right Column (Content Card) */}
+                            <div className="bg-white rounded-[16px] p-[32px] w-full max-w-[600px] shadow-sm order-2 lg:order-2">
+                                <div className="flex flex-col gap-4">
+                                    {/* Label */}
+                                    <span className="text-[12px] font-bold text-[#003366] tracking-wider uppercase">
+                                        Meet Our Director
+                                    </span>
+
+                                    {/* Name & Title */}
+                                    <div>
+                                        <h3 className="text-[28px] font-bold text-[#1a1a1a]">
+                                            Dr. Ravika Sethi
+                                        </h3>
+                                        <p className="text-[14px] font-bold text-[#003366] mt-1">
+                                            Director – Network Masters Hub
+                                        </p>
+                                    </div>
+
+                                    {/* Description */}
+                                    <div className="text-[15px] text-slate-600 leading-[160%] space-y-4">
+                                        <p>
+                                            Ravika Sethi is a dynamic marketing strategist and academic professional with over 15 years of experience in marketing, brand development, and business growth. She holds an MBA in Finance & Marketing and a PhD in Management, combining strategic insight with strong analytical expertise.
+                                        </p>
+                                        <p>
+                                            With extensive experience in strategic marketing, digital branding, social media management, lead generation, and performance-driven campaigns, she has consistently driven measurable growth and strengthened brand positioning across domains.
+                                        </p>
+                                        <p>
+                                            As Director and Marketing & Social Media Manager at Network Masters Hub, Ravika leads the organization’s growth strategy, strengthens its digital presence, and aligns operations with long-term vision—building a future-ready learning ecosystem and positioning Network Masters Hub as a trusted name in advanced networking and technology education.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
                     {/* SECTION 5 — CERTIFICATIONS */}
                     <section className="w-full bg-white py-10 md:py-[80px] rounded-2xl my-8 shadow-sm border border-slate-100">
                         <div className="flex flex-col items-center text-center gap-10 max-w-[1000px] mx-auto px-4 md:px-6">
