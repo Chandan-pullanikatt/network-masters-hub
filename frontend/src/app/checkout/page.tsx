@@ -98,8 +98,17 @@ export default function CheckoutPage() {
                 body: formDataToSend,
             });
 
+
+            const responseText = await res.text();
+            let errorData;
+            try {
+                errorData = JSON.parse(responseText);
+            } catch (e) {
+                console.error("Non-JSON response:", responseText);
+                throw new Error(`Server Error (${res.status}): ${responseText}`);
+            }
+
             if (!res.ok) {
-                const errorData = await res.json();
                 throw new Error(errorData.error?.message || "Payment submission failed");
             }
 
