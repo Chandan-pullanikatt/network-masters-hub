@@ -44,7 +44,7 @@ const RecordedCourseCard: React.FC<RecordedCourseCardProps> = ({ course }) => {
                         asChild
                         className="rounded-full bg-black text-white hover:bg-gray-800 px-8 py-6 font-bold tracking-wider text-sm shadow-lg border-2 border-white"
                     >
-                        <Link href={`/courses/${slug}`}>ENROLL NOW</Link>
+                        <Link href={`/flexible-learning/${slug}`}>ENROLL NOW</Link>
                     </Button>
                 </div>
 
