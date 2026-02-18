@@ -410,6 +410,93 @@ export default function FlexibleLearningCourseDetailPage() {
                         <StudentReviews />
                     </div>
 
+                    {/* More Courses Section */}
+                    <section className="scroll-mt-32 max-w-7xl mx-auto px-4">
+                        <div className="flex justify-between items-center mb-8">
+                            <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
+                                More Courses By <span className="text-[#e52e2e]">Praphul Mishra</span>
+                            </h2>
+                            <Button variant="outline" className="hidden md:flex" asChild>
+                                <Link href="/flexible-learning">View All Courses</Link>
+                            </Button>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {courses
+                                .filter(c => c.attributes.slug !== slug)
+                                .slice(0, 3) // Show max 3
+                                .map((otherCourse) => {
+                                    const otherSlug = otherCourse.attributes.slug;
+                                    const price = getFlexiblePrice(otherSlug);
+                                    const isPython = otherSlug === 'python-automation';
+
+                                    return (
+                                        <div
+                                            key={otherCourse.id}
+                                            className={`group flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border ${isPython ? 'border-blue-200 ring-1 ring-blue-100' : 'border-slate-200'}`}
+                                        >
+                                            {/* Image Area */}
+                                            <div className="relative h-[200px] w-full overflow-hidden bg-slate-100">
+                                                {otherCourse.attributes.image?.data?.attributes?.url ? (
+                                                    <Image
+                                                        src={otherCourse.attributes.image.data.attributes.url}
+                                                        alt={otherCourse.attributes.title}
+                                                        fill
+                                                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                                    />
+                                                ) : (
+                                                    <div className="flex items-center justify-center h-full text-slate-400">No Image</div>
+                                                )}
+
+                                                {/* Badge */}
+                                                <div className="absolute top-4 left-4">
+                                                    <span className="bg-[#e52e2e] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+                                                        Recorded
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            {/* Content */}
+                                            <div className="flex flex-col flex-1 p-5">
+                                                <h3 className="text-lg font-bold text-slate-900 mb-2 line-clamp-2 leading-tight group-hover:text-[#003366] transition-colors">
+                                                    {otherCourse.attributes.title}
+                                                </h3>
+
+                                                <p className="text-slate-500 text-sm mb-6 line-clamp-2">
+                                                    {otherCourse.attributes.description}
+                                                </p>
+
+                                                <div className="mt-auto flex items-center justify-between border-t border-slate-100 pt-4">
+                                                    <div className="flex flex-col">
+                                                        <span className="text-2xl font-bold text-slate-900">₹{price.toLocaleString('en-IN')}</span>
+                                                        <span className="text-xs text-slate-400 line-through">₹{(price * 2.5).toLocaleString('en-IN')}</span>
+                                                    </div>
+
+                                                    <Button
+                                                        size="sm"
+                                                        variant="outline"
+                                                        className="text-[#e52e2e] border-[#e52e2e]/20 hover:bg-[#e52e2e]/5 hover:text-[#e52e2e]"
+                                                        asChild
+                                                    >
+                                                        <Link href={`/flexible-learning/${otherSlug}`}>
+                                                            {isPython ? 'View Course' : 'Add to cart'}
+                                                        </Link>
+                                                        {/* Using 'Add to cart' text to match screenshot style, but linking to detail page as requested */}
+                                                    </Button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                        </div>
+
+                        <div className="mt-8 text-center md:hidden">
+                            <Button variant="outline" className="w-full" asChild>
+                                <Link href="/flexible-learning">View All Courses</Link>
+                            </Button>
+                        </div>
+                    </section>
+
                 </div>
             </div>
         </div>

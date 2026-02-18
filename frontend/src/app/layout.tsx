@@ -16,6 +16,8 @@ import { Toaster } from 'sonner';
 import { CartProvider } from "@/context/CartContext";
 import { AuthProvider } from "@/context/AuthContext";
 
+import WhatsAppButton from "@/components/WhatsAppButton";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -29,6 +31,7 @@ export default function RootLayout({
             <div className="flex min-h-screen flex-col">
               <Navbar />
               <div className="flex-1">{children}</div>
+              <WhatsAppButton />
               <Footer />
             </div>
             <Toaster richColors position="top-right" />
