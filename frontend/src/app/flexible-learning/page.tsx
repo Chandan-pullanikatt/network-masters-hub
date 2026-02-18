@@ -53,6 +53,8 @@ export default function FlexibleLearningPage() {
                                     ...course.attributes,
                                     price: flexiblePrice,
                                     hero: {
+                                        title: course.attributes.title,
+                                        subtitle: course.attributes.description,
                                         ...course.attributes.hero,
                                         price: flexiblePrice,
                                         originalPrice: flexiblePrice * 2.5
