@@ -96,21 +96,16 @@ const blogPost = {
 
 export default function BlogDetailPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = use(params);
-    console.log("Received slug:", slug);
-    console.log("Expected slug:", blogPost.slug);
-    console.log("Match:", slug === blogPost.slug);
+    // console.log("Received slug:", slug);
+    // console.log("Expected slug:", blogPost.slug);
+    // console.log("Match:", slug === blogPost.slug);
 
-    // Debugging: mismatched slug
-    // if (slug !== blogPost.slug) {
-    //     notFound();
-    // }
+    if (slug !== blogPost.slug) {
+        notFound();
+    }
 
     return (
         <article className="min-h-screen bg-white pb-24">
-            {/* Debug Slug */}
-            <div className="bg-yellow-100 p-2 text-center text-xs text-yellow-800">
-                Debug: Received slug = "{slug}" | Expected = "{blogPost.slug}"
-            </div>
             {/* Hero Image */}
             <div className="relative w-full h-[400px] md:h-[500px]">
                 <Image

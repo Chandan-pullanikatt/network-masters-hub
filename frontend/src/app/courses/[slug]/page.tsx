@@ -13,7 +13,6 @@ import FAQ from '@/components/sections/FAQ';
 import CourseSchedule from '@/components/sections/CourseSchedule';
 import EnquiryCTA from '@/components/sections/EnquiryCTA';
 import GoogleReviewsSection from '@/components/sections/GoogleReviewsSection';
-import WrittenTestimonialsSection from '@/components/sections/WrittenTestimonialsSection';
 import { useCart } from '@/context/CartContext';
 import { toast } from 'sonner';
 import { Course } from '@/types';
@@ -531,11 +530,6 @@ export default function CourseDetailPage() {
                     {/* Google Reviews Section */}
                     <div className="scroll-mt-32">
                         <GoogleReviewsSection />
-                    </div>
-
-                    {/* Written Testimonials Section */}
-                    <div className="scroll-mt-32">
-                        <WrittenTestimonialsSection />
                     </div>
 
                 </div>

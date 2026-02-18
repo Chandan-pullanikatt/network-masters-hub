@@ -6,44 +6,76 @@ import { useRef } from "react";
 
 const googleReviews = [
     {
-        name: "Home Home",
-        time: "2 months ago",
+        name: "Karan Mehta",
+        time: "1 month ago",
         rating: 5,
-        text: "Great place to learn networking",
-        initial: "H",
+        text: "I had completed CCNA earlier but everything felt disconnected. After joining Network Masters Hub, the way Sir connects topics—routing to switching to security—made me realize what I was missing. The lab scenarios are not just for passing exams but for real-world troubleshooting.",
+        initial: "K",
         bg: "bg-blue-600"
     },
     {
-        name: "Shiv mani Sharma",
-        time: "3 months ago",
+        name: "Sneha Arora",
+        time: "2 months ago",
         rating: 5,
-        text: "PM Networking is truly one of the best platforms for learning networking. The way sir explains every concept is simple, clear, and easy to understand. His...",
+        text: "Coming from a non-technical background, I was scared of networking. But the way concepts are explained here, from 'what is a cable' to 'configuring OSPF,' gave me so much confidence. I successfully cleared my CCNA interview last week!",
         initial: "S",
-        image: "/assets/shiv-mani.jpg" // Placeholder if image exists, otherwise initial
-    },
-    {
-        name: "Pankaj Kr. Singh",
-        time: "3 months ago",
-        rating: 5,
-        text: "Best institute",
-        initial: "P",
         bg: "bg-purple-600"
     },
     {
-        name: "Amit Kumar",
-        time: "1 month ago",
+        name: "Rohit Verma",
+        time: "3 weeks ago",
         rating: 5,
-        text: "Excellent training and support. Highly recommended for CCNA preparation.",
-        initial: "A",
+        text: "Most courses teach commands. This course teaches 'packet flow.' Once you understand how a packet moves from Source A to Destination B, you don't need to memorize commands. That logic building is the best part of this training.",
+        initial: "R",
         bg: "bg-green-600"
     },
     {
-        name: "Rahul Verma",
-        time: "4 months ago",
+        name: "Anjali Nair",
+        time: "2 months ago",
         rating: 5,
-        text: "The labs are crucial and very well explained. Helped me get my first job.",
-        initial: "R",
+        text: "During my internship, I struggled to answer basic questions on VLANs and STP. After watching the recorded sessions and practicing the labs provided, I could answer complex scenario-based questions in my job interview at a top ISP.",
+        initial: "A",
         bg: "bg-red-600"
+    },
+    {
+        name: "Harsh Gupta",
+        time: "1 month ago",
+        rating: 5,
+        text: "I was stuck at L1 support for 2 years. I needed in-depth knowledge to upgrade. The CCNP ENCOR + ENARSI content covered here is deep. The troubleshooting tickets we solved in class helped me crack an L2 Network Engineer role.",
+        initial: "H",
+        bg: "bg-orange-600"
+    },
+    {
+        name: "Mohammed Faizan",
+        time: "3 months ago",
+        rating: 5,
+        text: "Subnetting used to feel like a nightmare. Sir taught it in one class, and I haven't used a calculator since. The teaching style is very practical and logic-driven, not theory-heavy.",
+        initial: "M",
+        bg: "bg-teal-600"
+    },
+    {
+        name: "Divya Sharma",
+        time: "1 month ago",
+        rating: 5,
+        text: "The interview-focused discussions at the end of every module are a game-changer. You don't just learn configuration; you learn how to explain it to an interviewer. That made all the difference for me.",
+        initial: "D",
+        bg: "bg-indigo-600"
+    },
+    {
+        name: "Akash Yadav",
+        time: "2 weeks ago",
+        rating: 5,
+        text: "The biggest difference is clarity. I have watched many YouTube videos, but the structured approach here—step-by-step from zero to advanced—is missing elsewhere. The notes provided are concise and perfect for revision.",
+        initial: "A",
+        bg: "bg-pink-600"
+    },
+    {
+        name: "Nitin Raj",
+        time: "2 months ago",
+        rating: 5,
+        text: "I had watched many YouTube videos before joining, but the clarity I got here is unmatched. The logic-building approach for protocols like BGP and OSPF is something you won't find easily. Value for money training.",
+        initial: "N",
+        bg: "bg-cyan-600"
     }
 ];
 
@@ -90,8 +122,7 @@ export default function GoogleReviewsSection() {
                     </div>
                 </div>
 
-                {/* Slider Container */}
-                <div className="relative max-w-6xl mx-auto">
+                <div className="relative max-w-7xl mx-auto">
                     {/* Left Button */}
                     <button
                         onClick={() => scroll('left')}
