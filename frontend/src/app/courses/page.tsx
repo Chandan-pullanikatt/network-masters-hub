@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import GoogleReviewsSection from '@/components/sections/GoogleReviewsSection';
+import WrittenTestimonialsSection from '@/components/sections/WrittenTestimonialsSection';
 import CourseCard from '@/components/CourseCard';
 import { Course } from '@/types';
 import { User, Shield, Server, Activity, CheckCircle2, Circle, Clock, Calendar } from 'lucide-react';
@@ -200,6 +202,12 @@ export default function CoursesPage() {
                         ))}
                     </div>
                 </section>
+
+                {/* Google Reviews Section */}
+                <GoogleReviewsSection />
+
+                {/* Written Testimonials Section */}
+                <WrittenTestimonialsSection />
 
                 {/* Upcoming Batches Section */}
                 <section id="batch-structure" className="scroll-mt-32">

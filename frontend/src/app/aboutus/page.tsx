@@ -13,21 +13,21 @@ export default function AboutUsPage() {
                 <div className="w-full max-w-[1200px] px-6 md:px-12 lg:px-[120px] flex flex-col gap-12 md:gap-[80px] mb-12 md:mb-[80px]">
 
                     <section className="flex flex-col items-center text-center mt-32 md:mt-[172px] w-full max-w-[823px] mx-auto">
-                        <div className="bg-[#EAF1F8] border border-blue-200/60 rounded-3xl p-6 md:p-12 flex flex-col items-center gap-4 shadow-sm">
+                        <div className="bg-[#003366] border border-blue-400/30 rounded-3xl p-6 md:p-12 flex flex-col items-center gap-4 shadow-lg">
                             {/* Small Top Badge */}
-                            <div className="bg-white/80 border border-blue-100 rounded-full px-4 py-1.5 backdrop-blur-sm shadow-sm">
-                                <span className="text-[14px] text-[#003366] font-medium tracking-wide">
+                            <div className="bg-white/10 border border-white/20 rounded-full px-4 py-1.5 backdrop-blur-sm shadow-sm">
+                                <span className="text-[14px] text-white font-medium tracking-wide">
                                     Leading the IT Education Revolution
                                 </span>
                             </div>
 
                             {/* Main Heading */}
-                            <h1 className="text-3xl md:text-[44px] font-bold text-[#1a1a1a] leading-[1.2] tracking-tight mt-2">
+                            <h1 className="text-3xl md:text-[44px] font-bold text-white leading-[1.2] tracking-tight mt-2">
                                 Empowering the Next Generation <br /> of Network Engineers
                             </h1>
 
                             {/* Subtext */}
-                            <p className="text-[16px] text-slate-600 max-w-[600px] leading-relaxed">
+                            <p className="text-[16px] text-blue-100 max-w-[600px] leading-relaxed">
                                 We bridge the gap between academic knowledge and real-world networking challenges through immersive, hands-on training aligned with global certification standards.
                             </p>
                         </div>

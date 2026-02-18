@@ -12,7 +12,8 @@ import Image from 'next/image';
 import FAQ from '@/components/sections/FAQ';
 import CourseSchedule from '@/components/sections/CourseSchedule';
 import EnquiryCTA from '@/components/sections/EnquiryCTA';
-import StudentReviews from '@/components/sections/StudentReviews';
+import GoogleReviewsSection from '@/components/sections/GoogleReviewsSection';
+import WrittenTestimonialsSection from '@/components/sections/WrittenTestimonialsSection';
 import { useCart } from '@/context/CartContext';
 import { toast } from 'sonner';
 import { Course } from '@/types';
@@ -527,9 +528,14 @@ export default function CourseDetailPage() {
                         <FAQ />
                     </div>
 
-                    {/* Student Reviews Section */}
+                    {/* Google Reviews Section */}
                     <div className="scroll-mt-32">
-                        <StudentReviews />
+                        <GoogleReviewsSection />
+                    </div>
+
+                    {/* Written Testimonials Section */}
+                    <div className="scroll-mt-32">
+                        <WrittenTestimonialsSection />
                     </div>
 
                 </div>
