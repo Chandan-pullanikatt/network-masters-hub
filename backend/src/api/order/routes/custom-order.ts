@@ -3,7 +3,7 @@ export default {
         {
             method: "POST",
             path: "/manual-payment",
-            handler: "order.createManualOrder",
+            handler: "custom.manualPayment",
             config: {
                 auth: false,
             },

@@ -1,6 +1,10 @@
-'use strict';
+/**
+ * A set of functions called "actions" for `custom`
+ */
 
-module.exports = {
+import { Core } from '@strapi/strapi';
+
+export default ({ strapi }: { strapi: Core.Strapi }) => ({
     async manualPayment(ctx) {
         try {
             const { customerName, email, phone, courses, totalAmount } = ctx.request.body;
@@ -28,26 +32,7 @@ module.exports = {
             }
 
             // 1. Upload the screenshot
-            const uploadService = strapi.plugin('upload').service('upload');
-
-            // Upload expects files to be an array usually if 'files' key is used, but here we invoke it directly
-            // We can use the entityService to upload linked files or the upload service directly.
-            // Easiest is to plain upload then link.
-
-            // However, simplified approach: Create entry with 'files' property if using core create?
-            // Since we want custom logic, we can do it manually.
-
-            // Let's use the core upload logic.
-            // NOTE: strapi.service('plugin::upload.upload').upload({ data, files });
-
-            // Actually, a cleaner way in Strapi v4 is to pass files in the entity creation if using the core controller,
-            // but here we are custom.
-
-            // Let's just create the order and attach the file.
-            // But we need the file ID first? Or we can pass 'files.paymentScreenshot' to create?
-
-            // Strapi Entity Service 'create' supports `files` key!
-            // ref: strapi.io/documentation/developer-docs/latest/developer-resources/database-apis-reference/entity-service/create.html
+            // The file upload is handled by Strapi's entity service if passed in 'files'
 
             const entry = await strapi.entityService.create('api::order.order', {
                 data: {
@@ -63,7 +48,7 @@ module.exports = {
                 files: {
                     paymentScreenshot: paymentScreenshot
                 }
-            });
+            } as any);
 
             return ctx.send({ data: entry, message: 'Order created successfully' }, 201);
 
@@ -72,4 +57,4 @@ module.exports = {
             return ctx.internalServerError('Failed to process manual payment');
         }
     }
-};
+});
