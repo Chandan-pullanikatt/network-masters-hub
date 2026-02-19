@@ -76,46 +76,58 @@ const CoursesDropdown: React.FC<CoursesDropdownProps> = ({ isScrolled, isHome })
                                     <span className="text-xs text-slate-400">Select a course to view details</span>
                                 </div>
 
-                                <div className="grid grid-cols-2 gap-4">
-                                    {courses.slice(0, 5).map((course) => (
-                                        <Link
-                                            key={course.id}
-                                            href={`/courses/${course.attributes.slug}`}
-                                            className="group flex gap-3 items-start p-2 rounded-lg hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100"
-                                        >
-                                            {/* Course Image */}
-                                            <div className="relative w-16 h-12 rounded-md overflow-hidden shrink-0 bg-slate-200">
-                                                <Image
-                                                    src={course.attributes.image?.data?.attributes?.url || '/placeholder.jpg'}
-                                                    alt={course.attributes.title}
-                                                    fill
-                                                    className="object-cover transition-transform group-hover:scale-105"
-                                                />
+                                {activeCategory === 'flexible' ? (
+                                    <div className="flex-1 flex flex-col items-center justify-center h-full min-h-[300px] text-center p-8 bg-slate-50/50 rounded-xl border-2 border-dashed border-slate-100">
+                                        <div className="max-w-md space-y-6">
+                                            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto text-blue-600 mb-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /><polyline points="14 2 14 8 20 8" /><line x1="16" x2="8" y1="13" y2="13" /><line x1="16" x2="8" y1="17" y2="17" /><line x1="10" x2="8" y1="9" y2="9" /></svg>
                                             </div>
-
-                                            {/* Course Info */}
-                                            <div className="flex-1 min-w-0">
-                                                <h4 className="text-xs font-bold text-slate-800 line-clamp-2 leading-snug group-hover:text-[#003366] transition-colors">
-                                                    {course.attributes.title}
-                                                </h4>
-                                                <div className="mt-1 flex items-center gap-2 text-[10px] text-slate-500">
-                                                    <span>{course.attributes.duration}</span>
-                                                    <span>•</span>
-                                                    <span className="font-medium text-slate-700">₹{course.attributes.price.toLocaleString()}</span>
+                                            <div>
+                                                <h4 className="text-xl font-bold text-slate-900 mb-2">Flexible Learning Program</h4>
+                                                <p className="text-slate-600">
+                                                    Master networking at your own pace with our comprehensive recorded courses and regular doubt clearing sessions.
+                                                </p>
+                                            </div>
+                                            <Link
+                                                href="/flexible-learning"
+                                                className="inline-flex items-center justify-center px-6 py-3 text-sm font-bold text-white transition-all bg-[#003366] rounded-lg hover:bg-[#002244] hover:shadow-lg hover:scale-105 active:scale-95 w-full sm:w-auto"
+                                                onClick={() => setIsOpen(false)}
+                                            >
+                                                View All Flexible Learning Courses
+                                            </Link>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div className="grid grid-cols-2 gap-4">
+                                        {courses.slice(0, 5).map((course) => (
+                                            <Link
+                                                key={course.id}
+                                                href={`/courses/${course.attributes.slug}`}
+                                                className="group flex gap-3 items-start p-2 rounded-lg hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100"
+                                            >
+                                                {/* Course Image */}
+                                                <div className="relative w-16 h-12 rounded-md overflow-hidden shrink-0 bg-slate-200">
+                                                    <Image
+                                                        src={course.attributes.image?.data?.attributes?.url || '/placeholder.jpg'}
+                                                        alt={course.attributes.title}
+                                                        fill
+                                                        className="object-cover transition-transform group-hover:scale-105"
+                                                    />
                                                 </div>
-                                            </div>
-                                        </Link>
-                                    ))}
-                                </div>
-                                {activeCategory === 'flexible' && (
-                                    <div className="mt-4 pt-4 border-t border-slate-100 flex justify-end">
-                                        <Link
-                                            href="/flexible-learning"
-                                            className="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1 transition-colors"
-                                            onClick={() => setIsOpen(false)}
-                                        >
-                                            View All Flexible Learning Courses <span className="text-lg">→</span>
-                                        </Link>
+
+                                                {/* Course Info */}
+                                                <div className="flex-1 min-w-0">
+                                                    <h4 className="text-xs font-bold text-slate-800 line-clamp-2 leading-snug group-hover:text-[#003366] transition-colors">
+                                                        {course.attributes.title}
+                                                    </h4>
+                                                    <div className="mt-1 flex items-center gap-2 text-[10px] text-slate-500">
+                                                        <span>{course.attributes.duration}</span>
+                                                        <span>•</span>
+                                                        <span className="font-medium text-slate-700">₹{course.attributes.price.toLocaleString()}</span>
+                                                    </div>
+                                                </div>
+                                            </Link>
+                                        ))}
                                     </div>
                                 )}
                             </div>
