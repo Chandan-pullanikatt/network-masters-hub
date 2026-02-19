@@ -7,6 +7,8 @@ export default [
     name: 'strapi::cors',
     config: {
       origin: [
+        'https://networkmastershub.com',
+        'https://www.networkmastershub.com',
         'https://network-masters.netlify.app',
         'http://localhost:3000'
       ],
