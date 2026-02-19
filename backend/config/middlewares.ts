@@ -6,7 +6,6 @@ export default [
   {
     name: 'strapi::cors',
     config: {
-      enabled: true,
       origin: [
         'https://network-masters.netlify.app',
         'http://localhost:3000'
@@ -25,7 +24,7 @@ export default [
       formLimit: '256mb', // increase limit
       jsonLimit: '256mb',
       textLimit: '256mb',
-      parsedMethods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+      parsedMethods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
       multipart: true,
       includeUnparsed: true,
     },
