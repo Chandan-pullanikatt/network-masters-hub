@@ -96,7 +96,7 @@ const Navbar = () => {
                         Blog
                     </Link>
                     <Link
-                        href="/#contact"
+                        href="/contact"
                         className={`text-sm font-medium transition-colors hover:text-primary ${isHome && !isScrolled ? 'text-white/90 hover:text-white' : ''}`}
                     >
                         Connect With Us
@@ -202,7 +202,7 @@ const Navbar = () => {
                     <Link href="/blog" className="block text-sm font-medium hover:text-primary" onClick={() => setIsOpen(false)}>
                         Blog
                     </Link>
-                    <Link href="/#contact" className="block text-sm font-medium hover:text-primary" onClick={() => setIsOpen(false)}>
+                    <Link href="/contact" className="block text-sm font-medium hover:text-primary" onClick={() => setIsOpen(false)}>
                         Connect With Us
                     </Link>
 

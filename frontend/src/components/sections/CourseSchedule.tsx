@@ -10,14 +10,28 @@ const CourseSchedule = () => {
             id: 1,
             type: 'Regular',
             days: 'Mon - Fri',
-            time: '05:00 PM - 07:00 PM',
+            time: '07:00 AM - 09:00 AM',
             mode: 'Online'
         },
         {
             id: 2,
+            type: 'Regular',
+            days: 'Mon - Fri',
+            time: '08:00 PM - 10:00 PM',
+            mode: 'Online'
+        },
+        {
+            id: 3,
             type: 'Weekend',
             days: 'Sat & Sun',
-            time: '05:00 PM - 08:00 PM',
+            time: '10:00 AM - 01:00 PM',
+            mode: 'Online'
+        },
+        {
+            id: 4,
+            type: 'Regular (Intensive)',
+            days: 'Mon - Fri',
+            time: '03:00 PM - 05:00 PM',
             mode: 'Online'
         }
     ];

@@ -148,32 +148,7 @@ export default function FlexibleLearningCourseDetailPage() {
                             {course.attributes.description}
                         </p>
 
-                        {/* Author Info */}
-                        <div className="flex items-center gap-3 mb-8">
-                            <div className="w-10 h-10 rounded-full bg-slate-200 overflow-hidden relative border border-white shadow-sm">
-                                <Image
-                                    src="/assets/praphul.jpg" // Assuming this asset exists or use a generic one if not available. Using a generic strategy if needed.
-                                    alt="Praphul Mishra"
-                                    fill
-                                    className="object-cover"
-                                    onError={(e) => {
-                                        // Fallback if image fails - simplistic handling via style not possible here easily, relying on alt text or default browser behavior if implied.
-                                        // For production code we'd use a state for fallback. 
-                                        // Assuming user wants the TEXT primarily: "By Praphul Mishra In Recorded Course"
-                                    }}
-                                />
-                                {/* Since I don't know if praphul.jpg exists, I will use a placeholder from public or just render the text prominently.
-                                   However, the screenshot showed an avatar.
-                                   I'll try to find a real image or use a placeholder.
-                                   Actually, the user has 'assets/p6.png' etc.
-                                   I'll assume a placeholder for now which is safer.
-                                */}
-                                <div className="absolute inset-0 bg-slate-300 flex items-center justify-center text-xs font-bold text-slate-600">PM</div>
-                            </div>
-                            <div className="text-sm font-semibold text-slate-800">
-                                By Praphul Mishra <span className="text-slate-600 font-normal">In Recorded Course</span>
-                            </div>
-                        </div>
+
 
                         {/* Price and Enroll Section */}
                         <div className="bg-[#003366] rounded-2xl p-6 md:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl max-w-3xl border border-blue-400/30 backdrop-blur-sm">
@@ -414,7 +389,7 @@ export default function FlexibleLearningCourseDetailPage() {
                     <section className="scroll-mt-32 max-w-7xl mx-auto px-4">
                         <div className="flex justify-between items-center mb-8">
                             <h2 className="text-2xl md:text-3xl font-bold text-slate-900">
-                                More Courses By <span className="text-[#e52e2e]">Praphul Mishra</span>
+                                More Courses
                             </h2>
                             <Button variant="outline" className="hidden md:flex" asChild>
                                 <Link href="/flexible-learning">View All Courses</Link>
