@@ -112,36 +112,36 @@ export default function BlogDetailPage({ params }: { params: Promise<{ slug: str
                     src={blogPost.image}
                     alt={blogPost.title}
                     fill
-                    className="object-cover brightness-75"
+                    className="object-cover"
                     priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-
-                <div className="absolute bottom-0 left-0 w-full p-6 md:p-12 text-white container mx-auto">
-                    <Link href="/blog" className="inline-flex items-center text-blue-200 hover:text-white mb-6 transition-colors font-medium">
-                        <ArrowLeft className="w-4 h-4 mr-2" />
-                        Back to Blog
-                    </Link>
-                    <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight max-w-4xl">
-                        {blogPost.title}
-                    </h1>
-                    <div className="flex items-center gap-6 text-sm md:text-base text-blue-100 font-medium">
-                        <div className="flex items-center gap-2">
-                            <Calendar className="w-4 h-4" />
-                            {blogPost.date}
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <Clock className="w-4 h-4" />
-                            {blogPost.readTime}
-                        </div>
-                    </div>
-                </div>
             </div>
 
-            {/* Content Body */}
-            <div className="container mx-auto px-4 md:px-6 mt-12 max-w-3xl">
+            {/* Content Container */}
+            <div className="container mx-auto px-4 md:px-6 mt-8 md:mt-12 max-w-4xl">
+                <Link href="/blog" className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-6 transition-colors font-medium">
+                    <ArrowLeft className="w-4 h-4 mr-2" />
+                    Back to Blog
+                </Link>
+
+                <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-slate-900">
+                    {blogPost.title}
+                </h1>
+
+                <div className="flex items-center gap-6 text-sm md:text-base text-slate-600 font-medium border-b border-slate-200 pb-8 mb-8">
+                    <div className="flex items-center gap-2">
+                        <Calendar className="w-4 h-4" />
+                        {blogPost.date}
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <Clock className="w-4 h-4" />
+                        {blogPost.readTime}
+                    </div>
+                </div>
+
+                {/* Content Body */}
                 <div
-                    className="prose prose-lg prose-slate prose-headings:text-slate-900 prose-p:text-slate-600 prose-strong:text-slate-900 prose-ul:text-slate-600 max-w-none"
+                    className="prose prose-lg prose-slate prose-headings:text-slate-900 prose-p:text-slate-700 prose-strong:text-slate-900 prose-ul:text-slate-700 max-w-none"
                     dangerouslySetInnerHTML={{ __html: blogPost.content }}
                 >
                 </div>
