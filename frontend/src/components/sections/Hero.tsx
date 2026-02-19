@@ -8,6 +8,19 @@ const Hero = () => {
     const { scrollY } = useScroll();
     const y = useTransform(scrollY, [0, 500], [0, 150]);
 
+    const scrollToCourses = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+        const element = document.getElementById('courses');
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+            // Optionally update URL without jump
+            window.history.pushState(null, '', '/#courses');
+        } else {
+            // If not on home page or element missing, force nav
+            window.location.href = '/#courses';
+        }
+    };
+
     return (
         <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-slate-900 text-white">
             {/* Background Video with Parallax */}
@@ -52,7 +65,7 @@ const Hero = () => {
                             <Link href="/about">Learn More</Link>
                         </Button>
                         <Button size="lg" className="h-12 px-8 text-base bg-blue-800 hover:bg-blue-700 text-white border-none font-semibold transition-transform hover:scale-105 shadow-lg shadow-blue-900/20" asChild>
-                            <Link href="/#courses">Explore Courses</Link>
+                            <Link href="/#courses" onClick={scrollToCourses}>Explore Courses</Link>
                         </Button>
                     </motion.div>
                 </motion.div>
