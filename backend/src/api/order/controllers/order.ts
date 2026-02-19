@@ -44,7 +44,7 @@ export default factories.createCoreController('api::order.order', ({ strapi }) =
                 }
             }
 
-            const orderData = {
+            const orderData: any = {
                 customerName,
                 email,
                 phone,
@@ -58,13 +58,41 @@ export default factories.createCoreController('api::order.order', ({ strapi }) =
 
             console.log("Creating order with data:", JSON.stringify(orderData, null, 2));
 
-            // 4. Create Order using the Core Service
-            // This service automatically handles file uploads if 'files' is passed correctly.
+
+            // 4. Manually Upload the File First (More reliable than implicit create)
+            let uploadedFiles = null;
+            try {
+                const fileToUpload = files.paymentScreenshot;
+                // Strapi's upload service expects 'files' to be the file object(s).
+                // We handle single file upload here.
+                console.log("Attempting explicit file upload...");
+
+                uploadedFiles = await strapi.plugin('upload').service('upload').upload({
+                    data: {},
+                    files: fileToUpload
+                });
+
+                console.log("File uploaded successfully. Result:", JSON.stringify(uploadedFiles, null, 2));
+
+            } catch (uploadError) {
+                console.error("Upload failed:", uploadError);
+                return ctx.badRequest('Failed to upload payment screenshot', { error: uploadError });
+            }
+
+            // 5. Link the uploaded file ID to the order data
+            if (uploadedFiles && uploadedFiles.length > 0) {
+                // The upload service returns an array of files. We take the first one.
+                // Note: In Strapi v4/v5 content API, we link media fields by ID.
+                orderData.paymentScreenshot = uploadedFiles[0].id;
+                console.log(`Linking Upload ID ${uploadedFiles[0].id} to Order`);
+            } else {
+                console.warn("Upload service returned no files to link.");
+            }
+
+            // 6. Create Order with the linked file ID
+            // Since we manually uploaded, we only pass 'data'.
             const entity = await strapi.service('api::order.order').create({
-                data: orderData,
-                files: {
-                    paymentScreenshot: files.paymentScreenshot
-                }
+                data: orderData
             });
 
             console.log("Order created successfully:", entity.id);
