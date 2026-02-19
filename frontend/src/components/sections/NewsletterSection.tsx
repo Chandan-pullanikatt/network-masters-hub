@@ -34,7 +34,7 @@ export default function NewsletterSection() {
                 {/* Badge */}
                 <div className="inline-block bg-white/10 backdrop-blur-sm px-6 py-2 rounded-full mb-8 border border-white/20">
                     <span className="text-white text-xs md:text-sm font-bold tracking-wider uppercase">
-                        GET LATEST PM NETWORKING UPDATE
+                        GET LATEST NETWORK MASTERS HUB UPDATE
                     </span>
                 </div>
 

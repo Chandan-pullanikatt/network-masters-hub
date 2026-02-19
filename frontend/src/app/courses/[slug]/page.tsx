@@ -125,9 +125,7 @@ export default function CourseDetailPage() {
                         >
                             {enrollLoading ? "Redirecting..." : "Enroll Now"}
                         </Button>
-                        <Button variant="outline" size="lg" className="text-white border-white hover:bg-white/10 px-8 h-12 bg-transparent">
-                            Download Syllabus
-                        </Button>
+
                     </div>
                 </div>
             </div>

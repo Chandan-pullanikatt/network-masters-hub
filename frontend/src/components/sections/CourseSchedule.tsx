@@ -27,13 +27,7 @@ const CourseSchedule = () => {
             time: '10:00 AM - 01:00 PM',
             mode: 'Online'
         },
-        {
-            id: 4,
-            type: 'Regular (Intensive)',
-            days: 'Mon - Fri',
-            time: '03:00 PM - 05:00 PM',
-            mode: 'Online'
-        }
+
     ];
 
     return (

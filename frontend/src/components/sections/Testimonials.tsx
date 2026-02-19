@@ -2,15 +2,62 @@ import { Quote } from 'lucide-react';
 import { MotionSection, MotionDiv } from '@/components/ui/motion-container';
 import { staggerContainer, fadeInUp } from '@/lib/animations';
 
-const testimonials = Array(6).fill({
-    name: "Rahul Menon",
-    role: "Junior Network Engineer",
-    message: "Before joining, networking felt overwhelming. The structured labs and step-by-step guidance helped me understand real infrastructure environments. I didn't just clear concepts I gained confidence. Today, I handle live configurations without hesitation."
-});
+const testimonials = [
+    {
+        name: "Riya Bhardwaj",
+        role: "CCNA Student",
+        message: "Before joining the CCNA batch, networking concepts felt confusing and too technical. The structured lab sessions and practical topology explanations changed everything for me. Subnetting, VLANs, routing protocols — all became simple when practiced live. I didn’t just prepare for an exam; I built real networking confidence."
+    },
+    {
+        name: "Anant Raj",
+        role: "Network Automation Student",
+        message: "Before this course, automation felt intimidating. But learning Python basics along with network automation tools made everything smooth. Seeing configurations get deployed automatically was a game changer. It helped me understand where the networking industry is heading."
+    },
+    {
+        name: "Rahul Srivastava",
+        role: "CCNP Student",
+        message: "CCNP always felt like a difficult milestone, but the way advanced routing protocols like OSPF, EIGRP, and BGP were explained made it manageable. Complex topics were broken into small, understandable parts. The real-world scenarios shared during the sessions gave me industry-level clarity."
+    },
+    {
+        name: "Samrat",
+        role: "CCNA Student",
+        message: "What I loved most about the CCNA course was the hands-on approach. Every concept was followed by lab implementation. Instead of memorizing commands, we understood why we were configuring them. Today, I can troubleshoot basic network issues confidently in real environments."
+    },
+    {
+        name: "Ritesh Yadav",
+        role: "CCNP Student",
+        message: "The CCNP batch didn’t just focus on certification. We worked on multi-layer switching, redundancy protocols, and enterprise-level network designs. The troubleshooting approach taught here helped me think like a real network engineer rather than just a student preparing for exams."
+    },
+    {
+        name: "Sneha Verma",
+        role: "SD-WAN Student",
+        message: "SD-WAN sounded complex initially, but the step-by-step explanation of architecture, controllers, policies, and real deployment scenarios made it simple. The labs gave me clarity on how enterprise WAN environments are evolving. This course truly upgraded my understanding of modern networking."
+    },
+    {
+        name: "Karthik Reddy",
+        role: "CCNA + CCNP Student",
+        message: "Joining the combo batch was the best decision. The transition from fundamentals to advanced concepts was very smooth. The structured roadmap ensured that I didn’t miss any foundational clarity while moving towards advanced networking. It felt like a complete career transformation program."
+    },
+    {
+        name: "Harsh Sharma",
+        role: "Course Student",
+        message: "The trainer has a unique way of simplifying even the most complicated networking concepts. Real-life examples, whiteboard explanations, and lab-based demonstrations made learning very engaging. Doubts were cleared patiently, no matter how basic they seemed."
+    },
+    {
+        name: "Rihatik Kumar",
+        role: "Network Student",
+        message: "Earlier, I hesitated to touch live devices. But after practicing structured labs repeatedly, I developed the confidence to configure routers and switches without fear. The practical exposure reduced my nervousness during interviews and real-time troubleshooting."
+    },
+    {
+        name: "Aryan Raj",
+        role: "Professional Training Student",
+        message: "This wasn’t just a certification course; it was professional grooming. From interview guidance to real-world troubleshooting mindset, everything was covered. The environment was motivating, and every session added value. I now feel industry-ready, not just exam-ready."
+    }
+];
 
 const Testimonials = () => {
     return (
-        <section className="py-20 bg-[#F8F9FA]">
+        <section className="pt-20 pb-0 bg-[#F8F9FA]">
             <div className="max-w-[1280px] mx-auto w-full px-6">
                 <MotionDiv
                     variants={staggerContainer}
