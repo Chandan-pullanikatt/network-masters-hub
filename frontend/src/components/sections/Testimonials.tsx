@@ -47,11 +47,6 @@ const testimonials = [
         name: "Rihatik Kumar",
         role: "Network Student",
         message: "Earlier, I hesitated to touch live devices. But after practicing structured labs repeatedly, I developed the confidence to configure routers and switches without fear. The practical exposure reduced my nervousness during interviews and real-time troubleshooting."
-    },
-    {
-        name: "Aryan Raj",
-        role: "Professional Training Student",
-        message: "This wasn’t just a certification course; it was professional grooming. From interview guidance to real-world troubleshooting mindset, everything was covered. The environment was motivating, and every session added value. I now feel industry-ready, not just exam-ready."
     }
 ];
 
