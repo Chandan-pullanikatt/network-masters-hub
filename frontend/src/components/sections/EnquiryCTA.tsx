@@ -70,7 +70,7 @@ const EnquiryCTA = () => {
 
     return (
         <section className="pt-10 pb-20 bg-[#EBF5FA]">
-            <div className="container px-4 md:px-6">
+            <div className="container mx-auto px-4 md:px-6">
                 <div className="flex flex-col lg:flex-row rounded-3xl overflow-hidden shadow-xl bg-white max-w-6xl mx-auto">
 
                     {/* Left Side - Dark Blue Visual */}
