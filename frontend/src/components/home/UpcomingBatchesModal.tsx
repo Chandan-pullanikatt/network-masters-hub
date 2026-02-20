@@ -51,10 +51,10 @@ export default function UpcomingBatchesModal() {
     const handleClose = () => setIsOpen(false);
 
     return (
-        <Modal isOpen={isOpen} onClose={handleClose} className="max-w-4xl p-0 overflow-hidden">
-            <div className="relative bg-background">
-                {/* Header */}
-                <div className="p-6 border-b border-border flex items-center justify-between bg-card">
+        <Modal isOpen={isOpen} onClose={handleClose} className="max-w-4xl p-0">
+            <div className="relative bg-background flex flex-col max-h-[90vh]">
+                {/* Header - stays fixed at top */}
+                <div className="p-6 border-b border-border flex items-center justify-between bg-card flex-shrink-0">
                     <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80">
                         Upcoming Live Batches
                     </h2>
@@ -66,8 +66,8 @@ export default function UpcomingBatchesModal() {
                     </button>
                 </div>
 
-                {/* Content */}
-                <div className="p-0 overflow-x-auto">
+                {/* Content - scrollable */}
+                <div className="overflow-y-auto overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                         <thead>
                             <tr className="bg-primary text-primary-foreground">
