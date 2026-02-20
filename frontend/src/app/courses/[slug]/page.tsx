@@ -106,7 +106,7 @@ export default function CourseDetailPage() {
                     <div className="absolute inset-0 bg-[#003366]/80"></div>
                 </div>
 
-                <div className="container relative z-10 px-4 md:px-6 text-center">
+                <div className="container mx-auto relative z-10 px-4 md:px-6 text-center">
                     <div className="inline-block px-3 py-1 rounded-full bg-blue-500/20 text-blue-200 text-sm font-medium mb-6 backdrop-blur-sm border border-blue-400/30">
                         {hero?.badge || "Best Seller"}
                     </div>
