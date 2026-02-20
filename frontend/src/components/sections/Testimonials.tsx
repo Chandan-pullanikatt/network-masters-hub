@@ -71,7 +71,7 @@ const Testimonials = () => {
                     </MotionDiv>
                 </MotionDiv>
 
-                <MotionSection className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <MotionSection viewportAmount={0} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {testimonials.map((testimonial, index) => (
                         <MotionDiv key={index} variants={fadeInUp} className="bg-white p-6 rounded-2xl shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] hover:shadow-lg transition-shadow duration-300 flex flex-col h-full border border-slate-50">
                             <div className="flex justify-between items-start mb-6">

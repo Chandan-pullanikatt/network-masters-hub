@@ -112,8 +112,8 @@ export default function AboutUsPage() {
                         </div>
 
                         {/* Right Column (Image) */}
-                        <div className="flex-shrink-0">
-                            <div className="relative w-full lg:w-[491px] h-[350px] lg:h-[550px] rounded-[24px] overflow-hidden shadow-lg">
+                        <div className="flex-shrink-0 w-full lg:w-[491px]">
+                            <div className="relative w-full h-[350px] lg:h-[550px] rounded-[24px] overflow-hidden shadow-lg">
                                 <Image
                                     src="/assets/aboutus1.png"
                                     alt="Our Journey"
@@ -127,8 +127,8 @@ export default function AboutUsPage() {
                     <section className="w-full bg-[#F5F8FC] py-10 md:py-[80px]">
                         <div className="flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-[40px]">
                             {/* Left Column (Founder Image) */}
-                            <div className="flex-shrink-0">
-                                <div className="relative w-full lg:w-[491px] h-[500px] lg:h-[780px] rounded-[16px] overflow-hidden">
+                            <div className="flex-shrink-0 w-full lg:w-[491px]">
+                                <div className="relative w-full h-[400px] lg:h-[780px] rounded-[16px] overflow-hidden">
                                     <Image
                                         src="/assets/cef.png"
                                         alt="Pankaj Sethi - Founder"
@@ -180,9 +180,9 @@ export default function AboutUsPage() {
                     <section className="w-full bg-[#F5F8FC] py-10 md:py-[80px]">
                         <div className="flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-[40px]">
                             {/* Left Column (Director Image) */}
-                            <div className="flex-shrink-0 order-1 lg:order-1">
+                            <div className="flex-shrink-0 order-1 lg:order-1 w-full lg:w-[491px]">
                                 {/* Keeping image on left to match "aligned exactly in the same layout" request */}
-                                <div className="relative w-full lg:w-[491px] h-[500px] lg:h-[780px] rounded-[16px] overflow-hidden">
+                                <div className="relative w-full h-[400px] lg:h-[780px] rounded-[16px] overflow-hidden">
                                     <Image
                                         src="/assets/chiefdirector.jpeg"
                                         alt="Dr. Ravika Sethi - Director"
