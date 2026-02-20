@@ -1,10 +1,14 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Clock } from 'lucide-react';
 
-const CourseSchedule = () => {
+interface CourseScheduleProps {
+    onEnroll?: () => void;
+}
+
+const CourseSchedule = ({ onEnroll }: CourseScheduleProps) => {
     const batches = [
         {
             id: 1,
@@ -65,7 +69,11 @@ const CourseSchedule = () => {
                                 <div className="text-sm font-medium text-slate-500">
                                     Mode - <span className="text-[#00BFA6] font-bold">{batch.mode}</span>
                                 </div>
-                                <Button variant="outline" className="border-blue-200 text-blue-600 hover:bg-blue-50 hover:text-blue-700 rounded-full h-9 px-6 text-xs font-bold border-2">
+                                <Button
+                                    variant="outline"
+                                    className="border-blue-200 text-blue-600 hover:bg-blue-50 hover:text-blue-700 rounded-full h-9 px-6 text-xs font-bold border-2"
+                                    onClick={onEnroll}
+                                >
                                     Book Demo
                                 </Button>
                             </div>

@@ -479,7 +479,7 @@ export default function CourseDetailPage() {
                                                     <h3 className="text-base font-bold text-slate-900">{batch.name}</h3>
                                                     {batch.startDate && <p className="text-slate-500 text-xs">Starts: {batch.startDate}</p>}
                                                 </div>
-                                                <Button className="bg-[#003366] hover:bg-[#002244] text-white h-7 text-xs px-3">Book Now</Button>
+                                                <Button onClick={handleEnroll} className="bg-[#003366] hover:bg-[#002244] text-white h-7 text-xs px-3">Book Now</Button>
                                             </div>
                                             <div className="flex items-center gap-4 text-xs text-slate-600">
                                                 <div className="flex items-center gap-1.5">
@@ -511,7 +511,7 @@ export default function CourseDetailPage() {
                     {/* Added ID for linking from tabs */}
                     {(slug !== 'cisco-sd-wan' && slug !== 'python-automation' && slug !== 'ccna-ccnp-combo') && (
                         <div id="course-schedule" className="scroll-mt-32">
-                            <CourseSchedule />
+                            <CourseSchedule onEnroll={handleEnroll} />
                         </div>
                     )}
 
