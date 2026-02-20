@@ -77,7 +77,7 @@ export default function CoursesPage() {
                 {/* Background Pattern Overlay */}
                 <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#4d7a97_1px,transparent_1px)] [background-size:20px_20px]"></div>
 
-                <div className="container px-4 md:px-6 relative z-10 text-center">
+                <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
                     <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
                         Become a Job-Ready Network<br />
                         Engineer with CCNA (200-301)
@@ -99,7 +99,7 @@ export default function CoursesPage() {
 
             {/* Sticky Sub-Navigation */}
             <div className="sticky top-16 z-40 bg-white border-b border-slate-200 shadow-sm">
-                <div className="container px-4 md:px-6">
+                <div className="container mx-auto px-4 md:px-6">
                     <div className="flex overflow-x-auto no-scrollbar gap-8 items-center h-16">
                         {['Program Overview', 'Learning Roadmap', 'Batch Structure', 'FAQ'].map((item) => {
                             const id = item.toLowerCase().replace(' ', '-');
@@ -120,7 +120,7 @@ export default function CoursesPage() {
                 </div>
             </div>
 
-            <div className="container px-4 md:px-6 py-16 space-y-24">
+            <div className="container mx-auto px-4 md:px-6 py-16 space-y-24">
 
                 {/* Program Overview - Core Skills */}
                 <section id="program-overview" className="scroll-mt-32">

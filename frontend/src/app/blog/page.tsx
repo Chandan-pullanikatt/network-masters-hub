@@ -7,14 +7,14 @@ export default function BlogPage() {
         <div className="flex flex-col min-h-screen">
             {/* Header Section */}
             <div className="bg-[#003366] py-16 text-center text-white">
-                <div className="container px-4 md:px-6">
+                <div className="container mx-auto px-4 md:px-6">
                     <h1 className="text-4xl font-bold mb-4">Our Blog</h1>
                     <p className="text-blue-100 max-w-2xl mx-auto">Latest insights, tutorials, and career advice from the networking world.</p>
                 </div>
             </div>
 
             {/* Content Section */}
-            <div className="container py-12 px-4 md:px-6">
+            <div className="container mx-auto py-12 px-4 md:px-6">
 
                 <div className="max-w-4xl mx-auto">
                     <Link href="/blog/ai-will-not-replace-network-engineers" className="group block bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100">

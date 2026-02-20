@@ -4,7 +4,7 @@ import FAQ from '@/components/sections/FAQ';
 export default function ContactPage() {
     return (
         <main className="min-h-screen bg-white pt-10">
-            <div className="container px-4 md:px-6 mb-12 text-center">
+            <div className="container mx-auto px-4 md:px-6 mb-12 text-center">
                 <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
                 <p className="text-slate-600 max-w-2xl mx-auto">
                     We are here to help you achieve your career goals. Reach out to us for course details, batch timings, or career advice.
@@ -19,7 +19,7 @@ export default function ContactPage() {
 
             {/* Contact Info */}
             <section className="py-12 bg-slate-50 border-t">
-                <div className="container px-4 md:px-6 text-center">
+                <div className="container mx-auto px-4 md:px-6 text-center">
                     <h3 className="text-2xl font-bold mb-8">Get In Touch</h3>
                     <div className="flex flex-col md:flex-row gap-8 justify-center max-w-2xl mx-auto text-left">
                         <div>
