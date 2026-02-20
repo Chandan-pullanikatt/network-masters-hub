@@ -9,6 +9,11 @@ const urbanist = Urbanist({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Network Masters Hub | IT Training Platform",
   description: "Master IT, Networking, and Automation with industry-led training.",
+  icons: {
+    icon: "/assets/favicon.png",
+    shortcut: "/assets/favicon.png",
+    apple: "/assets/favicon.png",
+  },
 };
 
 import { Toaster } from 'sonner';

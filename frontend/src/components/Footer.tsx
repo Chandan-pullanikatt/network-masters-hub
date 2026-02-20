@@ -17,7 +17,7 @@ const Footer = () => {
                     <div className="col-span-1 md:col-span-1">
                         <Link href="/">
                             <Image
-                                src="/assets/logo.png"
+                                src="/assets/logo.jpeg"
                                 alt="Network Masters Logo"
                                 width={240}
                                 height={80}
