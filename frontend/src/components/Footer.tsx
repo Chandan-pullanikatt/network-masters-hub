@@ -15,13 +15,13 @@ const Footer = () => {
 
                     {/* Logo/Brand Area (Placeholder Box in Design) */}
                     <div className="col-span-1 md:col-span-1">
-                        <Link href="/">
+                        <Link href="/" className="inline-block bg-white p-2 rounded-xl mb-6">
                             <Image
-                                src="/assets/logo.png"
+                                src="/assets/footer-logo.png"
                                 alt="Network Masters Logo"
                                 width={240}
                                 height={80}
-                                className="h-16 md:h-20 w-auto object-contain mb-6"
+                                className="h-16 md:h-20 w-auto object-contain"
                             />
                         </Link>
                         {/* Alternatively use text if no logo image */}

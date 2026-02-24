@@ -62,8 +62,8 @@ const Navbar = () => {
                 <Link href="/" className="flex items-center space-x-2">
                     {/* Logo */}
                     <Image
-                        src="/assets/logo.png"
-                        alt="Network Masters Logo"
+                        src="/assets/footer-logo.png"
+                        alt="Network Masters Hub Logo"
                         width={180}
                         height={56}
                         className="h-12 md:h-14 w-auto object-contain"
