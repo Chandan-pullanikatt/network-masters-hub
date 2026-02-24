@@ -5,7 +5,6 @@ import Steps from '@/components/sections/Steps';
 import Testimonials from '@/components/sections/Testimonials';
 import FAQ from '@/components/sections/FAQ';
 
-import QuoteSection from '@/components/sections/QuoteSection';
 import EnquiryCTA from '@/components/sections/EnquiryCTA';
 
 import UpcomingBatchesModal from '@/components/home/UpcomingBatchesModal';
@@ -18,7 +17,6 @@ export default function Home() {
       <UpcomingBatchesModal />
       <Hero />
       <Courses />
-      <QuoteSection />
       <Features />
       <Steps />
       <Testimonials />
