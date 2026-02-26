@@ -2,25 +2,37 @@
 
 A production-ready IT training platform built with Next.js (Frontend) and Strapi (Backend).
 
-## Features
+## 🚀 Features & Implementations
 
-- **Course Catalog**: Browse IT courses with details.
-- **Cart & Checkout**: Enrollment flow with Razorpay payment integration.
-- **Admin Panel**: Manage courses, enquiries, and orders via Strapi CMS.
-- **Responsive Design**: Premium UI with dark mode components.
+- **Modern Landing Page**: Custom responsive sections including Hero, Steps, Popular Courses, and Testimonials.
+- **Course Catalog & Details**: Browse IT courses with comprehensive details, structured roadmap modules, and responsive layout.
+- **Cart & Checkout**: Seamless enrollment flow with automated Razorpay payment integration and manual payment flow with screenshot upload.
+- **Admin Panel (CMS)**: Manage courses, enquiries, orders, and uploaded payment receipts via Strapi CMS.
+- **Authentication**: Secure login/signup flow with properly handled Next.js Suspense boundaries and simplified Navbar state for logged-in users.
+- **Responsive Design**: Premium UI with dark mode components, ensuring mobile responsiveness across all pages (Modals, Blogs, and Course layouts).
+- **SEO & Performance**: Optimized build process to run seamlessly on Netlify/Vercel.
 
-## Tech Stack
+## 💻 Tech Stack
 
-- **Frontend**: Next.js 15+ (App Router), TypeScript, Tailwind CSS, Framer Motion, Radix UI.
-- **Backend**: Strapi v5 (Headless CMS), PostgreSQL (configured via env).
-- **Payment**: Razorpay.
+### Frontend
+- **Framework**: Next.js 16.1 (App Router)
+- **Library**: React 19.2
+- **Styling**: Tailwind CSS v4, Framer Motion for animations
+- **UI Components**: Radix UI, Lucide React (icons), Sonner (toast notifications)
+- **Language**: TypeScript
+- **Payment Gateway**: Razorpay
 
-## Directory Structure
+### Backend
+- **CMS**: Strapi headless CMS (v5.36)
+- **Database**: PostgreSQL (production via Render) & SQLite3 (local development)
+- **Runtime**: Node.js (v20+)
 
-- `frontend/`: Next.js application.
-- `backend/`: Strapi CMS.
+## 📁 Directory Structure
 
-## Setup Instructions
+- `frontend/`: Next.js application frontend.
+- `backend/`: Strapi CMS backend.
+
+## 🛠 Setup Instructions
 
 ### 1. Backend (Strapi)
 
@@ -46,28 +58,28 @@ npm run dev
 
 Visit `http://localhost:3000`.
 
-## Environment Variables
+## ⚙️ Environment Variables
 
-### Frontend (.env.local)
+### Frontend (`.env.local`)
 
-```
+```env
 NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
 NEXT_PUBLIC_RAZORPAY_KEY_ID=your_key_id
 RAZORPAY_KEY_SECRET=your_key_secret
 ```
 
-### Backend (.env)
+### Backend (`.env`)
 
-Standard Strapi configuration.
+Standard Strapi configuration and PostgreSQL database URI credentials.
 
-## API Endpoints (Backend)
+## 📡 API Endpoints (Backend)
 
 - `GET /api/courses`
 - `POST /api/orders`
 - `POST /api/enquiries`
+- `POST /api/upload` (for manual payment receipt uploads)
 
-## Deployment
+## 🚀 Deployment
 
-- Deploy `frontend` to Vercel.
-- Deploy `backend` to Render/Heroku/DigitalOcean.
-
+- **Frontend**: Successfully deployed and configured on Netlify (or Vercel).
+- **Backend & Database**: Deployed on Render with a managed PostgreSQL database.

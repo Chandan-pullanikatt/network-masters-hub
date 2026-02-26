@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Facebook, Instagram, Youtube } from 'lucide-react';
+import { Facebook, Instagram, Youtube, Linkedin } from 'lucide-react';
 
 const Footer = () => {
     return (
@@ -63,7 +63,7 @@ const Footer = () => {
                     </p>
 
                     <div className="flex space-x-4">
-                        <Link href="https://www.facebook.com/NetworkMastersHub5/" target="_blank" rel="noopener noreferrer" className="p-2 bg-gray-800 rounded-full hover:bg-blue-600 transition-colors group">
+                        <Link href="https://www.facebook.com/TheNetworkMastersHub/" target="_blank" rel="noopener noreferrer" className="p-2 bg-gray-800 rounded-full hover:bg-blue-600 transition-colors group">
                             <Facebook className="h-5 w-5 text-gray-400 group-hover:text-white" />
                         </Link>
                         <Link href="https://www.instagram.com/networkmastershub/" target="_blank" rel="noopener noreferrer" className="p-2 bg-gray-800 rounded-full hover:bg-pink-600 transition-colors group">
@@ -71,6 +71,9 @@ const Footer = () => {
                         </Link>
                         <Link href="https://www.youtube.com/@NetworkMastersHub" target="_blank" rel="noopener noreferrer" className="p-2 bg-gray-800 rounded-full hover:bg-red-600 transition-colors group">
                             <Youtube className="h-5 w-5 text-gray-400 group-hover:text-white" />
+                        </Link>
+                        <Link href="https://www.linkedin.com/company/112090362/admin/dashboard/" target="_blank" rel="noopener noreferrer" className="p-2 bg-gray-800 rounded-full hover:bg-blue-600 transition-colors group">
+                            <Linkedin className="h-5 w-5 text-gray-400 group-hover:text-white" />
                         </Link>
                     </div>
                 </div>
