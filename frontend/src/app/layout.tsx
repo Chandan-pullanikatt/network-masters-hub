@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Network Masters Hub | IT Training Platform",
   description: "Master IT, Networking, and Automation with industry-led training.",
   icons: {
-    icon: "/assets/favicon.png"
+    icon: "/favicon.png"
   }
 };
 
