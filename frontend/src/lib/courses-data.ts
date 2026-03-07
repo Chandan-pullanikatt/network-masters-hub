@@ -20,8 +20,8 @@ export const courses: Course[] = [
                 originalPrice: 15000,
                 startDate: "June 15, 2024",
                 batches: [
-                    { name: "Weekday Evening Batch", time: "08:00 PM – 10:00 PM", days: "Monday – Friday", status: "Filling Fast", startDate: "9th March 2026" },
-                    { name: "Weekend Morning Batch", time: "10:00 AM – 01:00 PM", days: "Saturday, Sunday", status: "Open", startDate: "28th February 2026" }
+                    { name: "Weekday Evening Batch", time: "08:00 PM – 10:00 PM", days: "Monday – Friday", status: "Filling Fast", startDate: "16th March 2026" },
+                    { name: "Weekend Morning Batch", time: "10:00 AM – 01:00 PM", days: "Saturday, Sunday", status: "Open", startDate: "14th March 2026" }
                 ]
             },
             overview: {
@@ -69,8 +69,8 @@ export const courses: Course[] = [
                 originalPrice: 40000,
                 startDate: "Upcoming",
                 batches: [
-                    { name: "Weekday Evening Batch", time: "05:00 PM – 07:00 PM", days: "Monday – Friday", status: "Filling Fast", startDate: "9th March, 2026" },
-                    { name: "Weekend Evening Batch", time: "05:00 PM – 08:00 PM", days: "Saturday, Sunday", status: "Open", startDate: "28th February, 2026" }
+                    { name: "Weekday Evening Batch", time: "05:00 PM – 07:00 PM", days: "Monday – Friday", status: "Filling Fast", startDate: "16th March, 2026" },
+                    { name: "Weekend Evening Batch", time: "05:00 PM – 08:00 PM", days: "Saturday, Sunday", status: "Open", startDate: "14th March, 2026" }
                 ]
             },
             overview: {
