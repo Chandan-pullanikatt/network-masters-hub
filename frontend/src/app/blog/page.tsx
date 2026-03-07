@@ -35,7 +35,7 @@ export default function BlogPage() {
                             {/* Content Side */}
                             <div className="p-8 md:p-10 flex flex-col justify-center">
                                 <span className="text-slate-500 text-sm font-medium mb-3 flex items-center gap-2">
-                                    October 24, 2024 • 5 min read
+                                    October 24, 2025 • 5 min read
                                 </span>
                                 <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4 leading-tight group-hover:text-blue-600 transition-colors">
                                     AI Will Not Replace Network Engineers — But AI-Ready Engineers Will Replace Everyone Else.

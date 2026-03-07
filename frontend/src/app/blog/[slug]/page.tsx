@@ -10,7 +10,7 @@ import { ArrowLeft, Clock, Calendar } from "lucide-react";
 const blogPost = {
     slug: "ai-will-not-replace-network-engineers",
     title: "AI Will Not Replace Network Engineers — But AI-Ready Engineers Will Replace Everyone Else.",
-    date: "October 24, 2024",
+    date: "October 24, 2025",
     readTime: "5 min read",
     image: "/assets/blog.jpeg",
     content: `
