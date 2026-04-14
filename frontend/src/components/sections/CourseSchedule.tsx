@@ -6,33 +6,42 @@ import { Clock } from 'lucide-react';
 
 interface CourseScheduleProps {
     onEnroll?: () => void;
+    items?: Array<{
+        id?: number;
+        name: string;
+        time: string;
+        days: string;
+        mode?: string;
+    }>;
 }
 
-const CourseSchedule = ({ onEnroll }: CourseScheduleProps) => {
-    const batches = [
+const CourseSchedule = ({ onEnroll, items }: CourseScheduleProps) => {
+    const defaultBatches = [
         {
             id: 1,
-            type: 'Regular',
+            name: 'Regular',
             days: 'Mon - Fri',
             time: '07:00 AM - 09:00 AM',
             mode: 'Online'
         },
         {
             id: 2,
-            type: 'Regular',
+            name: 'Regular',
             days: 'Mon - Fri',
             time: '08:00 PM - 10:00 PM',
             mode: 'Online'
         },
         {
             id: 3,
-            type: 'Weekend',
+            name: 'Weekend',
             days: 'Sat & Sun',
             time: '10:00 AM - 01:00 PM',
             mode: 'Online'
         },
 
     ];
+
+    const batches = items && items.length > 0 ? items : defaultBatches;
 
     return (
         <section id="schedule" className="py-12 w-full max-w-[1248px] mx-auto px-6">
@@ -54,7 +63,7 @@ const CourseSchedule = ({ onEnroll }: CourseScheduleProps) => {
                         >
                             {/* Batch Type & Days */}
                             <div className="w-full md:w-1/3">
-                                <h4 className="font-bold text-slate-800">{batch.type}</h4>
+                                <h4 className="font-bold text-slate-800">{batch.name}</h4>
                                 <span className="text-xs text-slate-500 font-medium">{batch.days}</span>
                             </div>
 

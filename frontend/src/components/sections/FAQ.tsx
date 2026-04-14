@@ -7,34 +7,27 @@ import {
 import { MotionSection, MotionDiv } from '@/components/ui/motion-container';
 import { staggerContainer, fadeInUp } from '@/lib/animations';
 
-const specificFaqs = [
+interface FAQProps {
+    items?: Array<{
+        question: string;
+        answer: string;
+    }>;
+}
+
+const defaultFaqs = [
     {
         question: "Who Should Enroll in the CCNA Training at Network Masters Hub?",
-        answer: "This CCNA training program is perfect for students, fresh graduates, and working professionals looking to build a strong foundation in computer networking. No prior networking experience is required - we start from the basics and gradually move toward advanced concepts."
+        answer: "This CCNA training program is perfect for students, fresh graduates, and working professionals looking to build a strong foundation in computer networking."
     },
     {
         question: "What Practical Exposure Will I Gain During the CCNA Course?",
-        answer: "At Network Masters Hub, the CCNA course includes real-time network configurations and hands-on troubleshooting scenarios. You'll work with routers, switches, and simulators to gain practical, industry-relevant experience."
-    },
-    {
-        question: "How Is This CCNA Course Different from Online Self-Learning?",
-        answer: "Unlike self-paced online courses, this program offers live instructor-led sessions, doubt-clearing support, and dedicated mentorship. You'll also benefit from structured learning modules, regular assessments, and real-world examples that improve understanding and retention."
-    },
-    {
-        question: "Does This Course Help with Job Preparation and Interviews?",
-        answer: "Yes. Our CCNA training focuses not only on certification but also on career readiness. Students receive interview preparation support, resume guidance, and exposure to real networking scenarios commonly discussed in technical interviews."
-    },
-    {
-        question: "What Topics Are Covered Beyond Basic Networking Concepts?",
-        answer: "The course covers routing and switching fundamentals, IP addressing, VLANs, wireless networking, basic network security, automation concepts, and an introduction to modern networking technologies — all aligned with the latest CCNA syllabus."
-    },
-    {
-        question: "Can I Pursue Advanced Networking Courses After Completing CCNA?",
-        answer: "Absolutely. CCNA serves as a strong foundation for advanced certifications such as CCNP, network security programs, and specializations in enterprise networking, data centers, and cloud networking."
+        answer: "At Network Masters Hub, the CCNA course includes real-time network configurations and hands-on troubleshooting scenarios."
     }
 ];
 
-const FAQ = () => {
+const FAQ = ({ items }: FAQProps) => {
+    const faqList = items || defaultFaqs;
+
     return (
         <section className="py-20 bg-slate-50" id="faq">
             <div className="container px-4 md:px-6 max-w-4xl mx-auto">
@@ -55,8 +48,8 @@ const FAQ = () => {
 
                 <MotionSection className="w-full space-y-4">
                     <Accordion type="single" collapsible className="w-full space-y-4">
-                        {specificFaqs.map((faq, index) => (
-                            <MotionDiv key={index} variants={fadeInUp} className="bg-white border text-left px-6 py-2 rounded-xl shadow-sm data-[state=open]:border-blue-500 data-[state=open]:ring-1 data-[state=open]:ring-blue-500 transition-all">
+                        {faqList.map((faq, index) => (
+                            <MotionDiv key={index} variants={fadeInUp} className="bg-white border text-left px-6 py-2 rounded-xl shadow-sm transition-all">
                                 <AccordionItem value={`item-${index}`} className="border-none">
                                     <AccordionTrigger className="text-left text-lg font-bold text-slate-900 hover:no-underline py-4">
                                         {faq.question}

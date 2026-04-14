@@ -57,11 +57,11 @@ export default function CartPage() {
                                 className="flex items-center justify-between rounded-xl border border-border bg-card p-4 shadow-sm transition-shadow hover:shadow-md"
                             >
                                 <div className="flex flex-col space-y-1">
-                                    <h3 className="font-semibold text-foreground">{item.attributes.title}</h3>
+                                    <h3 className="font-semibold text-foreground">{item.attributes?.title || (item as any).title}</h3>
                                     <p className="text-sm text-muted-foreground">Video Course</p>
                                 </div>
                                 <div className="flex items-center space-x-4">
-                                    <p className="font-bold text-primary">₹{item.attributes.price}</p>
+                                    <p className="font-bold text-primary">₹{item.attributes?.price || (item as any).price}</p>
                                     <Button
                                         variant="ghost"
                                         size="icon"

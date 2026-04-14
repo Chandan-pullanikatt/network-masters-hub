@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_course_batches",
+  "info": {
+    "displayName": "batch",
+    "icon": "calendar",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "time": {
+      "type": "string"
+    },
+    "days": {
+      "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "Filling Fast",
+        "Open",
+        "Closed"
+      ]
+    },
+    "startDate": {
+      "type": "string"
+    },
+    "mode": {
+      "type": "string",
+      "default": "Online"
+    }
+  }
+}

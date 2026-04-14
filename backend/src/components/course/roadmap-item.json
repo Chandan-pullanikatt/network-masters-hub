@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_course_roadmap_items",
+  "info": {
+    "displayName": "roadmap-item",
+    "icon": "map",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "step_id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
+    },
+    "topics": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "string"
+    }
+  }
+}

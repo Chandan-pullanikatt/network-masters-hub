@@ -2,64 +2,51 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { fadeInUp, staggerContainer, scaleIn } from '@/lib/animations';
+import { fadeInUp, staggerContainer } from '@/lib/animations';
 
-const Hero = () => {
+interface HeroProps {
+    data?: {
+        title: string;
+        subtitle: string;
+        badge?: string;
+    };
+}
+
+const Hero = ({ data }: HeroProps) => {
     const { scrollY } = useScroll();
     const y = useTransform(scrollY, [0, 500], [0, 150]);
+
+    const title = data?.title || "Master IT & Networking with industry-led training";
+    const subtitle = data?.subtitle || "Elevate Your IT Career to the Global Stage.";
 
     const scrollToCourses = (e: React.MouseEvent<HTMLAnchorElement>) => {
         e.preventDefault();
         const element = document.getElementById('courses');
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
-            // Optionally update URL without jump
             window.history.pushState(null, '', '/#courses');
         } else {
-            // If not on home page or element missing, force nav
             window.location.href = '/#courses';
         }
     };
 
     return (
         <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-slate-900 text-white">
-            {/* Background Video with Parallax */}
-            <motion.div
-                style={{ y }}
-                className="absolute inset-0 z-0"
-            >
-                <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-full object-cover opacity-60"
-                >
+            <motion.div style={{ y }} className="absolute inset-0 z-0">
+                <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-60">
                     <source src="/assets/v1.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
-                {/* Overlay */}
                 <div className="absolute inset-0 bg-black/50"></div>
             </motion.div>
 
             <div className="container relative z-10 px-4 md:px-6 flex flex-col items-center text-center">
-                <motion.div
-                    variants={staggerContainer}
-                    initial="hidden"
-                    animate="visible"
-                    className="max-w-3xl"
-                >
-
-
-                    <motion.h1 variants={fadeInUp} className="text-4xl md:text-[52px] font-bold tracking-tight leading-tight text-white drop-shadow-sm mb-2">
-                        Master IT & Networking with <br />
-                        industry-led training
-                    </motion.h1>
-
+                <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="max-w-3xl">
+                    <motion.h1 variants={fadeInUp} className="text-4xl md:text-[52px] font-bold tracking-tight leading-tight text-white drop-shadow-sm mb-2" 
+                        dangerouslySetInnerHTML={{ __html: title.replace(/\n/g, '<br />') }} />
                     <motion.p variants={fadeInUp} className="text-[16px] text-slate-200 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-sm">
-                        Elevate Your IT Career to the Global Stage.
+                        {subtitle}
                     </motion.p>
-
                     <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
                         <Button size="lg" className="h-12 px-8 text-base bg-white text-blue-900 hover:bg-slate-100 border-none font-semibold transition-transform hover:scale-105" asChild>
                             <Link href="/about">Learn More</Link>

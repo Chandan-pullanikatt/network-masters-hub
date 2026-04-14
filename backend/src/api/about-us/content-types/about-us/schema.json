@@ -1,0 +1,107 @@
+{
+  "kind": "singleType",
+  "collectionName": "about_uses",
+  "info": {
+    "singularName": "about-us",
+    "pluralName": "about-uses",
+    "displayName": "About Us",
+    "description": "CMS for the About Us page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "heroTitle": {
+      "type": "string"
+    },
+    "heroSubtitle": {
+      "type": "string"
+    },
+    "heroSubtext": {
+      "type": "text"
+    },
+    "coreValuesHeading": {
+      "type": "string"
+    },
+    "coreValuesSubheading": {
+      "type": "string"
+    },
+    "coreValue1Title": {
+      "type": "string"
+    },
+    "coreValue1Desc": {
+      "type": "text"
+    },
+    "coreValue2Title": {
+      "type": "string"
+    },
+    "coreValue2Desc": {
+      "type": "text"
+    },
+    "coreValue3Title": {
+      "type": "string"
+    },
+    "coreValue3Desc": {
+      "type": "text"
+    },
+    "journeyHeading": {
+      "type": "string"
+    },
+    "journeyText": {
+      "type": "richtext"
+    },
+    "journeyImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "directorName": {
+      "type": "string"
+    },
+    "directorRole": {
+      "type": "string"
+    },
+    "directorBio": {
+      "type": "richtext"
+    },
+    "directorPhoto": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "founderName": {
+      "type": "string"
+    },
+    "founderRole": {
+      "type": "string"
+    },
+    "founderBio": {
+      "type": "richtext"
+    },
+    "founderPhoto": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "certificationsTitle": {
+      "type": "string"
+    },
+    "certificationsDesc": {
+      "type": "text"
+    },
+    "certificationLogos": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

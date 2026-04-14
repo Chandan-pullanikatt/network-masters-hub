@@ -5,7 +5,7 @@
     "singularName": "course",
     "pluralName": "courses",
     "displayName": "Course",
-    "description": ""
+    "description": "Full dynamic course management"
   },
   "options": {
     "draftAndPublish": true
@@ -27,7 +27,7 @@
       "type": "string"
     },
     "modules": {
-      "type": "json"
+      "type": "decimal"
     },
     "videoHours": {
       "type": "decimal"
@@ -38,13 +38,45 @@
     "image": {
       "type": "media",
       "multiple": false,
-      "required": false,
       "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
+        "images"
       ]
+    },
+    "hero": {
+      "type": "component",
+      "repeatable": false,
+      "component": "course.hero"
+    },
+    "overview": {
+      "type": "component",
+      "repeatable": true,
+      "component": "course.skill"
+    },
+    "roadmap": {
+      "type": "component",
+      "repeatable": true,
+      "component": "course.roadmap-item"
+    },
+    "faqs": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.faq-item"
+    },
+    "schedule": {
+      "type": "component",
+      "repeatable": true,
+      "component": "course.batch"
+    },
+    "isCombo": {
+      "type": "boolean",
+      "default": false
+    },
+    "flexiblePrice": {
+      "type": "decimal"
+    },
+    "isFlexible": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

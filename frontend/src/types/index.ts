@@ -12,7 +12,7 @@ export interface StrapiImage {
 
 export interface Course {
     id: number;
-    attributes: {
+    attributes?: {
         title: string;
         slug: string;
         description: string;
@@ -65,6 +65,8 @@ export interface Course {
             question: string;
             answer: string;
         }[];
+        flexiblePrice?: number;
+        isFlexible?: boolean;
     };
 }
 

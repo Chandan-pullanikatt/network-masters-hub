@@ -1,13 +1,14 @@
-import { Course } from '@/types';
 import PopularCourseCard from '@/components/PopularCourseCard';
 import { MotionSection, MotionDiv } from '@/components/ui/motion-container';
 import { staggerContainer, fadeInUp } from '@/lib/animations';
 
-import { courses } from '@/lib/courses-data';
+interface CoursesProps {
+    initialCourses?: any[];
+}
 
-const popularCourses = courses;
+const Courses = ({ initialCourses }: CoursesProps) => {
+    const popularCourses = initialCourses || [];
 
-const Courses = () => {
     return (
         <section id="courses" className="py-[150px] bg-[#F8F9FA]">
             <div className="max-w-[1280px] mx-auto w-full px-6">
@@ -29,7 +30,7 @@ const Courses = () => {
                 </MotionDiv>
 
                 <MotionSection viewportAmount={0} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {popularCourses.map((course) => (
+                    {popularCourses.map((course: any) => (
                         <MotionDiv key={course.id} variants={fadeInUp} className="h-full w-full mx-auto">
                             <PopularCourseCard course={course} />
                         </MotionDiv>

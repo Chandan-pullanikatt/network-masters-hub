@@ -200,8 +200,8 @@ export default function CheckoutPage() {
                         <div className="space-y-4 mb-4">
                             {cart.map((item) => (
                                 <div key={item.id} className="flex justify-between text-sm">
-                                    <span className="text-muted-foreground truncate w-2/3">{item.attributes.title}</span>
-                                    <span className="font-medium text-foreground">₹{item.attributes.price}</span>
+                                    <span className="text-muted-foreground truncate w-2/3">{item.attributes?.title || (item as any).title}</span>
+                                    <span className="font-medium text-foreground">₹{item.attributes?.price || (item as any).price}</span>
                                 </div>
                             ))}
                         </div>

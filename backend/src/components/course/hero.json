@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_course_heroes",
+  "info": {
+    "displayName": "hero",
+    "icon": "layout",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "badge": {
+      "type": "string",
+      "default": "Best Seller"
+    },
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "text"
+    },
+    "originalPrice": {
+      "type": "decimal"
+    },
+    "startDate": {
+      "type": "string"
+    },
+    "batches": {
+      "type": "component",
+      "repeatable": true,
+      "component": "course.batch"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ]
+    }
+  }
+}

@@ -5,14 +5,14 @@ import { Button } from '@/components/ui/button';
 import { Phone, MessageSquare, Mail } from 'lucide-react';
 import { toast } from 'sonner';
 
-const EnquiryCTA = () => {
+const EnquiryCTA = ({ defaultCourse }: { defaultCourse?: string }) => {
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
         email: '',
         phone: '',
-        course: 'CCNA',
+        course: defaultCourse || 'CCNA',
         message: ''
     });
 

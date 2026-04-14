@@ -48,7 +48,11 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
     const clearCart = () => setCart([]);
 
-    const total = cart.reduce((acc, item) => acc + item.attributes.price * item.quantity, 0);
+    const total = cart.reduce((acc, item) => {
+        // Handle Strapi 4 style (item.attributes.price) and Strapi 5/Flattened style (item.price)
+        const itemPrice = item.attributes?.price ?? (item as any).price ?? 0;
+        return acc + itemPrice * item.quantity;
+    }, 0);
 
     return (
         <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, total }}>

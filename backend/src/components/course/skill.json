@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_course_skills",
+  "info": {
+    "displayName": "skill",
+    "icon": "shield",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "desc": {
+      "type": "text"
+    },
+    "icon": {
+      "type": "string"
+    }
+  }
+}

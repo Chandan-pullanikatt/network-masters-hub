@@ -1,27 +1,47 @@
-"use client";
-
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { use } from "react";
 import { ArrowLeft, Clock, Calendar } from "lucide-react";
-import { blogPosts } from "@/data/blog-data";
+import { getStrapiData, getStrapiMedia } from "@/lib/strapi";
+import { formatDate } from "@/lib/utils";
 
-export default function BlogDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-    const { slug } = use(params);
+export async function generateStaticParams() {
+    try {
+        const { data: blogs } = await getStrapiData('/blogs');
+        return blogs.map((post: any) => ({
+            slug: (post.attributes || post).slug,
+        }));
+    } catch (e) {
+        return [];
+    }
+}
+
+export default async function BlogDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params;
     
-    const post = blogPosts.find((p) => p.slug === slug);
+    let post = null;
+    try {
+        const response = await getStrapiData('/blogs', {
+            'filters[slug][$eq]': slug,
+            'populate': '*',
+        });
+        post = response.data?.[0]?.attributes || response.data?.[0];
+    } catch (e) {
+        console.error("Error fetching blog post:", e);
+    }
 
     if (!post) {
         notFound();
     }
 
+    const imageUrl = getStrapiMedia(post.image) || "/placeholder-blog.jpg";
+
     return (
-        <article className="min-h-screen bg-white pb-24">
+        <article className="min-h-screen bg-white pb-24 pt-20">
             {/* Hero Image */}
             <div className="relative w-full h-[400px] md:h-[500px]">
                 <Image
-                    src={post.image}
+                    src={imageUrl}
                     alt={post.title}
                     fill
                     className="object-cover"
@@ -41,14 +61,18 @@ export default function BlogDetailPage({ params }: { params: Promise<{ slug: str
                 </h1>
 
                 <div className="flex items-center gap-6 text-sm md:text-base text-slate-600 font-medium border-b border-slate-200 pb-8 mb-8">
-                    <div className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4" />
-                        {post.date}
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <Clock className="w-4 h-4" />
-                        {post.readTime}
-                    </div>
+                    {post.createdAt && (
+                        <div className="flex items-center gap-2">
+                            <Calendar className="w-4 h-4" />
+                            {formatDate(post.createdAt)}
+                        </div>
+                    )}
+                    {post.readTime && (
+                        <div className="flex items-center gap-2">
+                            <Clock className="w-4 h-4" />
+                            {post.readTime}
+                        </div>
+                    )}
                 </div>
 
                 {/* Content Body */}

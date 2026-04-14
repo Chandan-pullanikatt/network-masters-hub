@@ -1,7 +1,19 @@
 import EnquiryCTA from '@/components/sections/EnquiryCTA';
 import FAQ from '@/components/sections/FAQ';
+import { getStrapiData } from '@/lib/strapi';
 
-export default function ContactPage() {
+export default async function ContactPage() {
+    let faqs = [];
+    try {
+        const response = await getStrapiData("/faqs");
+        faqs = response.data.map((item: any) => ({
+            question: (item.attributes || item).question,
+            answer: (item.attributes || item).answer,
+        }));
+    } catch (error) {
+        console.error("Error fetching FAQs:", error);
+    }
+
     return (
         <main className="min-h-screen bg-white pt-10">
             <div className="container mx-auto px-4 md:px-6 mb-12 text-center">
@@ -14,7 +26,7 @@ export default function ContactPage() {
             <EnquiryCTA />
 
             <div className="py-12">
-                <FAQ />
+                <FAQ items={faqs} />
             </div>
 
             {/* Contact Info */}
