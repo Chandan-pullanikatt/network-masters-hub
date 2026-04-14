@@ -5,11 +5,15 @@ import { getStrapiData } from '@/lib/strapi';
 export default async function ContactPage() {
     let faqs = [];
     try {
-        const response = await getStrapiData("/faqs");
-        faqs = response.data.map((item: any) => ({
-            question: (item.attributes || item).question,
-            answer: (item.attributes || item).answer,
-        }));
+        const response = await getStrapiData("/faqs", { populate: "*" });
+        const data = response.data || [];
+        faqs = data.map((item: any) => {
+            const fields = item.attributes || item;
+            return {
+                question: fields.question,
+                answer: fields.answer,
+            };
+        });
     } catch (error) {
         console.error("Error fetching FAQs:", error);
     }

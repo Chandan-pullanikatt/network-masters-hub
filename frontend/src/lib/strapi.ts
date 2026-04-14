@@ -31,15 +31,27 @@ export async function getStrapiData(path: string, params?: Record<string, any>, 
         clearTimeout(timeoutId);
 
         if (!res.ok) {
-            const errorBody = await res.text();
-            console.error(`[Strapi Error] ${res.status} ${res.statusText}`);
+            let errorDetails = '';
+            try {
+                errorDetails = await res.text();
+            } catch (e) {
+                errorDetails = 'Could not parse error body';
+            }
+            console.error(`[Strapi API Error] ${res.status} ${res.statusText}`);
             console.error(`[URL] ${url}`);
+            console.error(`[Details] ${errorDetails}`);
             throw new Error(`Failed to fetch from Strapi: ${path} (${res.status})`);
         }
 
         return await res.json();
-    } catch (error) {
-        console.error(`[Network Error] Failed to connect to Strapi at ${url}`);
+    } catch (error: any) {
+        if (error.name === 'AbortError') {
+            console.error(`[Timeout Error] Strapi request timed out for ${url}`);
+        } else if (error.message?.includes('fetch')) {
+            console.error(`[Connection Error] Could not reach Strapi at ${url}`);
+        } else {
+            // Error was already logged above if it was a status error
+        }
         throw error;
     }
 }

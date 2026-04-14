@@ -23,7 +23,14 @@ export default async function Home() {
 
         landingPage = landingPageResponse.data?.attributes || landingPageResponse.data;
         courses = coursesResponse.data || [];
-        faqs = faqsResponse.data?.map((f: any) => f.attributes || f) || [];
+        const rawFaqs = faqsResponse.data || [];
+        faqs = rawFaqs.map((f: any) => {
+            const fields = f.attributes || f;
+            return {
+                question: fields.question,
+                answer: fields.answer
+            };
+        });
     } catch (error) {
         console.error('[Home] Failed to load data from Strapi:', error);
         // Page still renders with empty/fallback data — no crash

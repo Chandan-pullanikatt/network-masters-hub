@@ -26,7 +26,7 @@ const defaultFaqs = [
 ];
 
 const FAQ = ({ items }: FAQProps) => {
-    const faqList = items || defaultFaqs;
+    const faqList = (items && items.length > 0) ? items : defaultFaqs;
 
     return (
         <section className="py-20 bg-slate-50" id="faq">
