@@ -10,16 +10,24 @@ import UpcomingBatchesModal from '@/components/home/UpcomingBatchesModal';
 import NewsletterSection from '@/components/sections/NewsletterSection';
 
 export default async function Home() {
-    // Fetch data from Strapi
-    const [landingPageResponse, coursesResponse, faqsResponse] = await Promise.all([
-        getStrapiData('/landing-page', { populate: '*' }),
-        getStrapiData('/courses', { populate: 'image' }),
-        getStrapiData('/faqs', {})
-    ]);
+    let landingPage: any = null;
+    let courses: any[] = [];
+    let faqs: any[] = [];
 
-    const landingPage = landingPageResponse.data?.attributes || landingPageResponse.data;
-    const courses = coursesResponse.data;
-    const faqs = faqsResponse.data?.map((f: any) => f.attributes || f) || [];
+    try {
+        const [landingPageResponse, coursesResponse, faqsResponse] = await Promise.all([
+            getStrapiData('/landing-page', { populate: '*' }),
+            getStrapiData('/courses', { populate: 'image' }),
+            getStrapiData('/faqs', {})
+        ]);
+
+        landingPage = landingPageResponse.data?.attributes || landingPageResponse.data;
+        courses = coursesResponse.data || [];
+        faqs = faqsResponse.data?.map((f: any) => f.attributes || f) || [];
+    } catch (error) {
+        console.error('[Home] Failed to load data from Strapi:', error);
+        // Page still renders with empty/fallback data — no crash
+    }
 
     return (
         <main className="min-h-screen bg-background">

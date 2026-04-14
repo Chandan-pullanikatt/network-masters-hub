@@ -6,9 +6,7 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-
-
 [context.production.environment]
   NEXT_PUBLIC_STRAPI_URL = "https://network-masters-hub-pkkk.onrender.com"
-
-  # Update this in Netlify UI after deploying backend
+  # STRAPI_API_TOKEN must be added via Netlify Dashboard → Site configuration → Environment variables
+  # Never put the actual token value here as this file is in a public git repo
