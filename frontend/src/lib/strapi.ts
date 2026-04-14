@@ -1,7 +1,7 @@
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://127.0.0.1:1337';
 const STRAPI_TOKEN = process.env.STRAPI_API_TOKEN || process.env.STRAPI_TOKEN;
 
-export async function getStrapiData(path: string, params?: Record<string, any>) {
+export async function getStrapiData(path: string, params?: Record<string, any>, fetchOptions: RequestInit = {}) {
     const query = params ? `?${new URLSearchParams(params).toString()}` : '';
     
     // In production, we MUST have a token. Locally, we fall back to the one in .env.local
@@ -10,14 +10,25 @@ export async function getStrapiData(path: string, params?: Record<string, any>) 
     const url = `${STRAPI_URL}/api${path}${query}`;
     
     try {
-        const res = await fetch(url, {
+        const defaultOptions: RequestInit = {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            cache: 'no-store'
+            next: { revalidate: 60 }
+        } as any; // Next.js specific fetch options
+
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 6000); // 6s timeout to beat Netlify 10s limit
+
+        const res = await fetch(url, { 
+            ...defaultOptions, 
+            ...fetchOptions,
+            signal: controller.signal 
         });
+        
+        clearTimeout(timeoutId);
 
         if (!res.ok) {
             const errorBody = await res.text();
