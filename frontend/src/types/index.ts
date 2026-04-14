@@ -10,72 +10,81 @@ export interface StrapiImage {
     };
 }
 
-export interface Course {
-    id: number;
-    attributes?: {
+export interface CourseFields {
+    title: string;
+    slug: string;
+    description: string;
+    duration?: string;
+    modules?: string[] | object | number;
+    videoHours: number;
+    price: number;
+    image: StrapiImage;
+    hero?: {
+        badge?: string;
         title: string;
-        slug: string;
-        description: string;
-        duration: string;
-        modules: string[] | object | number; // Rich text, JSON, or simple count
-        videoHours: number;
+        subtitle: string;
         price: number;
-        image: StrapiImage;
-        // Extended fields for Course Detail Page
-        hero?: {
-            badge?: string;
-            title: string;
-            subtitle: string;
-            price: number;
-            originalPrice?: number;
+        originalPrice?: number;
+        startDate?: string;
+        batches?: {
+            name: string;
+            time: string;
+            days: string;
+            status: string;
             startDate?: string;
-            batches?: {
-                name: string;
-                time: string;
-                days: string;
-                status: string;
-                startDate?: string;
-            }[];
-        };
-        overview?: {
+        }[];
+    };
+    overview?: {
+        title: string;
+        description: string;
+        skills: {
             title: string;
-            description: string;
-            skills: {
-                title: string;
-                icon: any; // LucideIcon type if possible, or any
-                desc: string;
-                points?: string[];
-            }[];
-        };
-        roadmap?: {
+            icon: any;
+            desc: string;
+            points?: string[];
+        }[];
+    };
+    roadmap?: {
+        id: string;
+        title: string;
+        desc: string;
+        topics?: string;
+    }[];
+    roadmapModules?: {
+        [key: string]: {
             id: string;
             title: string;
             desc: string;
             topics?: string;
         }[];
-        roadmapModules?: {
-            [key: string]: {
-                id: string;
-                title: string;
-                desc: string;
-                topics?: string;
-            }[];
-        };
-        faqs?: {
-            question: string;
-            answer: string;
-        }[];
-        flexiblePrice?: number;
-        isFlexible?: boolean;
     };
-}
-
-export interface FAQ {
-    id: number;
-    attributes: {
+    faqs?: {
         question: string;
         answer: string;
-    };
+    }[];
+    flexiblePrice?: number;
+    isFlexible?: boolean;
+    schedule?: {
+        name: string;
+        time: string;
+        days: string;
+        mode: string;
+    }[];
+}
+
+export interface Course extends Partial<CourseFields> {
+    id: number;
+    attributes?: CourseFields;
+}
+
+export interface FAQFields {
+    question: string;
+    answer: string;
+}
+
+export interface FAQ extends Partial<FAQFields> {
+    id: number;
+    attributes?: FAQFields;
 }
 
 export interface Testimonial {

@@ -26,16 +26,17 @@ export default function UpcomingBatchesModal() {
         // Aggregate batches
         const allBatches: Batch[] = [];
         courses.forEach((course) => {
-            const hero = course.attributes.hero;
+            const data = (course.attributes || course) as any;
+            const hero = data.hero;
             if (hero && hero.batches && hero.batches.length > 0) {
-                hero.batches.forEach((batch) => {
+                hero.batches.forEach((batch: any) => {
                     if (batch.status !== "Closed" && batch.startDate) {
                         allBatches.push({
-                            courseName: course.attributes.title,
+                            courseName: data.title,
                             date: batch.startDate,
                             time: batch.time,
                             status: batch.status,
-                            link: `/courses/${course.attributes.slug}`
+                            link: `/courses/${data.slug}`
                         });
                     }
                 });

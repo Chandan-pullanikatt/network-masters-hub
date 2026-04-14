@@ -38,7 +38,7 @@ export default function FlexibleLearningListingClient({ courses }: FlexibleLearn
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {courses.map((course, index) => {
                             // Ensure the card gets the right price and isFlexible is true
-                            const data = course.attributes || course;
+                            const data = (course.attributes || course) as any;
                             const flexibleCourse = {
                                 ...course,
                                 attributes: {

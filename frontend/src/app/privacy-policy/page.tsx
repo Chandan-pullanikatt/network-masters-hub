@@ -23,7 +23,7 @@ export default async function PrivacyPolicyPage() {
             return <PolicyPageClient data={FALLBACK_DATA} />;
         }
 
-        const attributes = data.attributes || data;
+        const attributes = (data.attributes || data) as any;
         return <PolicyPageClient data={attributes} />;
     } catch (e) {
         console.error("Error fetching privacy policy from Strapi:", e);

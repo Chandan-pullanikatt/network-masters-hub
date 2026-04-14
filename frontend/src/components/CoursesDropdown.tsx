@@ -99,35 +99,38 @@ const CoursesDropdown: React.FC<CoursesDropdownProps> = ({ isScrolled, isHome })
                                     </div>
                                 ) : (
                                     <div className="grid grid-cols-2 gap-4">
-                                        {courses.slice(0, 5).map((course) => (
-                                            <Link
-                                                key={course.id}
-                                                href={`/courses/${course.attributes.slug}`}
-                                                className="group flex gap-3 items-start p-2 rounded-lg hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100"
-                                            >
-                                                {/* Course Image */}
-                                                <div className="relative w-16 h-12 rounded-md overflow-hidden shrink-0 bg-slate-200">
-                                                    <Image
-                                                        src={course.attributes.image?.data?.attributes?.url || '/placeholder.jpg'}
-                                                        alt={course.attributes.title}
-                                                        fill
-                                                        className="object-cover transition-transform group-hover:scale-105"
-                                                    />
-                                                </div>
-
-                                                {/* Course Info */}
-                                                <div className="flex-1 min-w-0">
-                                                    <h4 className="text-xs font-bold text-slate-800 line-clamp-2 leading-snug group-hover:text-[#003366] transition-colors">
-                                                        {course.attributes.title}
-                                                    </h4>
-                                                    <div className="mt-1 flex items-center gap-2 text-[10px] text-slate-500">
-                                                        <span>{course.attributes.duration}</span>
-                                                        <span>•</span>
-                                                        <span className="font-medium text-slate-700">₹{course.attributes.price.toLocaleString()}</span>
+                                        {courses.slice(0, 5).map((course) => {
+                                            const data = (course.attributes || course) as any;
+                                            return (
+                                                <Link
+                                                    key={course.id}
+                                                    href={`/courses/${data.slug}`}
+                                                    className="group flex gap-3 items-start p-2 rounded-lg hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100"
+                                                >
+                                                    {/* Course Image */}
+                                                    <div className="relative w-16 h-12 rounded-md overflow-hidden shrink-0 bg-slate-200">
+                                                        <Image
+                                                            src={data.image?.data?.attributes?.url || '/placeholder.jpg'}
+                                                            alt={data.title}
+                                                            fill
+                                                            className="object-cover transition-transform group-hover:scale-105"
+                                                        />
                                                     </div>
-                                                </div>
-                                            </Link>
-                                        ))}
+
+                                                    {/* Course Info */}
+                                                    <div className="flex-1 min-w-0">
+                                                        <h4 className="text-xs font-bold text-slate-800 line-clamp-2 leading-snug group-hover:text-[#003366] transition-colors">
+                                                            {data.title}
+                                                        </h4>
+                                                        <div className="mt-1 flex items-center gap-2 text-[10px] text-slate-500">
+                                                            <span>{data.duration}</span>
+                                                            <span>•</span>
+                                                            <span className="font-medium text-slate-700">₹{data.price?.toLocaleString()}</span>
+                                                        </div>
+                                                    </div>
+                                                </Link>
+                                            );
+                                        })}
                                     </div>
                                 )}
                             </div>

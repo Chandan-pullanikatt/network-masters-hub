@@ -22,7 +22,7 @@ export default async function TermsPage() {
             return <PolicyPageClient data={FALLBACK_DATA} />;
         }
 
-        const attributes = data.attributes || data;
+        const attributes = (data.attributes || data) as any;
         return <PolicyPageClient data={attributes} />;
     } catch (e) {
         console.error("Error fetching terms policy from Strapi:", e);

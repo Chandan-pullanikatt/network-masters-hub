@@ -16,7 +16,8 @@ interface CourseCardProps {
 }
 
 const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
-    const { title, slug, duration, modules, videoHours, price, image } = course.attributes;
+    const data = (course.attributes || course) as any;
+    const { title, slug, duration, modules, videoHours, price, image } = data;
     const imageUrl = image?.data?.attributes?.url || '/placeholder-course.jpg';
     const { addToCart } = useCart();
     const { isAuthenticated } = useAuth();

@@ -22,7 +22,7 @@ export default async function RefundPolicyPage() {
             return <PolicyPageClient data={FALLBACK_DATA} />;
         }
 
-        const attributes = data.attributes || data;
+        const attributes = (data.attributes || data) as any;
         return <PolicyPageClient data={attributes} />;
     } catch (e) {
         console.error("Error fetching refund policy from Strapi:", e);

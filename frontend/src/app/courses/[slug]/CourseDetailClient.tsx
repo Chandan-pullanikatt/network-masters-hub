@@ -16,8 +16,9 @@ import { toast } from 'sonner';
 import { motion } from 'framer-motion';
 import { fadeInUp } from '@/lib/animations';
 import { getIcon } from '@/lib/icons';
+import { Course } from '@/types';
 
-export default function CourseDetailClient({ course }: { course: any }) {
+export default function CourseDetailClient({ course }: { course: Course }) {
     const [activeSection, setActiveSection] = useState('overview');
     const [activeModule, setActiveModule] = useState('encor');
     const { addToCart } = useCart();
@@ -25,7 +26,7 @@ export default function CourseDetailClient({ course }: { course: any }) {
     const router = useRouter();
     const [enrollLoading, setEnrollLoading] = useState(false);
 
-    const data = course.attributes || course;
+    const data = (course.attributes || course) as any;
     const { title, description, price, slug, hero, overview, roadmap, faqs, isCombo, schedule } = data;
 
     const handleEnroll = () => {

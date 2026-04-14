@@ -25,7 +25,7 @@ export default function FlexibleLearningDetailClient({ course }: { course: Cours
     const router = useRouter();
     const [enrollLoading, setEnrollLoading] = useState(false);
 
-    const data = course.attributes || course;
+    const data = (course.attributes || course) as any;
     const { title, description, slug, flexiblePrice, hero, overview, roadmap, roadmapModules, faqs, image } = data;
 
     const FLEXIBLE_PRICE = flexiblePrice || 4999;

@@ -10,7 +10,8 @@ interface RecordedCourseCardProps {
 }
 
 const RecordedCourseCard: React.FC<RecordedCourseCardProps> = ({ course }) => {
-    const { title, slug, videoHours, price } = course.attributes;
+    const data = (course.attributes || course) as any;
+    const { title, slug, videoHours, price } = data;
 
     const benefits = [
         `${videoHours}+ Hours of Content`,
