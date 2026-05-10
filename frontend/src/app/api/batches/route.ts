@@ -7,11 +7,11 @@ export async function GET() {
             getStrapiData('/courses', {
                 'populate[hero][populate]': '*',
             }, { cache: 'no-store' }),
-            getStrapiData('/landing-page', {}, { cache: 'no-store' }),
+            getStrapiData('/landing-page', { populate: '*' }, { cache: 'no-store' }),
         ]);
 
         const landingData = landingPageResponse?.data?.attributes || landingPageResponse?.data || {};
-        const showPopup = landingData.showBatchPopup === true;
+        const showPopup = landingData.showBatchPopup !== false;
 
         const coursesData: any[] = coursesResponse.data || [];
 

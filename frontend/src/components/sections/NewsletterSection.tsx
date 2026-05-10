@@ -27,7 +27,7 @@ export default function NewsletterSection() {
     return (
         <section className="bg-[#003366] py-16 md:py-24 relative overflow-hidden">
             {/* Background Pattern - Subtle dots or abstract overlay to match specific "no text" areas if needed */}
-            <div className="absolute inset-0 opacity-10 bg-[url('/assets/grid-pattern.svg')]"></div>
+            <div className="absolute inset-0 opacity-10" style={{backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)", backgroundSize: "24px 24px"}}></div>
 
             <div className="container mx-auto px-4 relative z-10 text-center">
 
