@@ -27,12 +27,11 @@ export default function UpcomingBatchesModal() {
                 if (!res.ok) throw new Error('Failed to fetch batches');
                 const json = await res.json();
                 setBatches(json.batches || []);
-                if (json.showPopup !== false) {
+                if (json.showPopup === true) {
                     timer = setTimeout(() => setIsOpen(true), 1000);
                 }
             } catch (err) {
                 console.error('[UpcomingBatchesModal] Failed to fetch batches:', err);
-                timer = setTimeout(() => setIsOpen(true), 1000);
             }
         }
 

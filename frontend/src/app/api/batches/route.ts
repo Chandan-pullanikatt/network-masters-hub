@@ -11,7 +11,7 @@ export async function GET() {
         ]);
 
         const landingData = landingPageResponse?.data?.attributes || landingPageResponse?.data || {};
-        const showPopup = landingData.showBatchPopup ?? true;
+        const showPopup = landingData.showBatchPopup === true;
 
         const coursesData: any[] = coursesResponse.data || [];
 

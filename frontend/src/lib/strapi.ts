@@ -64,12 +64,21 @@ export function getStrapiMedia(media: any): string | null {
     if (!media) return null;
     
     // Strapi 5: flat object with url directly
-    // Strapi 4: media.data.attributes.url
+    // Strapi 4: media.data.attributes.url or media.attributes.url
     const url = media?.url 
         || media?.data?.attributes?.url 
         || media?.data?.url
         || media?.attributes?.url;
     
     if (!url) return null;
-    return url.startsWith('http') ? url : `${STRAPI_URL}${url}`;
+
+    // If it's already an absolute URL (e.g. from Cloudinary), return as is
+    if (url.startsWith('http')) return url;
+
+    // Otherwise, prepend the Strapi URL
+    // Strip trailing slash from STRAPI_URL if present, and ensure url starts with slash
+    const baseUrl = STRAPI_URL.endsWith('/') ? STRAPI_URL.slice(0, -1) : STRAPI_URL;
+    const normalizedPath = url.startsWith('/') ? url : `/${url}`;
+    
+    return `${baseUrl}${normalizedPath}`;
 }

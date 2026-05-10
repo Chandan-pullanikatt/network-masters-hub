@@ -646,6 +646,7 @@ export interface ApiLandingPageLandingPage extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    showBatchPopup: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     steps_desc: Schema.Attribute.Text;
     steps_list: Schema.Attribute.Component<'course.roadmap-item', true>;
     steps_title: Schema.Attribute.String;

@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-
-const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
+import { getStrapiMedia } from '@/lib/strapi';
 
 interface PopularCourseCardProps {
     course: any;
@@ -12,11 +11,7 @@ const PopularCourseCard: React.FC<PopularCourseCardProps> = ({ course }) => {
     const data = course.attributes || course;
     const { title, slug, duration, modules, videoHours, image } = data;
     
-    // Build image URL from Strapi 5 flat structure
-    const rawUrl = image?.url || image?.data?.attributes?.url || image?.data?.url;
-    const imageUrl = rawUrl
-        ? (rawUrl.startsWith('http') ? rawUrl : `${STRAPI_URL}${rawUrl}`)
-        : null;
+    const imageUrl = getStrapiMedia(image);
 
     // Helper to determine module count
     const moduleCount = typeof modules === 'number' ? modules : (Array.isArray(modules) ? modules.length : 10);

@@ -10,6 +10,7 @@ import { useCart } from '@/context/CartContext';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
+import { getStrapiMedia } from '@/lib/strapi';
 
 interface CourseCardProps {
     course: Course;
@@ -18,7 +19,7 @@ interface CourseCardProps {
 const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
     const data = (course.attributes || course) as any;
     const { title, slug, duration, modules, videoHours, price, image } = data;
-    const imageUrl = image?.data?.attributes?.url || '/placeholder-course.jpg';
+    const imageUrl = getStrapiMedia(image) || '/assets/footer-logo.png'; // Fallback to logo or placeholder
     const { addToCart } = useCart();
     const { isAuthenticated } = useAuth();
     const router = useRouter();
