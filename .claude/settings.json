@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(curl -s \"http://localhost:3000/api/batches\")",
+      "Bash(curl -s \"https://network-masters-hub-pkkk.onrender.com/api/courses?populate[0]=image&populate[1]=hero\" -H \"Authorization: Bearer a9f0009a0288456edcf016a9260309e3ed4b1f884ade24af042ae2307825969ce68df93b1ab45c99db4b92c27c47ec3c172d8bafe3dd710192f3c5b3c19657706a25bcc59788874163527fce174d00a54436a028e48266904a91f77ffd2d486af548988209b10066988ea14cc0eb33861b8102e4402cc139ae71cde6c4e99d42\")",
+      "Bash(curl.exe -s \"https://network-masters-hub-pkkk.onrender.com/api/courses?populate[0]=image&populate[1]=hero\" -H \"Authorization: Bearer a9f0009a0288456edcf016a9260309e3ed4b1f884ade24af042ae2307825969ce68df93b1ab45c99db4b92c27c47ec3c172d8bafe3dd710192f3c5b3c19657706a25bcc59788874163527fce174d00a54436a028e48266904a91f77ffd2d486af548988209b10066988ea14cc0eb33861b8102e4402cc139ae71cde6c4e99d42\")"
+    ]
+  }
+}

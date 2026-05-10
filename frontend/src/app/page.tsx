@@ -17,7 +17,7 @@ export default async function Home() {
     try {
         const [landingPageResponse, coursesResponse, faqsResponse] = await Promise.all([
             getStrapiData('/landing-page', { populate: '*' }),
-            getStrapiData('/courses', { populate: 'image' }),
+            getStrapiData('/courses', { 'populate[0]': 'image', 'populate[1]': 'hero' }),
             getStrapiData('/faqs', {})
         ]);
 

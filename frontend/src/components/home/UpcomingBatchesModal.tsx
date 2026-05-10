@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Modal from "@/components/ui/modal";
-import { courses } from "@/lib/courses-data";
 import { X, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -20,31 +19,24 @@ export default function UpcomingBatchesModal() {
     const [batches, setBatches] = useState<Batch[]>([]);
 
     useEffect(() => {
-        // Open modal on mount
-        const timer = setTimeout(() => setIsOpen(true), 1000); // Slight delay for better UX
+        let timer: ReturnType<typeof setTimeout>;
 
-        // Aggregate batches
-        const allBatches: Batch[] = [];
-        courses.forEach((course) => {
-            const data = (course.attributes || course) as any;
-            const hero = data.hero;
-            if (hero && hero.batches && hero.batches.length > 0) {
-                hero.batches.forEach((batch: any) => {
-                    if (batch.status !== "Closed" && batch.startDate) {
-                        allBatches.push({
-                            courseName: data.title,
-                            date: batch.startDate,
-                            time: batch.time,
-                            status: batch.status,
-                            link: `/courses/${data.slug}`
-                        });
-                    }
-                });
+        async function fetchBatches() {
+            try {
+                const res = await fetch('/api/batches', { cache: 'no-store' });
+                if (!res.ok) throw new Error('Failed to fetch batches');
+                const json = await res.json();
+                setBatches(json.batches || []);
+                if (json.showPopup !== false) {
+                    timer = setTimeout(() => setIsOpen(true), 1000);
+                }
+            } catch (err) {
+                console.error('[UpcomingBatchesModal] Failed to fetch batches:', err);
+                timer = setTimeout(() => setIsOpen(true), 1000);
             }
-        });
+        }
 
-        // Sort logic could go here, for now just taking the first few
-        setBatches(allBatches);
+        fetchBatches();
 
         return () => clearTimeout(timer);
     }, []);
@@ -54,7 +46,7 @@ export default function UpcomingBatchesModal() {
     return (
         <Modal isOpen={isOpen} onClose={handleClose} className="max-w-4xl p-0">
             <div className="relative bg-background flex flex-col max-h-[90vh]">
-                {/* Header - stays fixed at top */}
+                {/* Header */}
                 <div className="p-6 border-b border-border flex items-center justify-between bg-card flex-shrink-0">
                     <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80">
                         Upcoming Live Batches
@@ -67,7 +59,7 @@ export default function UpcomingBatchesModal() {
                     </button>
                 </div>
 
-                {/* Content - scrollable */}
+                {/* Content */}
                 <div className="overflow-y-auto overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                         <thead>
@@ -79,10 +71,7 @@ export default function UpcomingBatchesModal() {
                         </thead>
                         <tbody className="divide-y divide-border">
                             {batches.map((batch, index) => (
-                                <tr
-                                    key={index}
-                                    className="hover:bg-muted/30 transition-colors"
-                                >
+                                <tr key={index} className="hover:bg-muted/30 transition-colors">
                                     <td className="p-4 font-medium text-foreground">{batch.courseName}</td>
                                     <td className="p-4 text-muted-foreground">
                                         <div className="flex flex-col gap-1">
@@ -109,7 +98,6 @@ export default function UpcomingBatchesModal() {
                         </tbody>
                     </table>
                 </div>
-
             </div>
         </Modal>
     );
