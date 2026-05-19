@@ -7,7 +7,9 @@
       "Bash(git commit -m ' *)",
       "Bash(git push *)",
       "Bash(Get-ChildItem -Path \"d:\\\\work\\\\network-masters-hub-main\" -Force)",
-      "Bash(Select-Object -First 20)"
+      "Bash(Select-Object -First 20)",
+      "Bash(Get-ChildItem -Path \"d:\\\\work\\\\network-masters-hub-main\" -Directory)",
+      "Bash(Select-Object Name)"
     ]
   }
 }

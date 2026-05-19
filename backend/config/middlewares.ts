@@ -10,6 +10,7 @@ export default [
         'https://networkmastershub.com',
         'https://www.networkmastershub.com',
         'https://network-masters.netlify.app',
+        'https://res.cloudinary.com',
         'http://localhost:3000'
       ],
       headers: '*',
