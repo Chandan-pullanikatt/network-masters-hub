@@ -21,6 +21,11 @@ const nextConfig: NextConfig = {
         hostname: 'network-masters-hub-pkkk.onrender.com',
         pathname: '/uploads/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '/**',
+      },
     ],
   },
   /* config options here */

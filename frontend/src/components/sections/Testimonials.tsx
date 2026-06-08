@@ -1,8 +1,19 @@
 import { Quote } from 'lucide-react';
+import Image from 'next/image';
 import { MotionSection, MotionDiv } from '@/components/ui/motion-container';
 import { staggerContainer, fadeInUp } from '@/lib/animations';
+import { getStrapiData, getStrapiMedia } from '@/lib/strapi';
 
-const testimonials = [
+type Testimonial = {
+    name: string;
+    role: string;
+    message: string;
+    avatarUrl?: string | null;
+};
+
+// Fallback data — mirrors the testimonials seeded into Strapi. Used only if the
+// CMS is unreachable/empty so the section never renders blank.
+const fallbackTestimonials: Testimonial[] = [
     {
         name: "Riya Bhardwaj",
         role: "CCNA Student",
@@ -50,7 +61,31 @@ const testimonials = [
     }
 ];
 
-const Testimonials = () => {
+async function getTestimonials(): Promise<Testimonial[]> {
+    try {
+        const res = await getStrapiData('/testimonials', {
+            'populate': 'avatar',
+            'sort': 'createdAt:asc',
+            'pagination[pageSize]': '100',
+        });
+        const items = (res?.data ?? []).map((t: any): Testimonial => {
+            // avatar is configured as a multiple media field → take the first image
+            const media = Array.isArray(t.avatar) ? t.avatar[0] : t.avatar;
+            return {
+                name: t.name,
+                role: t.role,
+                message: t.message,
+                avatarUrl: getStrapiMedia(media),
+            };
+        });
+        return items.length > 0 ? items : fallbackTestimonials;
+    } catch {
+        return fallbackTestimonials;
+    }
+}
+
+const Testimonials = async () => {
+    const testimonials = await getTestimonials();
     return (
         <section className="pt-20 pb-0 bg-[#F8F9FA]">
             <div className="max-w-[1280px] mx-auto w-full px-6">
@@ -76,7 +111,17 @@ const Testimonials = () => {
                         <MotionDiv key={index} variants={fadeInUp} className="bg-white p-6 rounded-2xl shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] hover:shadow-lg transition-shadow duration-300 flex flex-col h-full border border-slate-50">
                             <div className="flex justify-between items-start mb-6">
                                 <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 bg-gray-200 rounded-full flex-shrink-0"></div>
+                                    {testimonial.avatarUrl ? (
+                                        <Image
+                                            src={testimonial.avatarUrl}
+                                            alt={testimonial.name}
+                                            width={48}
+                                            height={48}
+                                            className="w-12 h-12 rounded-full object-cover flex-shrink-0"
+                                        />
+                                    ) : (
+                                        <div className="w-12 h-12 bg-gray-200 rounded-full flex-shrink-0"></div>
+                                    )}
                                     <div>
                                         <h4 className="font-bold text-slate-900 text-lg">{testimonial.name}</h4>
                                         <p className="text-sm text-slate-500">{testimonial.role}</p>
